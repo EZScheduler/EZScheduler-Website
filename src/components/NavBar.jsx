@@ -32,12 +32,12 @@ export const NavBar = () => {
 }
 
 const NavBarView = styled.div`
+  z-index: 100;
   width: 524px;
   display: flex;
-  margin: 2rem auto;
+  margin: 0rem auto;
   justify-content: space-between;
   align-items: center;
-  /* gap: 2rem; */
   border-radius: 100px;
   padding: 0.5rem 2rem;
   border: 1px solid ${({ theme }) => theme.colors.grey.grey_20};
@@ -45,7 +45,6 @@ const NavBarView = styled.div`
 
   .routes {
     width: 65%;
-    /* padding: 0 2rem; */
 
     ul {
       margin: 0;

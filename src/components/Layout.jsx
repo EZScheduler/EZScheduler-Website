@@ -6,7 +6,7 @@ import { Footer } from './Footer';
 export const Layout = ({ children }) => {
   return (
     <View>
-      <NavBar />
+      {/* <NavBar /> */}
       <main>{children}</main>
       <Footer />
     </View>
