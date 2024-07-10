@@ -32,7 +32,7 @@ export const NavBar = () => {
 }
 
 const NavBarView = styled.div`
-  z-index: 100;
+  z-index: 10000;
   width: 524px;
   display: flex;
   margin: 0rem auto;
