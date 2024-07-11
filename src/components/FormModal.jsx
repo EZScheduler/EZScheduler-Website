@@ -1,49 +1,73 @@
+import { useForm } from '@formspree/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import styled from 'styled-components';
+// import { Input } from './Input';
+import { useState } from 'react';
+import axios from 'axios';
+import toast from 'react-hot-toast';
+import { device } from '../constants/breakpoints';
 // import { Oval } from 'react-loader-spinner';
 // import { useEffect, useState } from 'react';
 
-export const FormModal = ({ showCreateModal, setShowCreateModal}) => {
-  // const types = useQuery({
-  //   queryKey: ['types'],
-  //   queryFn: fetchTermTypes,
-  // });
+export const FormModal = ({ showModal, setShowModal}) => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    telephone: '',
+    industry: '',
+    country: ''
+  });
 
-  // const handleCreateTerm = useMutation({
-  //   mutationFn: (data) => createTerm(data),
-  //   onSuccess: () => {
-  //     setTermData({
-  //       type: '',
-  //       content: ''
-  //     });
-  //     queryClient.invalidateQueries(['terms']);
-  //     setShowCreateModal(false);
-  //     toast.success('Term created successfully.');
-  //   },
-  //   onError: (error) => {
-  //     toast.error(error?.response?.data?.message);
-  //   }
-  // });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
 
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setTermData({...termData, [name]: value});
-  //   console.log(termData)
-  // }
+  const options = [
+    { value: 'College & Universities', label: 'College & Universities' },
+    { value: 'Hospitals', label: 'Hospitals' },
+    { value: 'Restaurants', label: 'Restaurants' },
+    { value: 'Small Businesses', label: 'Small Businesses' },
+    { value: 'Medium-Sized Enterprises', label: 'Medium-Sized Enterprises' },
+    { value: 'Large Corporations', label: 'Large Corporations' },
+    { value: 'Government Agencies', label: 'Government Agencies' },
+    
+  ];
 
-  // const handleContentChange = (newContent) => {
-  //   setContent(newContent);
-  //   setTermData({ ...termData, content: newContent }); // Update termData with new content
-  //   console.log(termData); // Log the new content
-  // };
+  const generateRandomNumber = () => {
+    const min = 2000;
+    const max = 5000;
+    const randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+    toast.success(`Welcome to the EZ Side! Your number on the waitlist is${randomNum}.`)
+  }
 
-  // const onSubmit = () => {
-  //   handleCreateTerm.mutate(termData);
-  // };
+  const handleSubmit = async () => {
+    try {
+      const response = await axios.post('https://formspree.io/f/xldrddaj', formData, {
+        headers: {
+          'Accept': 'application/json',
+        },
+      });
+      setFormData({
+        name: '',
+        email: '',
+        telephone: '',
+        industry: '',
+        country: ''
+      });
+      setShowModal(!showModal);
+      generateRandomNumber();
+    } catch (error) {
+      setStatus('Failed to submit the form.');
+    }
+  };
 
   return (
     <AnimatePresence>
-      {showCreateModal && (
+      {showModal && (
         <ModalView
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -62,73 +86,125 @@ export const FormModal = ({ showCreateModal, setShowCreateModal}) => {
               <ContentView>
                 <HeaderView>
                   <h3>Stay in the loop</h3>
-                  <button className="close" onClick={() => setShowCreateModal(false)}>
-                    <CloseIcon />
-                  </button>
+                  <p>Be first in line for special offers & updates</p>
                 </HeaderView>
                 <Content>
-                  <div className="info">
-                    <div className="icon">
-                      <InfoIcon />
-                    </div>
-                    <p>
-                      Please fill in the necessary fields to enable you create a term.
-                    </p>
-                  </div>
-                  <DataView>
-                    <InputView>
-                      <LabelView>
-                        <label>Term Type</label>
-                      </LabelView>
-                      {/* <Input 
-                        className='input'
-                        type='text'
-                        name='type'
-                        placeholder='Enter term type'
-                        value={termData.type}
-                        onChange={handleChange} 
-                      /> */}
-                      <select name="type" value={termData.type} onChange={handleChange}>
-                        <option value="">Select a term type</option>
-                        {types.data?.data.map((type) => (
-                          <option value={type.type} key={type.type}>
-                            {type.type}
-                          </option>
-                        ))}
-                      </select>
-                      <p className='hint'>Please ensure that all inputs are in capital letters and include an underscore when specifying the type, for example, INVOICE_FINANCING.</p>
-                    </InputView>
-                  </DataView>
-                  <DataView>
-                    <InputView>
-                      <LabelView>
-                        <label>Term Content</label>
-                      </LabelView>
-                      <WYSIWYG value={content} setValue={handleContentChange} placeholder="Enter the content for this term" />
-                    </InputView>
-                  </DataView>
+                  {/* <form onSubmit={handleSubmit}> */}
+                    <DataView>
+                      <InputView>
+                        <LabelView>
+                          <label htmlFor='name'>Fullname</label>
+                        </LabelView>
+                        <Input
+                          id="name" 
+                          type="text"
+                          name='name'
+                          value={formData.name}
+                          onChange={handleChange}
+                          placeholder='Enter your fullname'
+                          required
+                        />
+                      </InputView>
 
-                  <div className="cta">
-                    <button className="cancel" onClick={() => setShowCreateModal(!showCreateModal)}>
-                      Cancel
-                    </button>
-                    <button className="approve" onClick={onSubmit}>
-                      {handleCreateTerm.isLoading ? (
-                        <span>
-                          <Oval
-                            color="#FFF"
-                            secondaryColor="#ddd"
-                            height={20}
-                            width={20}
-                            strokeWidth={4}
-                            ariaLabel="loading"
-                          />
-                        </span>
-                      ) : (
-                        'Create Term'
-                      )}
-                    </button>
-                  </div>
+                      <InputView>
+                        <LabelView>
+                          <label htmlFor='email'> Work Email</label>
+                        </LabelView>
+                        <Input 
+                          id="email"
+                          type="email" 
+                          name="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          placeholder='Enter your work email'
+                          required
+                        />
+                      </InputView>
+                    </DataView>
+
+                    <DataView>
+                      <InputView>
+                        <LabelView>
+                          <label htmlFor='telephone'>Phone number (Optional)</label>
+                        </LabelView>
+                        <Input 
+                          id='telephone'
+                          type="telephone"
+                          name='telephone'
+                          value={formData.telephone}
+                          onChange={handleChange}
+                          placeholder='(555) 555-5555'
+                          required
+                        />
+                      </InputView>
+
+                      <InputView>
+                        <LabelView>
+                          <label htmlFor='industry'>Industry</label>
+                        </LabelView>
+                        <select 
+                          id="industry" 
+                          name="industry" 
+                          value={formData.industry}
+                          onChange={handleChange}
+                          required
+                        >
+                            <option value="" selected="" disabled="">Select an industry</option>
+                            {options.map((option) => (
+                              <option value={option.value}>{option.label}</option>
+                            ))}
+                        </select>
+                      </InputView>
+                    </DataView>
+
+                    <DataView>
+                      <InputView>
+                        <LabelView>
+                          <label htmlFor='country'>Country</label>
+                        </LabelView>
+                        <Input 
+                          id='country'
+                          type="text"
+                          name='country'
+                          value={formData.country}
+                          onChange={handleChange}
+                          placeholder='e.g USA, Canada...'
+                          required
+                        />
+                      </InputView>
+
+                      {/* <InputView>
+                        <LabelView>
+                          <label htmlFor='industry'>Email</label>
+                        </LabelView>
+                        <select 
+                          id="industry" 
+                          name="industry" 
+                          value={formData.industry}
+                          onChange={handleChange}
+                          required=""
+                        >
+                            <option value="" selected="" disabled="">Select</option>
+                            {options.map((option) => (
+                              <option value={option.value}>{option.label}</option>
+                            ))}
+                        </select>
+                      </InputView> */}
+                    </DataView>
+
+                    <div className="cta">
+                      <button 
+                        // type="submit"
+                        className="approve" 
+                        onClick={() => {  
+                          setShowModal(!showModal)
+                          handleSubmit()
+                        }}
+                      >
+                        Join the EZ Side?
+                      </button>
+                    </div>
+                  {/* </form> */}
                 </Content>
               </ContentView>
             </ModalContent>
@@ -138,8 +214,6 @@ export const FormModal = ({ showCreateModal, setShowCreateModal}) => {
     </AnimatePresence>
   );
 }
-
-export default CreateTermsModal;
 
 const ModalView = styled(motion.div)`
   position: fixed;
@@ -153,17 +227,22 @@ const ModalView = styled(motion.div)`
   justify-content: center;
 
   .modal {
-    background-color: ${(props) => props.theme.colors?.white};
     z-index: 30000;
     position: fixed;
     border-radius: 4px;
     width: 50vw;
-    padding: 30px 10px;
+    padding: 30px 20px;
     padding-top: 0;
     padding-bottom: 20px;
-    border-radius: 6px;
+    border-radius: 15px;
     max-height: 90%;
     overflow-y: scroll;
+    background: linear-gradient(to right, #33214A 0%, #2A464D 100%);
+
+    @media ${device.mobile} {
+      width: 95vw;
+      padding: 30px 0;
+    }
   }
 `;
 
@@ -197,13 +276,34 @@ const ContentView = styled.div`
 const HeaderView = styled.div`
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+
+  @media ${device.mobile} {
+    display: block;
+  }
 
   h3 {
-    font-size: 1.2rem;
-    font-weight: 500;
-    color: ${(props) => props.theme.colors?.secondary};
+    font-size: 3rem;
+    font-weight: 600;
+    color: ${({ theme }) => theme.colors?.white};
+
+    @media ${device.mobile} {
+      font-size: 2rem;
+
+    }
+  }
+
+  p {
+    font-size: 1rem;
+    font-weight: 300;
+    color: ${({ theme }) => theme.colors?.white};
+    margin-top: 10px;
+
+    @media ${device.mobile} {
+      font-size: 0.9rem;
+    }
   }
 
   .close {
@@ -222,7 +322,6 @@ const DataView = styled.div`
   margin-top: 2rem;
   display: flex;
   gap: 2rem;
-  background-color: ${({ theme }) => theme.colors?.white};
 
   .disabled {
     background-color: #f2f2f2;
@@ -238,6 +337,11 @@ const DataView = styled.div`
 
     .radio-input {
     }
+  }
+
+  @media ${device.mobile} {
+    flex-direction: column;
+    gap: 1rem;
   }
 `;
 
@@ -285,7 +389,7 @@ const InputView = styled.div`
     padding: 0 1rem;
     margin-top: 5px;
     width: 100%;
-    height: 4rem;
+    height: 54px;
     border-radius: 5px;
     border: none;
     outline: none;
@@ -293,8 +397,10 @@ const InputView = styled.div`
     -moz-appearance: none;
     appearance: none;
     padding: 0 20px;
-    font-weight: 600;
+    font-size: 1rem;
+    font-weight: 400;
     background-color: ${({ theme }) => theme.colors?.inputBackground};
+    color: ${({ theme }) => theme.colors?.grey?.grey_30};
   }
 
   .icon {
@@ -345,6 +451,7 @@ const LabelView = styled.div`
   width: 100%;
   display: flex;
   margin-bottom: 0px;
+  color: ${({ theme }) => theme.colors?.white};
 
   label {
     font-size: 1rem;
@@ -451,23 +558,65 @@ const Content = styled.div`
 
   .cta {
     width: 100%;
-    margin-top: 60px;
+    margin-top: 30px;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
 
     .approve {
-      width: 120px;
-      height: 40px;
-      border-radius: 6px;
-      background-color: ${(props) => props.theme.colors?.secondary};
-      color: ${(props) => props.theme.colors?.white};
-      font-size: 0.9rem;
-      font-weight: 500;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-left: 20px;
+      border: none;
+      padding: 1.2rem 2rem;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 500;
+      color: ${({ theme }) => theme.colors?.white};
+      background-color: ${({ theme }) => theme.colors?.purple.purple_10};
     }
+  }
+`;
+
+const Input = styled.input`
+  width: ${({ width }) => width || '100%'};
+  height: ${({ height }) => height || '54px'};
+  padding: ${({ icon }) => (icon ? '0 16px 0 48px' : '0 16px')};
+  background-color: ${({ theme, error }) =>
+    error ? theme.colors?.errorBackground : theme.colors?.white};
+  border: 1px solid
+    ${({ theme, error }) =>
+      error ? theme.colors?.error : theme.colors?.inputBackground};
+  border-radius: 6px;
+  color: ${({ theme }) => theme.colors?.grey?.grey_30};
+  outline: none;
+  font-size: 1rem;
+  font-weight: 300;
+  transition: all 0.2s ease-in-out;
+  margin-top: 5px;
+
+  &:focus {
+    background-color: ${({ theme, error }) =>
+      error ? theme.colors?.errorBackground : theme.colors?.white};
+    border: 1px solid
+      ${({ theme, error }) =>
+        error ? theme.colors?.error : theme.colors?.activeTitle};
+  }
+
+  &::placeholder {
+    color: ${({ theme }) => theme.colors?.grey?.grey_30};
+    font-size: 1rem;
+    font-weight: 300;
+  }
+
+  &:disabled {
+    color: #999999;
+    background-color: #f2f2f2;
+  }
+
+  &::-webkit-outer-spin-button,
+  ::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
 `;

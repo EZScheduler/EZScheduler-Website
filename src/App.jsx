@@ -7,13 +7,15 @@ import { Home } from './pages/home/Home';
 import { Blog } from './pages/blog/Blog'
 import { Pricing } from './pages/pricing/Pricing'
 import { Contact } from './pages/contact/Contact'
+import { Waiting } from './pages/waiting/Waiting'
 
 function App() {
 
   return (
     <>
       <Routes>
-        <Route path='/' element={<Home />} />
+        {/* <Route path='/' element={<Home />} /> */}
+        <Route path='/' element={<Waiting />} />
         <Route path='/pricing' element={<Pricing />} />
         <Route path='/blog' element={<Blog />} />
         <Route path='/contact' element={<Contact />} />
