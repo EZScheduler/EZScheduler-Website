@@ -4,13 +4,6 @@ import styled from 'styled-components';
 // import { useEffect, useState } from 'react';
 
 export const FormModal = ({ showCreateModal, setShowCreateModal}) => {
-  const queryClient = useQueryClient();
-  const [content, setContent] = useState('')
-  const [termData, setTermData] = useState({
-    type: '',
-    content:''
-  });
-
   // const types = useQuery({
   //   queryKey: ['types'],
   //   queryFn: fetchTermTypes,
