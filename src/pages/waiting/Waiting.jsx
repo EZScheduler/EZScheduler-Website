@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { FormModal } from "../../components/FormModal";
-import LogoIcon from '../../assets/icons/ez.icon.svg';
+import LogoIcon from '../../assets/icons/icon.svg';
 import Lottie from "lottie-react";
 import backgroundTeaser from "../../assets/lottie/EZ web GIF.lottie.json";
 import { device } from "../../constants/breakpoints";
@@ -28,16 +28,16 @@ export const Waiting = () => {
           <div className='logo-wrapper'>
             <img src={LogoIcon} alt="Ez-Scheduler" />
           </div>
-          <div>
+          {/* <div>
             <button onClick={() => setShowFormModal(true)}>
               Join Waitlist
             </button>
-          </div>
+          </div> */}
         </header>
 
         <div className="center">
           <button onClick={() => setShowFormModal(true)}>
-            Join Waitlist
+            Join the waitlist
           </button>
         </div>
 
@@ -86,7 +86,7 @@ const WaitingView = styled.div`
     justify-content: space-between;
 
     .logo-wrapper {
-      width: 25%;
+      width: 5%;
 
       img {
         width: 100%;
@@ -138,7 +138,6 @@ const WaitingView = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 2rem;
     padding: 2rem 0;
     position: fixed;
     bottom: 0;
@@ -149,6 +148,14 @@ const WaitingView = styled.div`
     a {
       margin: 0 1rem;
     }
+
+    @media ${device.mobile} {
+      padding: 1rem 0;
+
+      a {
+        margin: 0 0.5rem;
+      }
+    }
   }
 
 
@@ -158,7 +165,7 @@ const WaitingView = styled.div`
     background-size: none;
 
     .center {
-      top: 25rem;
+      top: 19rem;
       left: 6rem;
       right: 6rem;
 
@@ -176,7 +183,7 @@ const WaitingView = styled.div`
       padding: 1rem;
 
       .logo-wrapper {
-        width: 40%;
+        width: 13%;
 
         img {
           width: 100%;

@@ -41,7 +41,7 @@ export const FormModal = ({ showModal, setShowModal}) => {
     const min = 2000;
     const max = 5000;
     const randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
-    toast.success(`Welcome to the EZ Side! Your number on the waitlist is${randomNum}.`)
+    toast.success(`Welcome to the EZ Side! Your number is${randomNum}.`)
   }
 
   const handleSubmit = async () => {
@@ -83,17 +83,28 @@ export const FormModal = ({ showModal, setShowModal}) => {
             onClick={(e) => e.stopPropagation()}>
             {/* ======== Content ======== */}
             <ModalContent>
+              <div 
+                className="header"
+                onClick={() => setShowModal(!showModal)}
+              >
+                cancel
+              </div>
               <ContentView>
                 <HeaderView>
-                  <h3>Stay in the loop</h3>
-                  <p>Be first in line for special offers & updates</p>
+                  <div className='text'>
+                    <h3>Stay in the loop</h3>
+                    <p>Be first in line for special offers & updates</p>
+                  </div>
+                  {/* <div className="close" onClick={() => setShowModal(!showModal)}>
+                    X
+                  </div> */}
                 </HeaderView>
                 <Content>
                   {/* <form onSubmit={handleSubmit}> */}
                     <DataView>
                       <InputView>
                         <LabelView>
-                          <label htmlFor='name'>Fullname</label>
+                          <label htmlFor='name'>Full Name</label>
                         </LabelView>
                         <Input
                           id="name" 
@@ -254,18 +265,27 @@ const ModalContent = styled.div`
   margin: 0;
   justify-content: flex-start;
   flex-direction: column;
-  padding: 20px;
+  padding: 30px 20px;
 
   .header {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    color: ${({ theme }) => theme.colors?.white};
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 500;
 
     h3 {
       font-size: 1rem;
       font-weight: 600;
     }
+  }
+
+  @media ${device.mobile} {
+    padding: 10px 20px;
+    padding-bottom: 20px;
   }
 `;
 
@@ -276,35 +296,39 @@ const ContentView = styled.div`
 const HeaderView = styled.div`
   width: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
+
+
 
   @media ${device.mobile} {
-    display: block;
+    /* display: block; */
   }
 
-  h3 {
-    font-size: 3rem;
-    font-weight: 600;
-    color: ${({ theme }) => theme.colors?.white};
-
-    @media ${device.mobile} {
-      font-size: 2rem;
-
+  .text {
+    h3 {
+      font-size: 3rem;
+      font-weight: 600;
+      color: ${({ theme }) => theme.colors?.white};
+  
+      @media ${device.mobile} {
+        font-size: 2rem;
+  
+      }
+    }
+  
+    p {
+      font-size: 1rem;
+      font-weight: 300;
+      color: ${({ theme }) => theme.colors?.white};
+      margin-top: 10px;
+  
+      @media ${device.mobile} {
+        font-size: 0.9rem;
+      }
     }
   }
 
-  p {
-    font-size: 1rem;
-    font-weight: 300;
-    color: ${({ theme }) => theme.colors?.white};
-    margin-top: 10px;
-
-    @media ${device.mobile} {
-      font-size: 0.9rem;
-    }
-  }
 
   .close {
     width: 30px;
