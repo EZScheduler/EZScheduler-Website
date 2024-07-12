@@ -36,7 +36,7 @@ export const Waiting = () => {
         </header>
 
         <div className="center">
-          <button>
+          <button onClick={() => setShowFormModal(true)}>
             Join Waitlist
           </button>
         </div>
@@ -111,7 +111,7 @@ const WaitingView = styled.div`
     right: 6rem;
 
     button {
-      padding: 1.2rem 4em;
+      padding: 1rem 4em;
       font-size: 1rem;
       font-weight: 500;
       cursor: pointer;
