@@ -2,50 +2,63 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { FormModal } from "../../components/FormModal";
 import LogoIcon from '../../assets/icons/icon.svg';
+import teaser from '../../assets/lottie/teaser-video.mp4';
 import Lottie from "lottie-react";
-import backgroundTeaser from "../../assets/lottie/EZ web GIF.lottie.json";
+import backgroundTeaser from "../../assets/lottie/EZwebGIF_.json";
 import { device } from "../../constants/breakpoints";
 import Facebook from '../../assets/icons/facebook.icon.svg';
 import Twitter from '../../assets/icons/twitter.icon.svg';
 import Instagram from '../../assets/icons/instagram.icon.svg';
 import LinkedIn from '../../assets/icons/linkedin.icon.svg';
 import Youtube from '../../assets/icons/youtube.icon.svg';
+import ReactPlayer from "react-player";
 
 
 export const Waiting = () => {
   const [showFormModal, setShowFormModal] = useState(false);
 
-  const style = {
-    width: "100%",
-    height: "100%",
-    position: "relativee",
-  };
-
   return (
-    <>
       <WaitingView>
         <header>
           <div className='logo-wrapper'>
             <img src={LogoIcon} alt="Ez-Scheduler" />
           </div>
-          {/* <div>
+
+          <div>
             <button onClick={() => setShowFormModal(true)}>
               Join Waitlist
             </button>
-          </div> */}
+          </div>
         </header>
 
-        <div className="center">
+        {/* <div className="center">
           <button onClick={() => setShowFormModal(true)}>
             Join the waitlist
           </button>
+        </div> */}
+
+        <div className='video'>
+          <ReactPlayer
+            url={teaser} 
+            playing={true} 
+            loop={true} 
+            muted={true}
+            width='100%'
+            height='100%'
+            // style={{
+            //   width: "100%",
+            //   height: "100%",
+            // }}
+          />
         </div>
 
-        <div className='background'>
+        
+
+        {/* <div className='background'>
           <img src="https://res.cloudinary.com/doi40g1ct/image/upload/v1720727384/EZ-Scheduler/EZwebGIF-_u408or.gif" alt="" />
           <img src="https://res.cloudinary.com/doi40g1ct/image/upload/v1720727384/EZ-Scheduler/EZwebGIF-_u408or.gif" alt="" />
           <img src="https://res.cloudinary.com/doi40g1ct/image/upload/v1720727384/EZ-Scheduler/EZwebGIF-_u408or.gif" alt="" />
-        </div>
+        </div> */}
 
         <div className='socials'>
           <a href="#">
@@ -64,24 +77,18 @@ export const Waiting = () => {
             <img src={Youtube} alt="Youtube" />
           </a>
         </div>
-      </WaitingView>
       <FormModal showModal={showFormModal} setShowModal={setShowFormModal} />
-    </>
+      </WaitingView>
   );
 };
 
 const WaitingView = styled.div`
-  height: 100vh;
-  width: 100vw;
-  position: relative;
-  background-image: url("https://res.cloudinary.com/doi40g1ct/image/upload/v1720727384/EZ-Scheduler/EZwebGIF-_u408or.gif");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  margin: 0 1rem;
+  
 
   header {
     display: flex;
-    padding: 1rem 2rem;
+    padding: 1rem 1rem;
     align-items: center;
     justify-content: space-between;
 
@@ -94,10 +101,29 @@ const WaitingView = styled.div`
       
       }
     }
+
+    @media ${device.mobile} {
+
+      .logo-wrapper {
+        width: 13%;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
   }
 
   .background {
     display: none;
+  }
+
+  .video {
+
+    @media ${device.mobile} {
+      margin: 1rem 0;
+    }
   }
 
   .center {
@@ -138,7 +164,7 @@ const WaitingView = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2rem 0;
+    padding: 1rem 0;
     position: fixed;
     bottom: 0;
     left: 0;
@@ -160,9 +186,7 @@ const WaitingView = styled.div`
 
 
   @media ${device.mobile} {
-    background-image: none;
-    background-position: 0%;
-    background-size: none;
+    margin: 0;
 
     .center {
       top: 19rem;
@@ -179,41 +203,10 @@ const WaitingView = styled.div`
       }
     }
 
-    header {
-      padding: 1rem;
-
-      .logo-wrapper {
-        width: 13%;
-
-        img {
-          width: 100%;
-          height: 100%;
-        }
-      }
-    }
-
-    .background {
-      display: block;
-      width: 100vw;
-      /* height: 100%; */
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-      }
-    }
-
     button {
       padding: 0.7rem 1.2rem;
       font-size: 0.8rem;
       font-weight: 600;
     }
-
-    .socials {
-
-    }
   }
-
-
 `;
