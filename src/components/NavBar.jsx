@@ -1,50 +1,86 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Logo } from './Logo';
-import { Link, NavLink } from 'react-router-dom';
+import React, { useState } from "react";
+import styled from "styled-components";
+import { Logo } from "./Logo";
+import { Link, NavLink } from "react-router-dom";
+import { ReactSVG } from "react-svg";
+import { Icons } from "../assets/icons/icons";
+import { device } from "../constants/breakpoints";
+import { MobileNavbar } from "./MobileNavbar";
+import { FormModal } from "./FormModal";
 
 export const NavBar = () => {
+  const [openNav, setOpenNav] = useState(false);
+  const [showFormModal, setShowFormModal] = useState(false);
+
   return (
-    <NavBarView>
-      <Link href='/'>
-        <Logo />
-      </Link>
-
-      <div className="routes">
-        <ul>
-          <li>
-            <NavLink to='/' activeClassName="active">Home</NavLink>
-          </li>
-          <li>
-            <NavLink to='/pricing' activeClassName="active">Pricing</NavLink>
-          </li>
-          <li>
-            <NavLink to='/blog' activeClassName="active">Blog</NavLink>
-          </li>
-          <li>
-            <NavLink to='/contact' activeClassName="active">Contact</NavLink>
-          </li>
-        </ul>
-      </div>
-
-    </NavBarView>
-  )
-}
+    <>
+      <NavBarView>
+        <MobileNavbar openNav={openNav} setOpenNav={setOpenNav} />
+        <Link to="/">
+          <Logo />
+        </Link>
+        <div className="routes">
+          <ul>
+            <li>
+              <Link to="/" activeClassName="active">
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link to="/#" activeClassName="active">
+                Insights
+              </Link>
+            </li>
+            <li>
+              <Link to="/contact" activeClassName="active">
+                Contact
+              </Link>
+            </li>
+            <li>
+              <Link to="/#" activeClassName="active">
+                Pricing
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <div className="btn">
+          <button onClick={() => setShowFormModal(true)}>
+            <span>Join the Waitlist</span>
+          </button>
+        </div>
+        <div className="menu">
+          <button className="menu-btn" onClick={() => setOpenNav(!openNav)}>
+            <ReactSVG src={Icons.menu} />
+          </button>
+        </div>
+      </NavBarView>
+      <FormModal showModal={showFormModal} setShowModal={setShowFormModal} />
+    </>
+  );
+};
 
 const NavBarView = styled.div`
-  z-index: 10000;
-  width: 524px;
+  width: 100%;
   display: flex;
-  margin: 0rem auto;
+  margin-top: 1.5rem;
   justify-content: space-between;
   align-items: center;
-  border-radius: 100px;
+  border-radius: 15px;
   padding: 0.5rem 2rem;
-  border: 1px solid ${({ theme }) => theme.colors.grey.grey_20};
-  background-color: ${({ theme }) => theme.colors.grey.grey_10};
+  border: 1px solid rgba(123, 104, 238, 0.08);
+  background-color: transparent;
+
+  @media ${device.mobile} {
+    border: none;
+    padding: 0.5rem 0;
+  }
 
   .routes {
-    width: 65%;
+    /* width: 65%; */
+
+    @media ${device.mobile} {
+      display: none;
+    }
 
     ul {
       margin: 0;
@@ -52,31 +88,68 @@ const NavBarView = styled.div`
       display: flex;
       list-style: none;
       align-items: center;
-      justify-content: space-between;
-  
+
       li {
         display: flex;
+        padding: 0 2rem;
         gap: 0.2rem;
 
         a {
           text-decoration: none;
-          color: ${({ theme }) => theme.colors.grey.grey_30};
+          color: ${({ theme }) => theme.colors.grey.grey_60};
+          transition: all 0.3s ease-in-out;
 
           &:hover {
-            border-radius: 100px;
-            padding: 0.45rem 1rem;
-            background-color: ${({ theme }) => theme.colors.white};
-            color: ${({ theme }) => theme.colors.blue.blue_10};
+            color: ${({ theme }) => theme.colors.white};
           }
 
-          .active {
-            border-radius: 100px;
-            background-color: ${({ theme }) => theme.colors.white};
-            color: ${({ theme }) => theme.colors.blue.blue_10};
-          }
+          /* &.active {
+            color: ${({ theme }) => theme.colors.white};
+          } */
+        }
+
+        a.active {
+          color: ${({ theme }) => theme.colors.white};
         }
       }
     }
   }
 
+  .btn {
+    button {
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 14px;
+      padding: 1.2rem 2rem;
+      border-radius: 5px;
+      color: ${({ theme }) => theme.colors.purple.purple_10};
+      background-color: ${({ theme }) => theme.colors.white};
+
+      /* span {
+        background: linear-gradient(to right, #8930fd 0%, #47cdd0 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      } */
+    }
+
+    @media ${device.mobile} {
+      display: none;
+    }
+  }
+
+  .menu {
+    display: none;
+
+    @media ${device.mobile} {
+      display: block;
+    }
+
+    .menu-btn {
+      background: none;
+      border: none;
+      outline: none;
+    }
+  }
 `;

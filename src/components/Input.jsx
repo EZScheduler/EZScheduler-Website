@@ -1,9 +1,10 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const Input = styled.input`
-  width: ${({ width }) => width || '100%'};
-  height: ${({ height }) => height || '54px'};
-  padding: ${({ icon }) => (icon ? '0 16px 0 48px' : '0 16px')};
+  font-family: inherit;
+  width: ${({ width }) => width || "100%"};
+  height: ${({ height }) => height || "54px"};
+  padding: ${({ icon }) => (icon ? "0 16px 0 48px" : "0 16px")};
   background-color: ${({ theme, error }) =>
     error ? theme.colors?.errorBackground : theme.colors?.white};
   border: 1px solid
@@ -41,4 +42,4 @@ export const Input = styled.input`
     -webkit-appearance: none;
     margin: 0;
   }
-`
+`;

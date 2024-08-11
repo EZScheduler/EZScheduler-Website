@@ -7,8 +7,13 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  body {
+  html, body {
     background-color: #FFFFFF;
-    font-family: 'Inter', sans-serif;
+    font-family: "Rethink Sans", sans-serif;
+    scroll-behavior: smooth;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 `;

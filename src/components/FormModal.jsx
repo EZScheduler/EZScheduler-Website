@@ -33,8 +33,7 @@ export const FormModal = ({ showModal, setShowModal}) => {
     { value: 'Small Businesses', label: 'Small Businesses' },
     { value: 'Medium-Sized Enterprises', label: 'Medium-Sized Enterprises' },
     { value: 'Large Corporations', label: 'Large Corporations' },
-    { value: 'Government Agencies', label: 'Government Agencies' },
-    
+    { value: 'Government Agencies', label: 'Government Agencies' },    
   ];
 
   const generateRandomNumber = () => {
