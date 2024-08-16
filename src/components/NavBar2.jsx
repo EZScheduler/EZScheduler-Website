@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Logo } from "./Logo";
 import { Link, NavLink } from "react-router-dom";
 import { ReactSVG } from "react-svg";
 import { Icons } from "../assets/icons/icons";
 import { device } from "../constants/breakpoints";
 import { MobileNavbar } from "./MobileNavbar";
 import { FormModal } from "./FormModal";
+import { Logo2 } from "./Logo2";
 
-export const NavBar = () => {
+export const NavBar2 = () => {
   const [openNav, setOpenNav] = useState(false);
   const [showFormModal, setShowFormModal] = useState(false);
 
@@ -17,7 +17,7 @@ export const NavBar = () => {
       <NavBarView>
         <MobileNavbar openNav={openNav} setOpenNav={setOpenNav} />
         <Link to="/">
-          <Logo />
+          <Logo2 />
         </Link>
         <div className="routes">
           <ul>
@@ -37,7 +37,7 @@ export const NavBar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/pricing" activeClassName="active">
+              <Link to="/#" activeClassName="active">
                 Pricing
               </Link>
             </li>
@@ -96,11 +96,11 @@ const NavBarView = styled.div`
 
         a {
           text-decoration: none;
-          color: ${({ theme }) => theme.colors.grey.grey_20};
+          color: ${({ theme }) => theme.colors.grey.grey_30};
           transition: all 0.3s ease-in-out;
 
           &:hover {
-            color: ${({ theme }) => theme.colors.white};
+            color: ${({ theme }) => theme.colors.blue.blue_10};
           }
 
           /* &.active {

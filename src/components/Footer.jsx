@@ -9,12 +9,11 @@ import { General } from "./General";
 import { Functionality } from "./Functionality";
 import { Demo } from "./Demo";
 import { tabs, socials } from "../constants/data";
+import { FormModal } from "./FormModal";
 
 export const Footer = () => {
   const [activeTab, setActiveTab] = useState(1);
-  const [openIndex, setOpenIndex] = useState(null);
-
- 
+  const [showFormModal, setShowFormModal] = useState(false);
 
   const tabChange = (id) => {
     setActiveTab(id);
@@ -33,104 +32,112 @@ export const Footer = () => {
   };
 
   return (
-    <FooterView>
-      <div className="faq">
-        <div className="left">
-          <p className="bold">Some of the things you may want to know</p>
-          <p className="sub-text">
-            We answered questions so you don't have to ask them.
-          </p>
-        </div>
-
-        <div className="right">
-          <div className="tabs">
-            {tabs.map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => tabChange(tab.id)}
-                className={`tab ${activeTab === tab.id ? "active" : ""}`}
-              >
-                {tab.name}
-              </button>
-            ))}
+    <>
+      <FooterView>
+        <div className="faq">
+          <div className="left">
+            <p className="bold">Some of the things you may want to know</p>
+            <p className="sub-text">
+              We answered questions so you don't have to ask them.
+            </p>
           </div>
-          <div className="tab-content">
-            {renderTabs()}
+
+          <div className="right">
+            <div className="tabs">
+              {tabs.map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => tabChange(tab.id)}
+                  className={`tab ${activeTab === tab.id ? "active" : ""}`}
+                >
+                  {tab.name}
+                </button>
+              ))}
+            </div>
+            <div className="tab-content">
+              {renderTabs()}
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="socials">
-        <div className="further">
-          <h2>Still have questions?</h2>
+        <div className="socials">
+          <div className="further">
+            <h2>Still have questions?</h2>
 
-          <p>
-            Feel free to contact our support team, and they will be happy to
-            assist you.
-          </p>
+            <p>
+              Feel free to contact our support team, and they will be happy to
+              assist you.
+            </p>
 
-          <span>
-            <a href="/contact">Contact us</a>
-          </span>
+            <span>
+              <Link to="/contact">Contact us</Link>
+            </span>
+          </div>
+
+          <div className="social-links">
+            {socials.map((social) => {
+              console.log(social.link);
+              return (
+                <a
+                  className="links"
+                  key={social.name}
+                  href={social.link}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <ReactSVG src={social.icon} />
+                </a>
+              );
+            })}
+          </div>
         </div>
 
-        <div className="social-links">
-          {socials.map((social) => {
-            return (
-              <a
-                className="links"
-                key={social.name}
-                href={social.link}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <ReactSVG src={social.icon} />
-              </a>
-            );
-          })}
+        <div className="extras">
+          {/* <img src={Ellipse} alt='' className='footer-img' /> */}
+          {/* <div className="radius"></div> */}
+          <div className="info">
+            {/* <p>What are you waiting for?</p> */}
+
+            <h2>Your key to a happier, more productive workforce</h2>
+
+            <button 
+              className="btn"
+            >
+              Join the Ez side
+            </button>
+          </div>
+
+          <div className="footer-sublinks">
+            <p>&copy; EZ Scheduler 2024</p>
+
+            <ul>
+              <li>
+                <Link to="/#">Insights</Link>
+              </li>
+              <li>
+                <Link to="/pricing">Pricing</Link>
+              </li>
+              <li>
+                <Link to="/contact">Contact</Link>
+              </li>
+            </ul>
+
+            <ul className="order-1">
+              <li>
+                <Link to="/privacy-policy">Privacy Policy</Link>
+              </li>
+              <li>
+                <Link to="/#">Terms of service</Link>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
-
-      <div className="extras">
-        {/* <img src={Ellipse} alt='' className='footer-img' /> */}
-        {/* <div className="radius"></div> */}
-        <div className="info">
-          {/* <p>What are you waiting for?</p> */}
-
-          <h2>Your key to a happier, more productive workforce</h2>
-
-          <button className="btn">Join the Ez side</button>
-        </div>
-
-        <div className="footer-sublinks">
-          <p>&copy; EZ Scheduler 2024</p>
-
-          <ul>
-            <li>
-              <Link to="/#">Insights</Link>
-            </li>
-            <li>
-              <Link to="/#">Pricing</Link>
-            </li>
-            <li>
-              <Link to="/contact">Contact</Link>
-            </li>
-          </ul>
-
-          <ul className="order-1">
-            <li>
-              <Link to="/privacy-policy">Privacy Policy</Link>
-            </li>
-            <li>
-              <Link to="/#">Terms of service</Link>
-            </li>
-          </ul>
-        </div>
-      </div>
-      {/* <div className="radius" /> */}
-      <img src={Ellipse} alt="" className="footer-img" />
-      <img src={Footer2} alt="" className="footer-img2" />
-    </FooterView>
+        {/* <div className="radius" /> */}
+        <img src={Ellipse} alt="" className="footer-img" />
+        <img src={Footer2} alt="" className="footer-img2" />
+      </FooterView>
+      <FormModal showModal={showFormModal} setShowModal={setShowFormModal} />
+    </>
   );
 };
 
@@ -165,7 +172,7 @@ const FooterView = styled.div`
     bottom: 0;
 
     @media ${device.mobile} {
-      width: 410px;
+      width: 370px;
       height: 70%;
     }
   }

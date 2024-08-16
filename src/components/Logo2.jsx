@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import logo2 from '../assets/images/mobileLogo.png';
+import { device } from "../constants/breakpoints";
 
 export const Logo2 = () => {
   return (
@@ -12,8 +13,17 @@ export const Logo2 = () => {
 const LogoView = styled.div`
   height: 25px;
 
+  @media ${device.mobile} {
+    height: 19px;
+  }
+
   img {
     width: 100%;
     height: 100%;
+
+    @media ${device.mobile} {
+      width: 100%;
+      height: 100%;
+    }
   }
 `;

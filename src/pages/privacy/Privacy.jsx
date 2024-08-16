@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { NavBar } from "../../components/NavBar";
 import { privacyPolicy } from "../../constants/data";
 import { device } from "../../constants/breakpoints";
+import { NavBar2 } from "../../components/NavBar2";
 
 export const Privacy = () => {
   const [selected, setSelected] = useState(0);
 
   return (
     <PrivacyView>
-      <NavBar />
+      <NavBar2 />
       <section>
         <div className="left-section">
           <div className="preview">

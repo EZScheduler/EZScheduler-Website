@@ -8,6 +8,7 @@ export const theme = {
       blue_30: '#29234F',
       blue_40: '#191530',
       blue_50: '#030014',
+      blue_60: '#1D2939',
     },
     grey: {
       grey_10: '#F9FAFB',
@@ -23,6 +24,7 @@ export const theme = {
       purple_30: '#D3CDF9',
       purple_40: '#3D3477',
       purple_50: '#F1E8FF',
+      purple_60: '#A79AF4',
     }
   }
 }

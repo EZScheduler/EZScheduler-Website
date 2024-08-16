@@ -11,6 +11,8 @@ import Address from './building.svg';
 import Phone from './call.svg';
 import Email from './sms.svg';
 import Close from './close.icon.svg';
+import Check from './check.icon.svg';
+import Cancel from './cancel.icon.svg';
 
 export const Icons = {
   arrowUpIcon: 'https://res.cloudinary.com/doi40g1ct/image/upload/v1722454833/EZ-Scheduler/arrow-up.icon_qfumf0.svg',
@@ -28,4 +30,6 @@ export const Icons = {
   phone: Phone,
   email: Email,
   close: Close,
+  check: Check,
+  cancel: Cancel,
 }

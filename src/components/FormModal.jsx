@@ -6,6 +6,8 @@ import { useState } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { device } from '../constants/breakpoints';
+import { ReactSVG } from 'react-svg';
+import { Icons } from '../assets/icons/icons';
 // import { Oval } from 'react-loader-spinner';
 // import { useEffect, useState } from 'react';
 
@@ -27,13 +29,13 @@ export const FormModal = ({ showModal, setShowModal}) => {
   };
 
   const options = [
-    { value: 'College & Universities', label: 'College & Universities' },
-    { value: 'Hospitals', label: 'Hospitals' },
-    { value: 'Restaurants', label: 'Restaurants' },
+    { value: 'College & University', label: 'College & University' },
+    { value: 'Hospital', label: 'Hospital' },
+    { value: 'Restaurant', label: 'Restaurant' },
     { value: 'Small Businesses', label: 'Small Businesses' },
-    { value: 'Medium-Sized Enterprises', label: 'Medium-Sized Enterprises' },
-    { value: 'Large Corporations', label: 'Large Corporations' },
-    { value: 'Government Agencies', label: 'Government Agencies' },    
+    { value: 'Medium-Sized Enterprise', label: 'Medium-Sized Enterprise' },
+    { value: 'Large Corporation', label: 'Large Corporation' },
+    { value: 'Government Agency', label: 'Government Agency' },    
   ];
 
   const generateRandomNumber = () => {
@@ -86,7 +88,7 @@ export const FormModal = ({ showModal, setShowModal}) => {
                 className="header"
                 onClick={() => setShowModal(!showModal)}
               >
-                cancel
+                <ReactSVG src={Icons.cancel} />
               </div>
               <ContentView>
                 <HeaderView>
@@ -111,7 +113,7 @@ export const FormModal = ({ showModal, setShowModal}) => {
                           name='name'
                           value={formData.name}
                           onChange={handleChange}
-                          placeholder='Enter your fullname'
+                          placeholder='Enter your full name'
                           required
                         />
                       </InputView>
@@ -170,7 +172,7 @@ export const FormModal = ({ showModal, setShowModal}) => {
                     <DataView>
                       <InputView>
                         <LabelView>
-                          <label htmlFor='country'>Country</label>
+                          <label htmlFor='country'>Country or Location</label>
                         </LabelView>
                         <Input 
                           id='country'

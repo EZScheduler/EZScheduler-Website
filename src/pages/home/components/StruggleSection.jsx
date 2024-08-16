@@ -2,15 +2,39 @@ import React from "react";
 import styled from "styled-components";
 import Light from "../../../assets/images/light.png";
 import Light2 from "../../../assets/images/mobile-ellipse.png";
-import Card1 from "../../../assets/images/card1.png";
+// import Card1 from "../../../assets/images/card1.png";
+import Card1 from "../../../assets/images/clock.png";
 import Card2 from "../../../assets/images/card2.png";
 import Laptop from "../../../assets/images/laptop.png";
 import Laptop2 from "../../../assets/images/laptop2.png";
 import { ReactSVG } from "react-svg";
 import { Icons } from "../../../assets/icons/icons";
 import { device } from "../../../constants/breakpoints";
+import axios from "axios";
+import toast from "react-hot-toast";
+import fileDownload from "js-file-download";
 
 export const StruggleSection = () => {
+  const pdfFileUrl =
+    "https://res.cloudinary.com/doi40g1ct/image/upload/v1723815396/EZ-Scheduler/EZ_Story_compressed_blk2yg.pdf";
+
+  const handleFileDownload = (url, filename) => {
+    const parts = filename.split("/");
+    const newFileName = parts[parts.length - 1];
+    axios
+      .get(url, {
+        responseType: "blob",
+      })
+      .then((res) => {
+        console.log("File downloaded successfully.");
+        fileDownload(res.data, newFileName);
+        toast.success("Pdf downloaded successfully.");
+      })
+      .catch((error) => {
+        console.error("Error downloading file:", error);
+      });
+  };
+
   return (
     <StruggleView>
       <div className="top">
@@ -47,8 +71,18 @@ export const StruggleSection = () => {
 
       <div className="bottom">
         <div className="read-post">
-          <h2>Welcome to the </h2>
-          {/* <span><ReactSVG src={Icons.ezSide} />side</span> */}
+          <div className="post-title">
+            <h2>Welcome to the</h2>
+            <ReactSVG src={Icons.ezSide} />
+            <span>side</span>
+          </div>
+          <div className="post-title-2">
+            <h2>Welcome to the</h2>
+            <div className="icon">
+              <ReactSVG src={Icons.ezSide} />
+              <span>side</span>
+            </div>
+          </div>
 
           <p className="description">
             EZ Scheduler is built to make scheduling easy for managers across
@@ -58,7 +92,10 @@ export const StruggleSection = () => {
 
           <div className="actions">
             <button className="filled">Read our story</button>
-            <button className="outlined">
+            <button
+              className="outlined"
+              onClick={() => handleFileDownload(pdfFileUrl, "EZ-Story.pdf")}
+            >
               <span>
                 <ReactSVG src={Icons.pdf} />
               </span>
@@ -122,7 +159,7 @@ const StruggleView = styled.div`
         /* gap: 7rem; */
         padding: 2rem 0rem 0 0rem;
         border-radius: 40px;
-        /* position: relative; */
+        position: relative;
         color: ${({ theme }) => theme.colors.white};
         background-color: ${({ theme }) => theme.colors.blue.blue_40};
 
@@ -130,6 +167,7 @@ const StruggleView = styled.div`
           width: 100%;
           /* padding: 2rem 1rem; */
           /* gap: 9rem; */
+          height: 450px;
         }
 
         p {
@@ -146,14 +184,15 @@ const StruggleView = styled.div`
         }
 
         .img1 {
-          width: 100%;
+          width: 50%;
           /* height: 250px; */
-          /* position: absolute;
+          position: absolute;
           bottom: 0;
           right: 0;
-          left: 0; */
+          /* left: 0; */
 
           @media ${device.mobile} {
+            margin-top: 10rem;
             /* margin-bottom: -1.5rem; */
           }
         }
@@ -203,7 +242,7 @@ const StruggleView = styled.div`
             /* position: static; */
             /* margin-bottom: -1.5rem; */
           }
-          
+
           /* @media ${device.mobile} {
             width: 100%;
             font-size: 14px;
@@ -211,7 +250,6 @@ const StruggleView = styled.div`
             margin-top: 4rem;
           } */
         }
-
       }
     }
   }
@@ -239,25 +277,83 @@ const StruggleView = styled.div`
         margin-bottom: 15rem;
       }
 
-      h2 {
-        z-index: 10;
-        font-size: 75px;
-        font-weight: 700;
-        line-height: 84px;
-        color: ${({ theme }) => theme.colors.white};
+      .post-title {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
 
         @media ${device.mobile} {
-          font-size: 35px;
-          line-height: 39px;
+          display: none;
+        }
+
+        h2 {
+          z-index: 10;
+          font-size: 75px;
+          font-weight: 700;
+          line-height: 84px;
+          color: ${({ theme }) => theme.colors.white};
+
+          @media ${device.mobile} {
+            width: 100%;
+            font-size: 35px;
+            line-height: 39px;
+          }
+        }
+
+        svg {
+          width: 50px;
+          margin-bottom: -1rem;
+
+          @media ${device.mobile} {
+            font-size: 20px;
+            /* line-height: 39px; */
+          }
         }
 
         span {
-          display: inline-block;
+          z-index: 10;
+          font-size: 75px;
+          font-weight: 700;
+          line-height: 84px;
+          color: ${({ theme }) => theme.colors.white};
 
-          svg {
-            margin-bottom: -1rem;
-            width: 70px;
-            height: 100%;
+          @media ${device.mobile} {
+            font-size: 35px;
+            line-height: 39px;
+          }
+        }
+      }
+
+      .post-title-2 {
+        display: none;
+        align-items: center;
+        gap: 0.6rem;
+
+        .icon {
+          gap: 0.6rem;
+          display: flex;
+          align-items: center;
+
+          @media ${device.mobile} {
+            gap: 0.5rem;
+          }
+        }
+
+        @media ${device.mobile} {
+          display: flex;
+          flex-direction: column;
+
+          h2 {
+            width: 100%;
+            font-size: 35px;
+            line-height: 39px;
+            text-align: center;
+          }
+
+          span {
+            font-size: 35px;
+            font-weight: 700;
+            line-height: 39px;
           }
         }
       }

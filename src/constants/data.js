@@ -113,3 +113,151 @@ export const privacyPolicy = [
     title: 'HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU?',
   },
 ]
+
+export const pricingData = [
+  {
+    type: 'Ez-TakeOff (Pay-Per-User)',
+    name: 'All features in Pay-Per-User',
+    description: 'For small teams needing essential scheduling & task and productivity management tools.',
+    users: 'Up to 10 users',
+    price: [
+      {
+        perUser: '$4 per user',
+      },
+      {
+        monthly: '-',
+      },
+      {
+        yearly: '-',
+      },
+    ],
+    features: [
+      {
+        name: 'Schedule creation',
+      },
+      {
+        name: 'Task management',
+      },
+      {
+        name: '1 sub-manager',
+      },
+      {
+        name: 'Employee availability selection',
+      },
+      {
+        name: 'In-app communication',
+      },
+      {
+        name: 'Shift-hours limit',
+      },
+      {
+        name: 'Basic productivity tracking',
+      },
+      {
+        name: 'Basic reporting',
+      },
+    ]
+  },
+  {
+    type: 'Ez-Starter',
+    name: 'All features in Ez-Starter',
+    description: 'For small to medium-sized teams looking to grow and increase team productivity.',
+    users: 'Up to 20 users',
+    price: [
+      {
+        perUser: '$4 per user',
+      },
+      {
+        monthly: '-',
+      },
+      {
+        yearly: '-'
+      },
+    ],
+    features: [
+      {
+        name: 'Up to 2 sub-managers',
+      },
+      {
+        name: 'Shift management',
+      },
+      {
+        name: 'Enhanced task assignment',
+      },
+      {
+        name: 'Limited performance management',
+      },
+      {
+        name: 'Basic reporting',
+      },
+    ]
+  },
+  {
+    type: 'Ez-Manager',
+    name: 'All features in Ez-Starter',
+    description: 'For medium-sized businesses needing advanced scheduling and next level productivity.',
+    users: 'Up to 35 users',
+    price: [
+      {
+        perUser: '$4 per user',
+      },
+      {
+        monthly: '$80 monthly',
+      },
+      {
+        yearly: '$966/year'
+      },
+    ],
+    features: [
+      {
+        name: 'Up to 5 sub-managers',
+      },
+      {
+        name: 'Advanced performance management',
+      },
+      {
+        name: 'Advanced reporting',
+      },
+      {
+        name: 'Historical trends and forecasting',
+      },
+      {
+        name: 'Enhanced communication tools',
+      },
+    ]
+  },
+  {
+    type: 'Ez-Pro',
+    name: 'All features in Ez-Pro',
+    description: 'For larger teams requiring comprehensive solutions.',
+    users: 'Up to 55 users',
+    price: [
+      {
+        perUser: '$4 per user',
+      },
+      {
+        monthly: '$80 monthly',
+      },
+      {
+        yearly: '$966/year'
+      },
+    ],
+    features: [
+      {
+        name: 'Up to 10 sub-managers',
+      },
+      {
+        name: 'Advanced productivity insights',
+      },
+      {
+        name: 'Real-time performance tracking',
+      },
+      {
+        name: 'Detailed compliance management',
+      },
+      {
+        name: 'Custom reporting formats',
+      },
+    ]
+  },
+]
