@@ -8,10 +8,12 @@ import toast from 'react-hot-toast';
 import { device } from '../constants/breakpoints';
 import { ReactSVG } from 'react-svg';
 import { Icons } from '../assets/icons/icons';
+import { CongratsModal } from './CongratsModal';
 // import { Oval } from 'react-loader-spinner';
 // import { useEffect, useState } from 'react';
 
 export const FormModal = ({ showModal, setShowModal}) => {
+  const [showSuccessModal, setShowSuccessModal] = useState(true);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -62,7 +64,7 @@ export const FormModal = ({ showModal, setShowModal}) => {
       setShowModal(!showModal);
       generateRandomNumber();
     } catch (error) {
-      setStatus('Failed to submit the form.');
+      toast.error('Please fill in the neceesarry field')
     }
   };
 
@@ -86,7 +88,16 @@ export const FormModal = ({ showModal, setShowModal}) => {
             <ModalContent>
               <div 
                 className="header"
-                onClick={() => setShowModal(!showModal)}
+                onClick={() => {
+                  setShowModal(!showModal)
+                  setFormData({
+                    name: '',
+                    email: '',
+                    telephone: '',
+                    industry: '',
+                    country: ''
+                  });
+                }}
               >
                 <ReactSVG src={Icons.cancel} />
               </div>
@@ -209,7 +220,7 @@ export const FormModal = ({ showModal, setShowModal}) => {
                         // type="submit"
                         className="approve" 
                         onClick={() => {  
-                          setShowModal(!showModal)
+                          // setShowModal(!showModal)
                           handleSubmit()
                         }}
                       >
@@ -223,6 +234,8 @@ export const FormModal = ({ showModal, setShowModal}) => {
           </motion.div>
         </ModalView>
       )}
+
+      <CongratsModal showModal={showSuccessModal} setShowModal={setShowSuccessModal} />
     </AnimatePresence>
   );
 }

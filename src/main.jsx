@@ -35,16 +35,16 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         },
         success: {
           style: {
-            background: "#18181B",
-            color: "#FAFAFA",
+            background: "#FFFFFF",
+            color: "#7B68EE",
             textAlign: "left",
             justifyContent: "flex-start",
           },
         },
         error: {
           style: {
-            background: "#18181B",
-            color: "#FAFAFA",
+            background: "#FFFFFF",
+            color: "#7B68EE",
             textAlign: "left",
             justifyContent: "flex-start",
           },

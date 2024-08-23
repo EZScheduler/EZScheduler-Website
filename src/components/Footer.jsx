@@ -102,6 +102,7 @@ export const Footer = () => {
 
             <button 
               className="btn"
+              onClick={() => setShowFormModal(true)}
             >
               Join the Ez side
             </button>

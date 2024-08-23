@@ -7,10 +7,12 @@ import { Icons } from "../assets/icons/icons";
 import { device } from "../constants/breakpoints";
 import { MobileNavbar } from "./MobileNavbar";
 import { FormModal } from "./FormModal";
+import { CongratsModal } from "./CongratsModal";
 
 export const NavBar = () => {
   const [openNav, setOpenNav] = useState(false);
   const [showFormModal, setShowFormModal] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   return (
     <>
@@ -44,7 +46,10 @@ export const NavBar = () => {
           </ul>
         </div>
         <div className="btn">
-          <button onClick={() => setShowFormModal(true)}>
+          <button onClick={() => {
+            setShowFormModal(true)
+            // setShowSuccessModal(true);
+          }}>
             <span>Join the Waitlist</span>
           </button>
         </div>
@@ -55,6 +60,7 @@ export const NavBar = () => {
         </div>
       </NavBarView>
       <FormModal showModal={showFormModal} setShowModal={setShowFormModal} />
+      <CongratsModal showModal={showSuccessModal} setShowModal={setShowSuccessModal} />
     </>
   );
 };

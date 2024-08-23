@@ -3,6 +3,10 @@ import styled from "styled-components";
 import Hand from "../../../assets/images/hand.png";
 import Purple from "../../../assets/images/ez-purple.png";
 import { device } from "../../../constants/breakpoints";
+import Blur from '@/assets/images/blur.png';
+import Sub from '@/assets/images/sub-footer.png';
+import Phonebook from '@/assets/images/phonebook-blur.png';
+import Schedule from '@/assets/images/schedule-blur.png';
 
 export const FeaturesSection = () => {
   return (
@@ -22,17 +26,26 @@ export const FeaturesSection = () => {
           <img src={Purple} alt="" className="ez-purple" />
         </div>
       </div>
-      {/* <div className="bottom-info">
+      <div className="bottom-info">
         <div className="rectangle">
-          <p>
-            EZ Scheduler is designed for managers who juggle multiple
-            responsibilities and need a reliable tool to manage their workforce
-            efficiently. Whether you're overseeing a small team or a large
-            department, our software adapts to your needs, helping you save time
-            and boost productivity.
-          </p>
+          <div className="center">
+            <p>
+              EZ Scheduler is designed for managers who juggle multiple
+              responsibilities and need a reliable tool to manage their workforce
+              efficiently. Whether you're overseeing a small team or a large
+              department, our software adapts to your needs, helping you save time
+              and boost productivity.
+            </p>
+          </div>
+          <div className="image-blur">
+            <img src={Sub} alt="" className='sub-footer-img' />
+            <img src={Phonebook} alt="" className='phonebook' />
+            <img src={Schedule} alt="" className='schedule' />
+          </div>
+
+          <img src={Blur} alt="" className='blur' />
         </div>
-      </div> */}
+      </div>
     </FeaturesView>
   );
 };
@@ -141,7 +154,7 @@ const FeaturesView = styled.div`
     display: flex;
     align-items: center;
     margin: 0 auto;
-    padding: 4rem 6rem;
+    padding: 4rem 4rem;
     justify-content: center;
 
     .rectangle {
@@ -149,6 +162,62 @@ const FeaturesView = styled.div`
       padding: 5rem 0;
       background-image: url("https://res.cloudinary.com/doi40g1ct/image/upload/v1723411430/EZ-Scheduler/bg-blur_ig76tj.png");
       background-size: cover;
+      position: relative;
+
+      .center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        p {
+          width: 70%;
+          margin: 0 auto;
+          font-size: 24px;
+          font-weight: 600;
+          line-height: 39px;
+          text-align: center;
+          color: ${({ theme }) => theme.colors.blue.blue_30};
+        }
+      }
+
+      .image-blur {
+        position: relative;
+        padding: 0 3rem;
+
+        .sub-footer-img {
+          /* margin: 0 3rem; */
+          width: 100%;
+          /* width: 1175.43px; */
+          z-index: 10;
+          position: relative;
+          /* height: 5rem; */
+        }
+
+        .phonebook {
+          width: 250px;
+          position: absolute;
+          top: 2%;
+          left: 0%;
+        }
+
+        .schedule {
+          width: 210px;
+          position: absolute;
+          top: 0%;
+          right: 0%;
+        }
+      }
+
+
+      .blur {
+        z-index: 10;
+        width: 100%;
+        height: 250px;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+      }
     }
   }
 `;

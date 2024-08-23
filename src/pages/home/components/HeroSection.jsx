@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import { NavBar } from "../../../components/NavBar";
-import Background from "../../../assets/images/home-bg.png";
-import HeroBg from "../../../assets/images/hero-bg.png";
+import { NavBar } from "@/components/NavBar";
+import Background from "@/assets/images/home-bg.png";
+import HeroBg from "@/assets/images/hero-bg.png";
 import { ReactSVG } from "react-svg";
-import { Icons } from "../../../assets/icons/icons";
-import { device } from "../../../constants/breakpoints";
+import { Icons } from "@/assets/icons/icons";
+import { device } from "@/constants/breakpoints";
+import teaser from '@/assets/lottie/teaser-video.mp4';
+import ReactPlayer from "react-player";
 
 export const HeroSection = () => {
-  const [showFormModal, setShowFormModal] = useState(false);
 
   return (
     <HeroView>
@@ -34,7 +35,17 @@ export const HeroSection = () => {
       </div>
       <div className="position-view">
         <div className="image">
-          <img src={HeroBg} alt="Hero-img" className="img" />
+          {/* <img src={HeroBg} alt="Hero-img" className="img" /> */}
+          <ReactPlayer
+            className='react-player'
+            url={teaser} 
+            playing={true} 
+            loop={true} 
+            muted={true}
+            wrapper={"div"}
+            width='100%'
+            height='100%'
+          />
         </div>
       </div>
     </HeroView>
@@ -168,6 +179,12 @@ const HeroView = styled.div`
       width: 1300px;
       margin-top: 2rem;
       margin-bottom: -16rem;
+      border-radius: 40px;
+      .react-player video {
+        width: 100%;
+        height: 60%;
+        border-radius: 40px;
+      }
 
       @media ${device.mobile} {
         margin-top: 2rem;
