@@ -54,7 +54,7 @@ const FeaturesView = styled.div`
   padding: 5rem 0;
   margin-top: 2rem;
   border-radius: 40px 40px 0 0;
-  background-image: url("https://res.cloudinary.com/doi40g1ct/image/upload/v1722812293/EZ-Scheduler/feature-bg_zx7jpi.png");
+  background-image: url("src/assets/images/feature-bg.webp");
   background-size: cover;
 
   @media ${device.mobile} {
@@ -160,7 +160,7 @@ const FeaturesView = styled.div`
     .rectangle {
       border-radius: 40px 40px 0 0;
       padding: 5rem 0;
-      background-image: url("https://res.cloudinary.com/doi40g1ct/image/upload/v1723411430/EZ-Scheduler/bg-blur_ig76tj.png");
+      background-image: url("src/assets/images/bg-blur.webp");
       background-size: cover;
       position: relative;
 

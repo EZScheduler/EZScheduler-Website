@@ -149,7 +149,7 @@ const FooterView = styled.div`
   position: relative;
   margin-bottom: 20px;
   border-radius: 40px;
-  background-image: url("https://res.cloudinary.com/doi40g1ct/image/upload/v1722756257/EZ-Scheduler/footer-bg-2_iyyuzw.png");
+  background-image: url("src/assets/images/footer-bg-2.webp");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -163,12 +163,11 @@ const FooterView = styled.div`
   }
 
   .footer-img {
-    width: 1400px;
+    width: 100%;
     height: 45%;
     margin: rem 0;
     position: absolute;
     border-radius: 0 0 40px 40px;
-    right: 0;
     left: 0;
     bottom: 0;
 

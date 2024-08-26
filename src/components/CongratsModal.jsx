@@ -98,7 +98,7 @@ const ModalView = styled(motion.div)`
     max-height: 90%;
     overflow-y: scroll;
     /* background: ${({ theme }) => theme.colors.white}; */
-    background-image: url('https://res.cloudinary.com/doi40g1ct/image/upload/v1724370416/EZ-Scheduler/success-bg_su0tjd.png');
+    background-image: url('src/assets/images/success-bg.webp');
     background-size: cover;
 
     @media ${device.mobile} {

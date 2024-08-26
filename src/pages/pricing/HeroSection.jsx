@@ -101,7 +101,7 @@ const PricingView = styled.div`
   border-radius: 40px;
   padding-bottom: 10rem;
   border-bottom: 1px solid ${({ theme }) => theme.colors.purple.purple_10};
-  background-image: url("https://res.cloudinary.com/doi40g1ct/image/upload/v1723735567/EZ-Scheduler/pricing-bg_ktgjgl.png");
+  background-image: url("src/assets/images/pricing-bg.webp");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
