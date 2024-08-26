@@ -164,7 +164,7 @@ export const ContactSection = () => {
 const ContactView = styled.div`
   position: relative;
   border-radius: 40px;
-  background-image: url("https://res.cloudinary.com/doi40g1ct/image/upload/v1722701804/EZ-Scheduler/map_a55zsp.png");
+  background-image: url("src/assets/images/map.webp");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -276,7 +276,7 @@ const FormView = styled.div`
   margin-top: 1.5rem;
   margin-bottom: -2rem;
   border-radius: 40px 40px 0 0;
-  background-image: url("https://res.cloudinary.com/doi40g1ct/image/upload/v1722812293/EZ-Scheduler/feature-bg_zx7jpi.png");
+  background-image: url("src/assets/images/feature-bg.webp");
   background-size: cover;
 
   @media ${device.mobile} {

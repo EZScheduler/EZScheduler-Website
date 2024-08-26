@@ -55,7 +55,7 @@ export const HeroSection = () => {
 const HeroView = styled.div`
   margin-bottom: 19rem;
   border-radius: 40px;
-  background-image: url("https://res.cloudinary.com/doi40g1ct/image/upload/v1722448279/EZ-Scheduler/home-bg_n0wzhg.png");
+  background-image: url("src/assets/images/home-bg.webp");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
