@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import logo2 from '../assets/images/mobileLogo.png';
+import logo2 from '../assets/images/mobileLogo.webp';
 import { device } from "../constants/breakpoints";
 
 export const Logo2 = () => {
