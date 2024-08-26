@@ -101,7 +101,7 @@ const PricingView = styled.div`
   border-radius: 40px;
   padding-bottom: 10rem;
   border-bottom: 1px solid ${({ theme }) => theme.colors.purple.purple_10};
-  background-image: url("src/assets/images/pricing-bg.webp");
+  background-image: url("/images/pricing-bg.webp");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;

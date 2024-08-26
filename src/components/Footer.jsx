@@ -149,7 +149,7 @@ const FooterView = styled.div`
   position: relative;
   margin-bottom: 20px;
   border-radius: 40px;
-  background-image: url("src/assets/images/footer-bg-2.webp");
+  background-image: url("/images/footer-bg-2.webp");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

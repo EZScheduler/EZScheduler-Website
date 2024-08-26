@@ -98,7 +98,7 @@ const ModalView = styled(motion.div)`
     max-height: 90%;
     overflow-y: scroll;
     /* background: ${({ theme }) => theme.colors.white}; */
-    background-image: url('src/assets/images/success-bg.webp');
+    background-image: url('/images/success-bg.webp');
     background-size: cover;
 
     @media ${device.mobile} {

@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { NavBar } from "@/components/NavBar";
-import Background from "@/assets/images/home-bg.webp";
-import HeroBg from "@/assets/images/hero-bg.webp";
+// import Background from "@/assets/images/home-bg.webp";
+// import HeroBg from "@/assets/images/hero-bg.webp";
 import { ReactSVG } from "react-svg";
 import { Icons } from "@/assets/icons/icons";
 import { device } from "@/constants/breakpoints";
@@ -55,7 +55,7 @@ export const HeroSection = () => {
 const HeroView = styled.div`
   margin-bottom: 19rem;
   border-radius: 40px;
-  background-image: url("src/assets/images/home-bg.webp");
+  background-image: url("/images/home-bg.webp");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

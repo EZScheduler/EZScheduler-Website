@@ -54,7 +54,7 @@ const FeaturesView = styled.div`
   padding: 5rem 0;
   margin-top: 2rem;
   border-radius: 40px 40px 0 0;
-  background-image: url("src/assets/images/feature-bg.webp");
+  background-image: url("/images/feature-bg.webp");
   background-size: cover;
 
   @media ${device.mobile} {
@@ -160,7 +160,7 @@ const FeaturesView = styled.div`
     .rectangle {
       border-radius: 40px 40px 0 0;
       padding: 5rem 0;
-      background-image: url("src/assets/images/bg-blur.webp");
+      background-image: url("/images/bg-blur.webp");
       background-size: cover;
       position: relative;
 
