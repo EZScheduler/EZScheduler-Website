@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import Hand from "../../../assets/images/hand.png";
-import Purple from "../../../assets/images/ez-purple.png";
+import Hand from "../../../assets/images/hand.webp";
+import Purple from "../../../assets/images/ez-purple.webp";
 import { device } from "../../../constants/breakpoints";
-import Blur from '@/assets/images/blur.png';
-import Sub from '@/assets/images/sub-footer.png';
-import Phonebook from '@/assets/images/phonebook-blur.png';
-import Schedule from '@/assets/images/schedule-blur.png';
+import Blur from '@/assets/images/blur.webp';
+import Sub from '@/assets/images/sub-footer.webp';
+import Phonebook from '@/assets/images/phonebook-blur.webp';
+import Schedule from '@/assets/images/schedule-blur.webp';
 
 export const FeaturesSection = () => {
   return (

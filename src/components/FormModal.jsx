@@ -13,7 +13,7 @@ import { CongratsModal } from './CongratsModal';
 // import { useEffect, useState } from 'react';
 
 export const FormModal = ({ showModal, setShowModal}) => {
-  const [showSuccessModal, setShowSuccessModal] = useState(true);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
