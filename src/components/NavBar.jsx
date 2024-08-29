@@ -29,7 +29,7 @@ export const NavBar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/#" activeClassName="active">
+              <Link to="/blog" activeClassName="active">
                 Insights
               </Link>
             </li>
