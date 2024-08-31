@@ -158,51 +158,8 @@ export const cookiePolicy = [
 ]
 
 export const pricingData = [
-  // {
-  //   type: 'Ez-TakeOff (Pay-Per-User)',
-  //   name: 'All features in Pay-Per-User',
-  //   description: 'For small teams needing essential scheduling & task and productivity management tools.',
-  //   users: 'Up to 10 users',
-  //   price: [
-  //     {
-  //       perUser: '$4 per user',
-  //     },
-  //     {
-  //       monthly: '-',
-  //     },
-  //     {
-  //       yearly: '-',
-  //     },
-  //   ],
-  //   features: [
-  //     {
-  //       name: 'Schedule creation',
-  //     },
-  //     {
-  //       name: 'Task management',
-  //     },
-  //     {
-  //       name: '1 sub-manager',
-  //     },
-  //     {
-  //       name: 'Employee availability selection',
-  //     },
-  //     {
-  //       name: 'In-app communication',
-  //     },
-  //     {
-  //       name: 'Shift-hours limit',
-  //     },
-  //     {
-  //       name: 'Basic productivity tracking',
-  //     },
-  //     {
-  //       name: 'Basic reporting',
-  //     },
-  //   ]
-  // },
   {
-    type: 'Ez-Starter',
+    type: 'EZ-Starter',
     name: 'All features in Ez-Starter',
     description: 'For small to medium-sized teams needing essential scheduling, task, and productivity management tools.',
     users: '0 - 10 Users',
@@ -242,7 +199,7 @@ export const pricingData = [
     ]
   },
   {
-    type: 'Ez-Manager',
+    type: 'EZ-Manager',
     name: 'All features in Ez-Manager',
     description: 'For medium-sized and larger teams needing advanced scheduling and next level productivity, with flexibility to grow.',
     users: '10 - 500 Users',
@@ -279,7 +236,7 @@ export const pricingData = [
     ]
   },
   {
-    type: 'Ez-Enterprise',
+    type: 'EZ-Enterprise',
     name: 'All features in Ez-Enterprise',
     description: 'For larger teams requiring comprehensive solutions.',
     users: '500+ Users',

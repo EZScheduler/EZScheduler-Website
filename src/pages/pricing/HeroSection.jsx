@@ -5,8 +5,11 @@ import { ReactSVG } from "react-svg";
 import { Icons } from "../../assets/icons/icons";
 import { device } from "../../constants/breakpoints";
 import { NavBar2 } from "../../components/NavBar2";
+import { useNavigate } from "react-router-dom";
 
 export const HeroSection = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <PricingView>
@@ -47,7 +50,11 @@ export const HeroSection = () => {
                       );
                     })}
 
-                    <button>Contact Sales</button>
+                    <button
+                      onClick={() => navigate("/contact")}
+                    >
+                      Contact Sales
+                    </button>
                   </div>
                 </div>
                 <div className="bottom">
