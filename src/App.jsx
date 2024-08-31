@@ -9,6 +9,7 @@ import { Pricing } from './pages/pricing/Pricing'
 import { Contact } from './pages/contact/Contact'
 import { Waiting } from './pages/waiting/Waiting'
 import { PrivacyPolicy } from './pages/privacy/PrivacyPolicy'
+import { CookiePolicy } from './pages/cookie/CookiePolicy'
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
         <Route path='/blog' element={<Blog />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/privacy-policy' element={<PrivacyPolicy />} />
+        <Route path='/cookie-policy' element={<CookiePolicy />} />
       </Routes>
     </>
   )

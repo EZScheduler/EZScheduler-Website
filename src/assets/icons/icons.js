@@ -13,6 +13,14 @@ import Email from './sms.svg';
 import Close from './close.icon.svg';
 import Check from './check.icon.svg';
 import Cancel from './cancel.icon.svg';
+import Close2 from './close2.icon.svg';
+import Email2 from './email.icon.svg';
+import Message from './message.icon.svg';
+import YoutubePurple from './youtube.icon.svg';
+import FacebookPurple from './facebook.icon.svg';
+import TwitterPurple from './twitter.icon.svg';
+import InstagramPurple from './instagram.icon.svg';
+import LinkedInPurple from './linkedin.icon.svg';
 
 export const Icons = {
   arrowUpIcon: 'https://res.cloudinary.com/doi40g1ct/image/upload/v1722454833/EZ-Scheduler/arrow-up.icon_qfumf0.svg',
@@ -32,4 +40,12 @@ export const Icons = {
   close: Close,
   check: Check,
   cancel: Cancel,
+  close2: Close2,
+  email2: Email2,
+  message: Message,
+  youtubePurple: YoutubePurple,
+  facebookPurple: FacebookPurple,
+  linkedInPurple: LinkedInPurple,
+  twitterPurple: TwitterPurple,
+  instagramPurple: InstagramPurple,
 }

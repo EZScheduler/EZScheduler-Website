@@ -21,9 +21,9 @@ const LogoView = styled.div`
     width: 100%;
     height: 100%;
 
-    @media ${device.mobile} {
+    /* @media ${device.mobile} {
       width: 100%;
       height: 100%;
-    }
+    } */
   }
 `;

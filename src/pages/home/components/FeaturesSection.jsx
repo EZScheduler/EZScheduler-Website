@@ -157,12 +157,22 @@ const FeaturesView = styled.div`
     padding: 4rem 4rem;
     justify-content: center;
 
+    @media ${device.mobile} {
+      padding: 0;
+      margin: 2rem -1rem;
+    }
+
     .rectangle {
       border-radius: 40px 40px 0 0;
       padding: 5rem 0;
       background-image: url("/images/bg-blur.webp");
       background-size: cover;
       position: relative;
+
+      @media ${device.mobile} {
+        margin: 0 2rem;
+        padding: 1.5rem 0.75rem;
+      }
 
       .center {
         display: flex;
@@ -177,6 +187,12 @@ const FeaturesView = styled.div`
           line-height: 39px;
           text-align: center;
           color: ${({ theme }) => theme.colors.blue.blue_30};
+
+          @media ${device.mobile} {
+            width: 90%;
+            font-size: 20px;
+            line-height: 30px;
+          }
         }
       }
 
@@ -184,13 +200,20 @@ const FeaturesView = styled.div`
         position: relative;
         padding: 0 3rem;
 
+        @media ${device.mobile} {
+          padding: 0 1rem;
+        }
+
         .sub-footer-img {
           /* margin: 0 3rem; */
           width: 100%;
           /* width: 1175.43px; */
           z-index: 10;
           position: relative;
-          /* height: 5rem; */
+
+          @media ${device.mobile} {
+            width: 300px;
+          }
         }
 
         .phonebook {
@@ -198,6 +221,11 @@ const FeaturesView = styled.div`
           position: absolute;
           top: 2%;
           left: 0%;
+
+          @media ${device.mobile} {
+            width: 300px;
+            display: none;
+          }
         }
 
         .schedule {
@@ -205,6 +233,13 @@ const FeaturesView = styled.div`
           position: absolute;
           top: 0%;
           right: 0%;
+          /* bottom: 0; */
+
+          @media ${device.mobile} {
+            width: 106.91px;
+            bottom: 50%;
+            display: none;
+          }
         }
       }
 
@@ -217,6 +252,10 @@ const FeaturesView = styled.div`
         bottom: 0;
         right: 0;
         left: 0;
+
+        @media ${device.mobile} {
+          height: 100px;
+        }
       }
     }
   }

@@ -58,6 +58,7 @@ export const ContactSection = () => {
             <div className="text">
               <h2>Get in touch with us!</h2>
               <p className="ask">
+                {/* Got any question? Please fill out the form, and we’ll get back to you within 24 hours. */}
                 Got any question? Please fillout the form, and we'll get back to
                 you ASAP or you can reach us through our social media platforms
                 or email us.
@@ -155,6 +156,57 @@ export const ContactSection = () => {
               Send your message
             </button>
           </div>
+          <Extras>
+            <div className="email">
+              <div className="icon">
+                <ReactSVG src={Icons.email2} />
+              </div>
+              <div className="details">
+                <h2>Prefer email?</h2>
+                <div className="info">
+                  <p>You can also reach us at</p>
+                  <p className="link">contact@ezscheduler.xyz</p>
+                </div>
+              </div>
+            </div>
+            <div className="socials">
+              <div className="icon">
+                <ReactSVG src={Icons.message} />
+              </div>
+              <div className="details">
+                <h2>How about socials?</h2>
+                <div className="info">
+                  <p>You can also reach us at</p>
+                  <div className="links">
+                    <a
+                      href="https://www.linkedin.com/company/ez-scheduler-llc"
+                      target="_blank"
+                    >
+                      <ReactSVG src={Icons.linkedInPurple} />
+                    </a>
+                    <a href="https://x.com/ezschedulerxyz" target="_blank">
+                      <ReactSVG  src={Icons.twitterPurple} />
+                    </a>
+                    <a href="#">
+                      <ReactSVG  src={Icons.facebookPurple} />
+                    </a>
+                    <a
+                      href="https://www.instagram.com/ezschedulerxyz/"
+                      target="_blank"
+                    >
+                      <ReactSVG  src={Icons.instagramPurple} />
+                    </a>
+                    <a
+                      href="https://www.youtube.com/@EZScheduler"
+                      target="_blank"
+                    >
+                      <ReactSVG  src={Icons.youtubePurple} />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Extras>
         </div>
       </FormView>
     </>
@@ -247,11 +299,19 @@ const ContactView = styled.div`
         }
 
         .info {
-          display: flex;
-          justify-content: center;
-          flex-direction: column;
           gap: 1rem;
-          padding: 1rem 0;
+          display: flex;
+          padding: 2rem 2.5rem;
+          border-radius: 28px;
+          flex-direction: column;
+          justify-content: center;
+          background-color: rgba(255, 255, 255, 0.1);
+          border: 1px solid ${({ theme }) => theme.colors.grey.grey_20};
+
+          @media ${device.mobile} {
+            width: 100%;
+            padding: 1rem;
+          }
 
           .details {
             display: flex;
@@ -329,6 +389,67 @@ const FormView = styled.div`
 
         @media ${device.mobile} {
           width: 100%;
+        }
+      }
+    }
+
+    .extras {
+      display: flex;
+      gap: 2rem;
+
+      .email {
+        gap: 1rem;
+        padding: 2rem;
+        display: flex;
+        align-items: end;
+        border-radius: 28px;
+        flex-direction: column;
+        border: 1px solid ${({ theme }) => theme.colors?.grey.grey_20};
+
+        .icon {
+          width: 64px;
+          height: 64px;
+          display: flex;
+          align-items: center;
+          border-radius: 16px;
+          justify-content: center;
+          background-color: #0c0a1c;
+        }
+
+        .details {
+          h2 {
+            font-size: 36px;
+            font-weight: 600;
+            line-height: 40px;
+          }
+        }
+      }
+
+      .socials {
+        gap: 1rem;
+        padding: 2rem;
+        display: flex;
+        align-items: end;
+        border-radius: 28px;
+        flex-direction: column;
+        border: 1px solid ${({ theme }) => theme.colors?.grey.grey_20};
+
+        .icon {
+          width: 64px;
+          height: 64px;
+          display: flex;
+          align-items: center;
+          border-radius: 16px;
+          justify-content: center;
+          background-color: #0c0a1c;
+        }
+
+        .details {
+          h2 {
+            font-size: 36px;
+            font-weight: 600;
+            line-height: 40px;
+          }
         }
       }
     }
@@ -498,5 +619,151 @@ const LabelView = styled.div`
 
   label {
     font-size: 1rem;
+  }
+`;
+
+const Extras = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 0 -9rem;
+
+  @media ${device.mobile} {
+    margin: 0;
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .email {
+    gap: 1rem;
+    width: 604px;
+    padding: 2rem;
+    display: flex;
+    align-items: end;
+    border-radius: 28px;
+    flex-direction: column;
+    background-color: ${({ theme }) => theme.colors?.white};
+    border: 1px solid ${({ theme }) => theme.colors?.grey.grey_20};
+
+    @media ${device.mobile} {
+      width: 100%;
+      align-items: center;
+    }
+
+    .icon {
+      width: 64px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      border-radius: 16px;
+      justify-content: center;
+      background-color: #0c0a1c;
+    }
+
+    .details {
+      width: 100%;
+      text-align: start;
+      padding: 2rem 5rem 2rem 0rem;
+
+      @media ${device.mobile} {
+        text-align: center;
+        padding: 0;
+      }
+
+      h2 {
+        font-size: 36px;
+        font-weight: 600;
+        line-height: 40px;
+        color: ${({ theme }) => theme.colors?.purple.purple_10};
+
+        @media ${device.mobile} {
+          font-size: 30px;
+        }
+      }
+
+      .info {
+        gap: 1rem;
+        display: flex;
+        margin-top: 2rem;
+        flex-direction: column;
+
+        .link {
+          font-size: 18px;
+          font-weight: 600;
+          line-height: 32px;
+          text-decoration: underline;
+          color: ${({ theme }) => theme.colors?.purple.purple_10};
+        }
+      }
+    }
+  }
+
+  .socials {
+    gap: 1rem;
+    width: 604px;
+    padding: 2rem;
+    display: flex;
+    align-items: end;
+    border-radius: 28px;
+    flex-direction: column;
+    background-color: ${({ theme }) => theme.colors?.white};
+    border: 1px solid ${({ theme }) => theme.colors?.grey.grey_20};
+
+    @media ${device.mobile} {
+      width: 100%;
+      align-items: center;
+    }
+
+    .icon {
+      width: 64px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      border-radius: 16px;
+      justify-content: center;
+      background-color: #0c0a1c;
+    }
+
+    .details {
+      width: 100%;
+      text-align: start;
+      padding: 2rem 5rem 2rem 0rem;
+
+      @media ${device.mobile} {
+        text-align: center;
+        padding: 0;
+      }
+
+      h2 {
+        font-size: 36px;
+        font-weight: 600;
+        line-height: 40px;
+        color: ${({ theme }) => theme.colors?.purple.purple_10};
+
+        @media ${device.mobile} {
+          font-size: 30px;
+        }
+      }
+
+      .info {
+        gap: 1rem;
+        display: flex;
+        margin-top: 2rem;
+        flex-direction: column;
+
+        .links {
+          gap: 2rem;
+          display: flex;
+          padding: 1rem 0;
+
+          @media ${device.mobile} {
+            gap: 1rem;
+            display: flex;
+            justify-content: center;
+            padding: 1rem 0;
+          }
+        }
+      }
+    }
   }
 `;

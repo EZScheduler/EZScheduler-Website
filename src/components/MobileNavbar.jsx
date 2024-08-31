@@ -33,13 +33,13 @@ export const MobileNavbar = ({ openNav, setOpenNav }) => {
                   <Link to="/">Home</Link>
                 </li>
                 <li>
-                  <Link to="/#">Insights</Link>
+                  <Link to="/blog">Insights</Link>
                 </li>
                 <li>
                   <Link to="/contact">Contact</Link>
                 </li>
                 <li>
-                  <Link to="/#">Pricing</Link>
+                  <Link to="/pricing">Pricing</Link>
                 </li>
               </ul>
               <div className="join-btn">
