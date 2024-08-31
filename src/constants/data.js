@@ -114,58 +114,135 @@ export const privacyPolicy = [
   },
 ]
 
+export const cookiePolicy = [
+  {
+    id: 'introduction',
+    title: 'INTRODUCTION'
+  },
+  {
+    id: 'definition',
+    title: 'WHAT ARE COOKIES?'
+  },
+  {
+    id: 'usage',
+    title: 'WHY DO WE USE COOKIES?'
+  },
+  {
+    id: 'control',
+    title: 'HOW CAN I CONTROL COOKIES?'
+  },
+  {
+    id: 'browser',
+    title: 'HOW CAN I CONTROL COOKIES ON MY BROWSER?'
+  },
+  {
+    id: 'tracking',
+    title: 'WHAT ABOUT OTHER TRACKING TECHNOLOGIES, LIKE WEB BEACONS?'
+  },
+  {
+    id: 'flash',
+    title: 'DO YOU FLASH COOKIES OR LOCAL SHARED OBJECTS?'
+  },
+  {
+    id: 'advertisement',
+    title: 'DO YOU SERVE TARGETED ADVERTISING?'
+  },
+  {
+    id: 'update',
+    title: 'HOW OFTEN WILL YOU UPDATE THIS COOKIE POLICY?'
+  },
+  {
+    id: 'information',
+    title: 'WHERE CAN I GET FURTHER INFORMATION?'
+  }
+]
+
 export const pricingData = [
   {
-    type: 'Ez-TakeOff (Pay-Per-User)',
-    name: 'All features in Pay-Per-User',
-    description: 'For small teams needing essential scheduling & task and productivity management tools.',
-    users: 'Up to 10 users',
+    type: 'EZ-Starter',
+    name: 'All features in Ez-Starter',
+    description: 'For small to medium-sized teams needing essential scheduling, task, and productivity management tools.',
+    users: '0 - 10 Users',
     price: [
       {
         perUser: '$4 per user',
       },
       {
-        monthly: '-',
+        monthly: '$39.99/Month',
       },
       {
-        yearly: '-',
+        yearly: '$455/Year'
       },
     ],
     features: [
       {
-        name: 'Schedule creation',
+        name: 'Create up to 3 different schedules',
       },
       {
-        name: 'Task management',
-      },
-      {
-        name: '1 sub-manager',
-      },
-      {
-        name: 'Employee availability selection',
+        name: 'Employee available selection',
       },
       {
         name: 'In-app communication',
       },
       {
-        name: 'Shift-hours limit',
+        name: 'Up to 2 sub-managers',
       },
       {
-        name: 'Basic productivity tracking',
+        name: 'Shift-hours limiit',
+      },
+      {
+        name: 'Limited performance tracking',
       },
       {
         name: 'Basic reporting',
-      },
+      }
     ]
   },
   {
-    type: 'Ez-Starter',
-    name: 'All features in Ez-Starter',
-    description: 'For small to medium-sized teams looking to grow and increase team productivity.',
-    users: 'Up to 20 users',
+    type: 'EZ-Manager',
+    name: 'All features in Ez-Manager',
+    description: 'For medium-sized and larger teams needing advanced scheduling and next level productivity, with flexibility to grow.',
+    users: '10 - 500 Users',
     price: [
       {
         perUser: '$4 per user',
+      },
+      {
+        monthly: 'Varies/Month',
+      },
+      {
+        yearly: 'Varies/Year'
+      },
+    ],
+    features: [
+      {
+        name: 'Multiple Schedules module',
+      },
+      {
+        name: 'Up to 5 sub-managers',
+      },
+      {
+        name: 'Advanced performance management & productivity tracking',
+      },
+      {
+        name: 'Advanced productivity insights',
+      },
+      {
+        name: 'Detailed compliance management',
+      },
+      {
+        name: 'Custom reporting formats',
+      }
+    ]
+  },
+  {
+    type: 'EZ-Enterprise',
+    name: 'All features in Ez-Enterprise',
+    description: 'For larger teams requiring comprehensive solutions.',
+    users: '500+ Users',
+    price: [
+      {
+        perUser: 'Custom pricing',
       },
       {
         monthly: '-',
@@ -176,87 +253,19 @@ export const pricingData = [
     ],
     features: [
       {
-        name: 'Up to 2 sub-managers',
+        name: 'Unlimited sub-managers',
       },
       {
-        name: 'Shift management',
+        name: 'Dedicated account manager',
       },
       {
-        name: 'Enhanced task assignment',
+        name: 'Custom integrations',
       },
       {
-        name: 'Limited performance management',
+        name: 'Enterprise-grade security',
       },
       {
-        name: 'Basic reporting',
-      },
-    ]
-  },
-  {
-    type: 'Ez-Manager',
-    name: 'All features in Ez-Starter',
-    description: 'For medium-sized businesses needing advanced scheduling and next level productivity.',
-    users: 'Up to 35 users',
-    price: [
-      {
-        perUser: '$4 per user',
-      },
-      {
-        monthly: '$80 monthly',
-      },
-      {
-        yearly: '$966/year'
-      },
-    ],
-    features: [
-      {
-        name: 'Up to 5 sub-managers',
-      },
-      {
-        name: 'Advanced performance management',
-      },
-      {
-        name: 'Advanced reporting',
-      },
-      {
-        name: 'Historical trends and forecasting',
-      },
-      {
-        name: 'Enhanced communication tools',
-      },
-    ]
-  },
-  {
-    type: 'Ez-Pro',
-    name: 'All features in Ez-Pro',
-    description: 'For larger teams requiring comprehensive solutions.',
-    users: 'Up to 55 users',
-    price: [
-      {
-        perUser: '$4 per user',
-      },
-      {
-        monthly: '$80 monthly',
-      },
-      {
-        yearly: '$966/year'
-      },
-    ],
-    features: [
-      {
-        name: 'Up to 10 sub-managers',
-      },
-      {
-        name: 'Advanced productivity insights',
-      },
-      {
-        name: 'Real-time performance tracking',
-      },
-      {
-        name: 'Detailed compliance management',
-      },
-      {
-        name: 'Custom reporting formats',
+        name: 'Priority support',
       },
     ]
   },

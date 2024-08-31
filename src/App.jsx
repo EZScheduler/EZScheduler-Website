@@ -10,6 +10,7 @@ import { Contact } from './pages/contact/Contact'
 import { Waiting } from './pages/waiting/Waiting'
 import { PrivacyPolicy } from './pages/privacy/PrivacyPolicy'
 import Insight from './pages/blog/Insight'
+import { CookiePolicy } from './pages/cookie/CookiePolicy'
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
         <Route path='/blog/:title' element={<Insight/>} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/privacy-policy' element={<PrivacyPolicy />} />
+        <Route path='/cookie-policy' element={<CookiePolicy />} />
       </Routes>
     </>
   )

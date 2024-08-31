@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Light from "../../../assets/images/light.webp";
 import Light2 from "../../../assets/images/mobile-ellipse.webp";
@@ -13,8 +13,11 @@ import { device } from "../../../constants/breakpoints";
 import axios from "axios";
 import toast from "react-hot-toast";
 import fileDownload from "js-file-download";
+import { PDFViewer } from "./PDFViewer";
 
 export const StruggleSection = () => {
+  const [showPreviewModal, setShowPreviewModal] = useState(false);
+
   const pdfFileUrl =
     "https://res.cloudinary.com/doi40g1ct/image/upload/v1723815396/EZ-Scheduler/EZ_Story_compressed_blk2yg.pdf";
 
@@ -91,7 +94,12 @@ export const StruggleSection = () => {
           </p>
 
           <div className="actions">
-            <button className="filled">Read our story</button>
+            <button 
+              className="filled"
+              onClick={() => setShowPreviewModal(true)}
+            >
+              Read our story
+            </button>
             <button
               className="outlined"
               onClick={() => handleFileDownload(pdfFileUrl, "EZ-Story.pdf")}
@@ -108,6 +116,11 @@ export const StruggleSection = () => {
         <img src={Light2} alt="" className="light2" />
         <img src={Laptop2} alt="" className="laptop-img" />
       </div>
+
+      <PDFViewer 
+        showModal={showPreviewModal} 
+        setShowModal={setShowPreviewModal} 
+      />
     </StruggleView>
   );
 };

@@ -5,8 +5,11 @@ import { ReactSVG } from "react-svg";
 import { Icons } from "../../assets/icons/icons";
 import { device } from "../../constants/breakpoints";
 import { NavBar2 } from "../../components/NavBar2";
+import { useNavigate } from "react-router-dom";
 
 export const HeroSection = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <PricingView>
@@ -27,11 +30,11 @@ export const HeroSection = () => {
         <div className="card-flex">
           {pricingData.map((plan, index) => {
             return (
-              <Card key={index} isThird={index === 2}>
+              <Card key={index} isThird={index === 1}>
                 <div className="top">
                   <div className="flex">
                     <h3 className="type">{plan.type}</h3>
-                    {index === 2 && <Label> Recommended</Label>}
+                    {index === 1 && <Label> Recommended</Label>}
                   </div>
                   <p className="description">{plan.description}</p>
 
@@ -47,7 +50,11 @@ export const HeroSection = () => {
                       );
                     })}
 
-                    <button>Contact us</button>
+                    <button
+                      onClick={() => navigate("/contact")}
+                    >
+                      Contact Sales
+                    </button>
                   </div>
                 </div>
                 <div className="bottom">
@@ -72,25 +79,23 @@ export const HeroSection = () => {
       <ExtraView>
         <div className="enterprise">
           <div className="plan">
-            <h3>EZ-Enterprise</h3>
-            <p>For large corporations needing custom solutions</p>
-            <p>Custom pricing</p>
+            <h3>Disclaimer:</h3>
+            <p>
+              Pricing is in USD and is subject to change without notice and may
+              vary upon official launch. Please contact our sales team for the
+              most up-to-date pricing information.
+            </p>
           </div>
-          <button>Contact Sales</button>
         </div>
 
-        <div className="disclaimer">
-          <h2>Disclaimer:</h2>
-          <p>
-            Pricing is in USD and is subject to change without notice and may
-            vary upon official launch. Please contact our sales team for the
-            most up-to-date pricing information. Customer Support: For any
-            questions or assistance, please contact our support team at
-            support@ezscheduler.xyz or call us at +1 (800) 555-1212. Sales
-            Inquiries: For sales inquiries or to discuss custom pricing options,
-            please contact our sales team at support@ezscheduler.xyz or call us
-            at +1 (800) 555-1213.
-          </p>
+        <div className="enterprise">
+          <div className="plan">
+            <h3>Customer Support & Sales Inquiries:</h3>
+            <p>
+              For any questions or assistance, please contact our support team
+              at support@ezscheduler.xyz or call us at +1 (845) 214-2717.
+            </p>
+          </div>
         </div>
       </ExtraView>
     </>
@@ -162,7 +167,6 @@ const PricingView = styled.div`
           line-height: 24px;
         }
       }
-
     }
   }
 `;
@@ -181,10 +185,11 @@ const PlansView = styled.div`
 
   .card-flex {
     display: flex;
-    gap: 1rem;
+    gap: 4rem;
 
     @media ${device.mobile} {
       flex-direction: column;
+      gap: 1.5rem;
     }
   }
 `;
@@ -200,16 +205,16 @@ const Label = styled.span`
 `;
 
 const Card = styled.div`
-  width: 40%;
+  width: 320px;
   padding: 2rem 1rem;
   border-radius: 28px;
   border: 1px solid ${({ theme }) => theme.colors.purple.purple_60};
   background-color: ${({ theme, isThird }) =>
     isThird ? theme.colors.blue.blue_60 : theme.colors.white};
 
-    @media ${device.mobile} {
-      width: 100%;
-    }
+  @media ${device.mobile} {
+    width: 100%;
+  }
 
   .top {
     gap: 1rem;
@@ -231,7 +236,7 @@ const Card = styled.div`
     }
 
     .description {
-      width: 90%;
+      width: 98%;
       font-size: 14px;
       font-weight: 300;
       line-height: 20px;
@@ -308,7 +313,7 @@ const Card = styled.div`
 `;
 
 const ExtraView = styled.div`
-  margin: 0 3rem;
+  margin: 0 4rem;
   margin-bottom: 3rem;
 
   @media ${device.mobile} {
@@ -317,9 +322,9 @@ const ExtraView = styled.div`
   }
 
   .enterprise {
-    display: flex;
+    /* display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between; */
     padding: 2rem;
     margin: 2rem 0;
     border-radius: 28px;
@@ -347,7 +352,7 @@ const ExtraView = styled.div`
       }
 
       @media ${device.mobile} {
-        margin-bottom: 2rem;
+        /* margin-bottom: 2rem; */
       }
     }
 
