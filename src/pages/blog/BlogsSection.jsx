@@ -1,16 +1,51 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import client from "../../contentfulClient";
 import styled from "styled-components";
 import { pricingData } from "../../constants/data";
 import { ReactSVG } from "react-svg";
 import { Icons } from "../../assets/icons/icons";
-import BlogImg1 from "../../assets/images/blog-img.jpeg.jfif";
+import BlogImg1 from "../../assets/images/blog-img.jpeg";
 import { device } from "../../constants/breakpoints";
 import { NavBar2 } from "../../components/NavBar2";
 import { useNavigate } from "react-router-dom";
 import { AllArticlesData } from "./data/AllArticles";
+import { format } from "date-fns";
 
 export const BlogsSection = () => {
   const navigate = useNavigate();
+  const [articles, setArticles] = useState([]);
+
+  useEffect(() => {
+    client
+      .getEntries({ content_type: "article" })
+      .then((response) => {
+        const articlesWithImages = response.items.map((item) => {
+          // Find the image asset in the response
+          const articleImage = response.includes.Asset.find(
+            (asset) => asset.sys.id === item.fields.articleImage.sys.id
+          );
+
+          // Format date to "DD, MMM YYYY"
+          const formattedDate = format(
+            new Date(item.fields.articleDate),
+            "dd MMM, yyyy"
+          );
+
+          return {
+            ...item,
+            fields: {
+              ...item.fields,
+              articleImage: articleImage.fields.file.url,
+              articleDate: formattedDate,
+            },
+          };
+        });
+
+        setArticles(articlesWithImages);
+      })
+      .catch(console.error);
+  }, []);
+
   const handleNavigation = (title) => {
     navigate(`/blog/${encodeURIComponent(title)}`);
   };
@@ -59,49 +94,67 @@ export const BlogsSection = () => {
 
       <BlogsListView>
         <BlogsFeaturedView>
-          <div className="featured-container-a">
-            <Card>
-              <img src={BlogImg1} />
-            </Card>
-            <div className="article-info">
-              <div className="tags">
-                <div className="tags-label">Featured article</div>
-                <div className="tags-date">May 02, 2024</div>
-              </div>
-              <div className="article-desc">
-                <h2>Tres vubösm trens. Pode kanade för plaskap. </h2>
-                <p>
-                  Lörem ipsum nikyst päde päkus. Neser kalsongbadare. Håtysamma
-                  bolall, prengar. Sharenting ande. Tvodd gigall, dent nihet,
-                  innan enogon.{" "}
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="featured-container-b">
-            {FeaturedOtherData.map((article, index) => (
-              <div key={index} className="featured-other">
-                <Card2>
-                  <img src={article.articleImg} />
-                </Card2>
-                <div className="article-desc">
-                  <p>{article.articleDate}</p>
-                  <h2>{article.articleTitle}</h2>
+          {articles
+            .reverse()
+            .slice(0, 1)
+            .map((article, index) => (
+              <div
+                key={index}
+                onClick={() => handleNavigation(article.fields.articleTitle)}
+                className="featured-container-a"
+              >
+                <Card>
+                  <img src={`https:${article.fields.articleImage}`} />
+                </Card>
+                <div className="article-info">
+                  <div className="tags">
+                    <div className="tags-label">Featured article</div>
+                    <div className="tags-date">
+                      {article.fields.articleDate}
+                    </div>
+                  </div>
+                  <div className="article-desc">
+                    <h2>{article.fields.articleTitle}</h2>
+                    <p>{article.fields.articleDescription}</p>
+                  </div>
                 </div>
               </div>
             ))}
+
+          <div className="featured-container-b">
+            {articles
+              .reverse()
+              .slice(1, articles.length)
+              .map((article, index) => (
+                <div
+                  key={index}
+                  onClick={() => handleNavigation(article.fields.articleTitle)}
+                  className="featured-other"
+                >
+                  <Card2>
+                    <img src={`https:${article.fields.articleImage}`} />
+                  </Card2>
+                  <div className="article-desc">
+                    <p>{article.fields.articleDate}</p>
+                    <h2>{article.fields.articleTitle}</h2>
+                  </div>
+                </div>
+              ))}
           </div>
         </BlogsFeaturedView>
         <BlogsAllView>
           <p>ALL ARTICLES</p>
           <div className="articles-grid">
-            {AllArticlesData.map((article, index) => (
-              <div onClick={() => handleNavigation(article.articleTitle)} key={index} className="cell-container">
-                <img src={article.articleImg} />
-                <p className="tags-date">{article.articleDate}</p>
-                <h2 className="tags-title">{article.articleTitle}</h2>
-                <p className="tags-desc">{article.articleDesc}</p>
+            {articles.reverse().map((article) => (
+              <div
+                onClick={() => handleNavigation(article.fields.articleTitle)}
+                key={article.sys.id}
+                className="cell-container"
+              >
+                <img src={`https:${article.fields.articleImage}`} />
+                <p className="tags-date">{article.fields.articleDate}</p>
+                <h2 className="tags-title">{article.fields.articleTitle}</h2>
+                <p className="tags-desc">{article.fields.articleDescription}</p>
               </div>
             ))}
           </div>
@@ -147,6 +200,7 @@ export const BlogsSection = () => {
 const BlogsHeroView = styled.div`
   border-radius: 40px;
   padding-bottom: 10rem;
+  margin-bottom: 40px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.purple.purple_10};
   background-image: url("/images/pricing-bg.webp");
   background-size: cover;
@@ -275,6 +329,9 @@ const BlogsFeaturedView = styled.div`
   @media ${device.mobile} {
     margin: 0 1rem;
     margin-bottom: 3rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
   }
 
   .featured-container-a {
@@ -284,6 +341,10 @@ const BlogsFeaturedView = styled.div`
     align-items: center;
     width: 48%;
     color: #29234f;
+    cursor: pointer;
+    @media ${device.mobile} {
+      width: 100%;
+    }
 
     .article-info {
       display: flex;
@@ -326,6 +387,13 @@ const BlogsFeaturedView = styled.div`
     align-items: center;
     gap: 16px;
     width: 48%;
+    @media ${device.mobile} {
+      width: 100%;
+    }
+
+    img {
+      height: 110px;
+    }
 
     .featured-other {
       display: flex;
@@ -333,6 +401,7 @@ const BlogsFeaturedView = styled.div`
       justify-content: flex-start;
       align-items: center;
       gap: 16px;
+      cursor: pointer;
 
       .article-desc {
         display: flex;
@@ -392,9 +461,9 @@ const BlogsAllView = styled.div`
     button {
       font-size: 14px;
       font-weight: 700;
-      color: #7B68EE;
+      color: #7b68ee;
       background: white;
-      border: 1px solid #7B68EE;
+      border: 1px solid #7b68ee;
       border-radius: 6px;
       padding: 1rem 2rem;
       cursor: pointer;
@@ -404,10 +473,15 @@ const BlogsAllView = styled.div`
     width: 100%;
     display: flex;
     flex-direction: row;
-    align-items-center;
+    align-items: center;
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 40px;
+    @media ${device.mobile} {
+      flex-direction: column;
+      flex-wrap: nowrap;
+      align-items: center;
+    }
 
     .cell-container {
       width: 30%;
@@ -415,9 +489,14 @@ const BlogsAllView = styled.div`
       flex-direction: column;
       gap: 14px;
       align-items: flex-start;
+      cursor: pointer;
+      @media ${device.mobile} {
+        width: 100%;
+      }
 
       img {
         width: 100%;
+        height: 260px;
         border-radius: 40px;
       }
       .tags-date {
@@ -431,14 +510,12 @@ const BlogsAllView = styled.div`
         line-height: 30px;
         color: ${({ theme }) => theme.colors.blue.blue_30};
       }
-      
+
       .tags-desc {
         font-size: 14px;
       }
     }
   }
-
-
 `;
 const BlogsVideoView = styled.div`
   width: 100%;
@@ -458,6 +535,9 @@ const BlogsVideoView = styled.div`
     gap: 64px;
     align-items: flex-start;
     padding: 12rem 0;
+    @media ${device.mobile} {
+      padding: 4rem 0;
+    }
 
     .videos-main {
       display: flex;
@@ -473,6 +553,11 @@ const BlogsVideoView = styled.div`
         display: flex;
         width: 100%;
         justify-content: space-between;
+        @media ${device.mobile} {
+          flex-direction: column;
+          align-items: center;
+          gap: 40px;
+        }        
 
         .videos-item {
           width: 47%;
@@ -482,6 +567,9 @@ const BlogsVideoView = styled.div`
           justify-content: flex-start;
           gap: 24px;
           text-align: center;
+          @media ${device.mobile} {
+            width: 100%;
+          }         
 
           img {
             width: 100%;

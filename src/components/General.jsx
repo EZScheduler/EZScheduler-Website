@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import styled from 'styled-components';
-import { device } from '../constants/breakpoints';
+import React, { useState } from "react";
+import styled from "styled-components";
+import { device } from "../constants/breakpoints";
 import { ReactSVG } from "react-svg";
 import { Icons } from "../assets/icons/icons";
 
@@ -11,17 +11,17 @@ export const General = () => {
     {
       title: "What is EZ Scheduler?",
       content:
-        "EZ Scheduler is a comprehensive software application designed to simplify and streamline scheduling and performance management for managers across various industries. It’s the ultimate all-in-one tool for managers to create, manage, and track schedules and shifts, communicate with their team, and measure productivity from a single dashboard.",
+        "EZ Scheduler is the ultimate all-in-one tool designed to simplify and streamline scheduling and performance management for managers across various industries. It is a comprehensive tool built for busy managers to create, manage, and track schedules and shifts, communicate with their team, and measure productivity from a single dashboard.",
     },
     {
       title: "How do I know if EZ Scheduler is the right app for me?",
       content:
-        "Because we’ve been in your shoes, we understand your frustration, and we built this solution with you in mind. ",
+        "Because we are managers and we've been in your shoes - Drowning in spreadsheets, lost in endless email threads, and battling complex software just to manage your team's schedule and still unable to measure performance. We understand your frustration, and we built this solution with you in mind.",
     },
     {
       title: "Who can benefit from EZ Scheduler?",
       content:
-        "EZ Scheduler is ideal for managers across various industries, including hospitals, colleges, restaurants, small businesses, medium-sized enterprises, and large corporations. It is suitable for any organization that requires effective scheduling and workforce management.",
+        "EZ Scheduler is ideal for managers across various industries, including hospitals, colleges, restaurants, small businesses, medium-sized enterprises, and large corporations.  Our all-in-one, web-based solution is designed to make workforce management easy, efficient, and effective, no matter the size of your team or the complexity of your operations",
     },
   ];
 
@@ -54,8 +54,8 @@ export const General = () => {
         );
       })}
     </GeneralView>
-  )
-}
+  );
+};
 
 const GeneralView = styled.div`
   .accordion-item {

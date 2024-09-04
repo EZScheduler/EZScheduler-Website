@@ -47,12 +47,12 @@ export const StruggleSection = () => {
           <div className="card1">
             <p>
               As managers, we understand the frustration of spending countless
-              hours trying to figure out the best schedule for the period,
-              season, week, month, or semester. We've experienced the pain of
-              juggling multiple applications, spreadsheets, text messages,
-              communication tools, and project management software. That's why
-              we created EZ Scheduler - the ultimate solution to streamline all
-              your scheduling and productivity needs in one place.
+              hours trying to figure out the best schedule for the period, week,
+              month, or semester. We've experienced the pain of juggling
+              multiple applications, spreadsheets, texts and project management
+              software. That's why we created EZ Scheduler - the ultimate
+              solution to streamline all your scheduling and productivity needs
+              in one place.
             </p>
 
             <img src={Card1} alt="" className="img1" />
@@ -61,10 +61,10 @@ export const StruggleSection = () => {
             <p>
               With EZ Scheduler, you can manage your team, schedules, and shifts
               effortlessly from a single dashboard. Create schedules in minutes,
-              assign tasks, and ensure compliance with labor laws. Track and
-              measure productivity, communicate directly with your team, and
-              generate instant reports in various formats. Our intuitive app is
-              designed to help you become more efficient, save time, and do more
+              assign tasks, ensure compliance with labor laws and track
+              productivity. Communicate directly with your team, and generate
+              instant reports. Our intuitive app is designed to help you become
+              more efficient, save time, and do more.
             </p>
 
             <img src={Card2} alt="" className="img2" />
@@ -72,54 +72,56 @@ export const StruggleSection = () => {
         </div>
       </div>
 
-      <div className="bottom">
-        <div className="read-post">
-          <div className="post-title">
-            <h2>Welcome to the</h2>
-            <ReactSVG src={Icons.ezSide} />
-            <span>side</span>
-          </div>
-          <div className="post-title-2">
-            <h2>Welcome to the</h2>
-            <div className="icon">
+      <div className="bottom-container">
+        <div className="bottom">
+          <div className="read-post">
+            <div className="post-title">
+              <h2>Welcome to the</h2>
               <ReactSVG src={Icons.ezSide} />
               <span>side</span>
             </div>
+            <div className="post-title-2">
+              <h2>Welcome to the</h2>
+              <div className="icon">
+                <ReactSVG src={Icons.ezSide} />
+                <span>side</span>
+              </div>
+            </div>
+
+            <p className="description">
+              EZ Scheduler is built to make scheduling easy for managers across
+              all industries, whether you're in colleges, hospitals,
+              restaurants, small businesses, or large corporations.
+            </p>
+
+            <div className="actions">
+              <button
+                className="filled"
+                onClick={() => setShowPreviewModal(true)}
+              >
+                Read our story
+              </button>
+              <button
+                className="outlined"
+                onClick={() => handleFileDownload(pdfFileUrl, "EZ-Story.pdf")}
+              >
+                <span>
+                  <ReactSVG src={Icons.pdf} />
+                </span>
+                <span>Read our story</span>
+              </button>
+            </div>
           </div>
 
-          <p className="description">
-            EZ Scheduler is built to make scheduling easy for managers across
-            all industries, whether you're in colleges, hospitals, restaurants,
-            small businesses, or large corporations.
-          </p>
-
-          <div className="actions">
-            <button 
-              className="filled"
-              onClick={() => setShowPreviewModal(true)}
-            >
-              Read our story
-            </button>
-            <button
-              className="outlined"
-              onClick={() => handleFileDownload(pdfFileUrl, "EZ-Story.pdf")}
-            >
-              <span>
-                <ReactSVG src={Icons.pdf} />
-              </span>
-              <span>Read our story</span>
-            </button>
-          </div>
+          <img src={Light} alt="" className="light" />
+          <img src={Light2} alt="" className="light2" />
+          <img src={Laptop2} alt="" className="laptop-img" />
         </div>
-
-        <img src={Light} alt="" className="light" />
-        <img src={Light2} alt="" className="light2" />
-        <img src={Laptop2} alt="" className="laptop-img" />
       </div>
 
-      <PDFViewer 
-        showModal={showPreviewModal} 
-        setShowModal={setShowPreviewModal} 
+      <PDFViewer
+        showModal={showPreviewModal}
+        setShowModal={setShowPreviewModal}
       />
     </StruggleView>
   );
@@ -265,6 +267,13 @@ const StruggleView = styled.div`
         }
       }
     }
+  }
+
+  .bottom-container {
+    border: 1px solid red;
+    display: flex;
+    gap: 40px;
+    
   }
 
   .bottom {

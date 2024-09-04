@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { format } from "date-fns";
 import { AllArticlesData } from "./data/AllArticles";
 import { Layout } from "../../components/Layout";
 import styled from "styled-components";
@@ -9,126 +10,163 @@ import Screenshot from "../../assets/images/screenshot-1.png";
 import XIcon from "../../assets/icons/twitter.icon.svg";
 import LnIcon from "../../assets/icons/linkedin.icon.svg";
 import CopyIcon from "../../assets/icons/copy.icon.svg";
+import client from "../../contentfulClient";
 
 const Insight = () => {
   const { title } = useParams();
-  const article = AllArticlesData.find(
-    (article) => article.articleTitle === decodeURIComponent(title)
-  );
+  const [article, setArticle] = useState(null);
+  const [includes, setIncludes] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    client
+      .getEntries({ content_type: "article" })
+      .then((response) => {
+        setIncludes(response.includes);
+        const foundArticle = response.items.find(
+          (item) => item.fields.articleTitle === decodeURIComponent(title)
+        );
+
+        if (foundArticle) {
+          const articleImage = response.includes.Asset.find(
+            (asset) => asset.sys.id === foundArticle.fields.articleImage.sys.id
+          );
+          const formattedDate = format(
+            new Date(foundArticle.fields.articleDate),
+            "dd MMM, yyyy"
+          );
+          setArticle({
+            ...foundArticle,
+            fields: {
+              ...foundArticle.fields,
+              articleImage: `https:${articleImage.fields.file.url}`,
+              articleDate: formattedDate,
+            },
+          });
+        } else {
+          setError("Article not found");
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        setError("An error occurred while fetching the article.");
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, [title]);
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
+
+  if (!article) return null;
 
   return (
     <Layout>
-      {article ? (
-        <>
-          <BlogsHeroView>
-            <div className="hero-text">
-              <NavBar2 />
-              <div className="info">
-                <p>{article.articleDate}</p>
-                <h2 className="title">{article.articleTitle}</h2>
-                <p>{article.articleDesc}</p>
-                <img src={article.articleImg} alt={article.articleTitle} />
+      <BlogsHeroView>
+        <div className="hero-text">
+          <NavBar2 />
+          <div className="info">
+            <p>{article.fields.articleDate}</p>
+            <h2 className="title">{article.fields.articleTitle}</h2>
+            <p>{article.fields.articleDescription}</p>
+            <img
+              src={`${article.fields.articleImage}`}
+              alt={article.fields.articleTitle}
+            />
+          </div>
+        </div>
+      </BlogsHeroView>
+
+      <ArticleDetailsView>
+        <ShareView>
+          <div className="share-container">
+            <img
+              className="screenshot"
+              src={Screenshot}
+              alt="EZ scheduler screenshot"
+            />
+            <h3>Get started now. Join our waitlist</h3>
+            <button className="btn">
+              <span>Get started</span>
+            </button>
+          </div>
+          <div className="share-links">
+            <div className="link">
+              <div className="link-container">
+                <span>Share</span>
+                <img width={30} height={30} src={XIcon} alt="X icon" />
               </div>
             </div>
-          </BlogsHeroView>
-
-          <ArticleDetailsView>
-            <ShareView>
-              <div className="share-container">
-                <img
-                  className="screenshot"
-                  src={Screenshot}
-                  alt="EZ scheduler screenshot"
-                />
-                <h3>Get started now. Join our waitlist</h3>
-                <button className="btn">
-                  <span>Get started</span>
-                </button>
-              </div>
-              <div className="share-links">
-                <div className="link">
-                  <div className="link-container">
-                    <span>Share</span>
-                    <img width={30} height={30} src={XIcon} alt="X icon" />
-                  </div>
-                </div>
-                <div className="link">
-                  <div className="link-container">
-                    <span>Share</span>
-                    <img width={30} height={30} src={LnIcon} alt="Linkedin icon" />
-                  </div>
-                </div>
-                <div className="link">
-                  <div className="link-container">
-                    <span>Copy</span>
-                    <img width={30} height={30} src={CopyIcon} alt="Copy icon" />
-                  </div>
-                </div>
-              </div>
-            </ShareView>
-            <ArticleView>
-              <div className="subcontent">
-                <h3>{article.subContent1.heading}</h3>
-                <p>{article.subContent1.paragraph}</p>
-              </div>
-              <div className="subcontent">
-                <h3>{article.subContent2.heading}</h3>
-                <p>{article.subContent2.paragraph}</p>
-                <img
-                  src={article.subContent2.subImage}
-                  alt={article.subContent2.subImage}
-                />
-              </div>
-              <div className="subcontent">
-                <h3>{article.subContent3.heading}</h3>
-                <p>{article.subContent3.paragraph}</p>
-              </div>
-              <div className="subcontent">
-                <h3>{article.subContent4.heading}</h3>
-                <p>{article.subContent4.paragraph}</p>
-                <img
-                  src={article.subContent4.subImage}
-                  alt={article.subContent4.subImage}
-                />
-              </div>
-              <div className="subcontent">
-                <h3>{article.subContent5.heading}</h3>
-                <p>{article.subContent5.paragraph}</p>
-              </div>
-            </ArticleView>
-          </ArticleDetailsView>
-
-          <ExtraView>
-            <div className="extras-container">
-              <div className="extras-main">
-                <div className="label">You may also like</div>
-                <div className="recommended">
-                  <div className="cell-container">
-                    <img src={article.articleImg} />
-                    <p className="tags-date">{article.articleDate}</p>
-                    <h2 className="tags-title">{article.articleTitle}</h2>
-                    <p className="tags-desc">{article.articleDesc}</p>
-                  </div>
-                  <div className="cell-container">
-                    <img src={article.articleImg} />
-                    <p className="tags-date">{article.articleDate}</p>
-                    <h2 className="tags-title">{article.articleTitle}</h2>
-                    <p className="tags-desc">{article.articleDesc}</p>
-                  </div>
-                  <div className="cell-container">
-                    <img src={article.articleImg} />
-                    <p className="tags-date">{article.articleDate}</p>
-                    <h2 className="tags-title">{article.articleTitle}</h2>
-                    <p className="tags-desc">{article.articleDesc}</p>
-                  </div>
-                </div>
+            <div className="link">
+              <div className="link-container">
+                <span>Share</span>
+                <img width={30} height={30} src={LnIcon} alt="Linkedin icon" />
               </div>
             </div>
-          </ExtraView>
-        </>
-      ) : (
-        <p>Article not found</p>
-      )}
+            <div className="link">
+              <div className="link-container">
+                <span>Copy</span>
+                <img width={30} height={30} src={CopyIcon} alt="Copy icon" />
+              </div>
+            </div>
+          </div>
+        </ShareView>
+        <ArticleView>
+          {article.fields.subContentsRef.map((subContentRef) => {
+            const subContent = includes.Entry.find(
+              (entry) => entry.sys.id === subContentRef.sys.id
+            );
+
+            return (
+              <div key={subContent.sys.id} className="subcontent">
+                <h3>{subContentRef.fields.heading}</h3>
+                <p>{subContentRef.fields.paragraph}</p>
+                {subContentRef.fields.subImage && (
+                  <img
+                    src={`https:${
+                      includes.Asset.find(
+                        (asset) =>
+                          asset.sys.id === subContent.fields.subImage.sys.id
+                      ).fields.file.url
+                    }`}
+                    alt={subContent.fields.heading}
+                  />
+                )}
+              </div>
+            );
+          })}
+        </ArticleView>
+      </ArticleDetailsView>
+
+      <ExtraView>
+        <div className="extras-container">
+          <div className="extras-main">
+            <div className="label">You may also like</div>
+            <div className="recommended">
+              <div className="cell-container">
+                <img src={article.articleImg} />
+                <p className="tags-date">{article.articleDate}</p>
+                <h2 className="tags-title">{article.articleTitle}</h2>
+                <p className="tags-desc">{article.articleDesc}</p>
+              </div>
+              <div className="cell-container">
+                <img src={article.articleImg} />
+                <p className="tags-date">{article.articleDate}</p>
+                <h2 className="tags-title">{article.articleTitle}</h2>
+                <p className="tags-desc">{article.articleDesc}</p>
+              </div>
+              <div className="cell-container">
+                <img src={article.articleImg} />
+                <p className="tags-date">{article.articleDate}</p>
+                <h2 className="tags-title">{article.articleTitle}</h2>
+                <p className="tags-desc">{article.articleDesc}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ExtraView>
     </Layout>
   );
 };
@@ -217,6 +255,10 @@ const ArticleDetailsView = styled.div`
   align-items: flex-start;
   justify-content: center;
   gap: 80px;
+  @media ${device.mobile} {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const ShareView = styled.div`
@@ -225,6 +267,10 @@ const ShareView = styled.div`
   flex-direction: column;
   gap: 20px;
   align-items: flex-start;
+    
+  @media ${device.mobile} {
+    width: 80%;
+  }
   .share-container {
     width: 100%;
     background: linear-gradient(137.48deg, #8930fd 12.39%, #47cdd0 92.5%);
@@ -309,6 +355,10 @@ const ArticleView = styled.div`
   gap: 48px;
   align-items: flex-start;
   padding: 4rem 0;
+  padding-top: 0rem;
+  @media ${device.mobile} {
+    width: 80%;
+  }
 
   .subcontent {
     width: 100%;
@@ -378,7 +428,7 @@ const ExtraView = styled.div`
         font-size: 52px;
         font-weight: 700;
         line-height: 64px;
-        color: #29234F;
+        color: #29234f;
       }
       .recommended {
         display: flex;

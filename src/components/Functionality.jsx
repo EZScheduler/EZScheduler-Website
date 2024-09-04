@@ -16,17 +16,17 @@ export const Functionality = () => {
     {
       title: "Can EZ Scheduler help with compliance and labor laws?",
       content:
-        "Yes, EZ Scheduler includes features that help ensure compliance with labor laws. You can set limits on the number of hours an employee can work, particularly beneficial for organizations with strict work-hour policies like colleges.",
+        "Yes, EZ Scheduler includes features that help ensure compliance with labor laws. You can set limits on the number of hours an employee can work, which is particularly beneficial for organizations with strict work-hour policies like colleges.",
     },
     {
       title: "How does EZ Scheduler help with employee scheduling?",
       content:
-        "EZ Scheduler makes it easy to create schedules in minutes, assign tasks, and manage shifts. Employees can select their available hours, request shift changes, and communicate directly with managers through the app. It also tracks shift swaps and call-offs to ensure smooth operations.",
+        "EZ Scheduler makes it easy to create schedules in minutes, assign tasks, and manage shifts. Employees can select their available hours, request shift changes, and communicate directly with managers through the app. It also tracks shift swaps and call-offs to ensure smooth operations. Want to learn more? Contact a support representative here: +1 (845) 214-2717",
     },
     {
       title: "Is EZ Scheduler easy to use?",
       content:
-        "Absolutely! EZ Scheduler is designed with an intuitive interface that is easy to learn and navigate, even for users with limited technical experience.",
+        "Absolutely! It's in our DNA. EZ-(as in “easy”) Scheduler is has an intuitive interface that is easy to learn and navigate, even for users with limited technical experience.",
     },
     {
       title: "Is EZ Scheduler secure?",
