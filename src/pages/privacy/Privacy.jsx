@@ -468,6 +468,7 @@ const PrivacyView = styled.div`
     display: flex;
     margin-top: 4rem;
     padding: 0 1rem;
+    position: relative;
 
     @media ${device.mobile} {
       margin-top: 1rem;
@@ -483,6 +484,10 @@ const PrivacyView = styled.div`
 
       .preview {
         margin: 0.5rem 0;
+        overflow-Y: scroll;
+        height: 100vh;
+        position: sticky;
+        top: 0;
 
         .links {
           margin: 1rem 0;

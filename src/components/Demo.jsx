@@ -11,7 +11,7 @@ export const Demo = () => {
     {
       title: "How much does it cost?",
       content:
-        "We designed EZ Scheduler with a solution and intention to make it affordable. With plans starting as low as $35 per month, you can join the EZ Side and begin to do more. See our pricing page for more information.",
+        "We designed EZ Scheduler with a solution and intention to make it affordable. With plans starting as low as $39 per month, you can join the EZ Side and begin to do more. See our pricing page for more information.",
     },
     {
       title: "Can I see a demo?",
@@ -21,7 +21,7 @@ export const Demo = () => {
     {
       title: "How do I start using EZ Scheduler/When does it launch?",
       content:
-        "We’re as excited as you are! We’ll be announcing our official launch date soon. Join the waitlist to receive updates on our product launch and get a price discount when it launches.",
+        "We're as excited as you are! We'll be announcing our official launch date soon. Join the waitlist to receive updates on our product launch and probably get a price discount when it launches.",
     },
   ];
 

@@ -22,22 +22,22 @@ export const NavBar2 = () => {
         <div className="routes">
           <ul>
             <li>
-              <Link to="/" activeClassName="active">
+              <Link to="/" activeclassname="active">
                 Home
               </Link>
             </li>
             <li>
-              <Link to="/blog" activeClassName="active">
+              <Link to="/blog" activeclassname="active">
                 Insights
               </Link>
             </li>
             <li>
-              <Link to="/contact" activeClassName="active">
+              <Link to="/contact" activeclassname="active">
                 Contact
               </Link>
             </li>
             <li>
-              <Link to="/pricing" activeClassName="active">
+              <Link to="/pricing" activeclassname="active">
                 Pricing
               </Link>
             </li>
