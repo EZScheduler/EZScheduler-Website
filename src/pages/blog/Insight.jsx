@@ -230,6 +230,7 @@ const BlogsHeroView = styled.div`
         border-radius: 60px;
         margin: 4rem 0;
       }
+      
       p {
         width: 50%;
         font-size: 18px;
@@ -255,6 +256,7 @@ const ArticleDetailsView = styled.div`
   align-items: flex-start;
   justify-content: center;
   gap: 80px;
+
   @media ${device.mobile} {
     flex-direction: column;
     align-items: center;
@@ -312,7 +314,7 @@ const ShareView = styled.div`
     gap: 10px;
 
     .link {
-     display: flex
+     display: flex;
      align-items: center;
      justify-content: center;
      width: 30%;

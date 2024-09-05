@@ -11,6 +11,7 @@ import { Waiting } from './pages/waiting/Waiting'
 import { PrivacyPolicy } from './pages/privacy/PrivacyPolicy'
 import Insight from './pages/blog/Insight'
 import { CookiePolicy } from './pages/cookie/CookiePolicy'
+import { PDFPage } from './pages/pdf/PDFPage'
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
     <>
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='/our-story' element={<PDFPage />} />
         {/* <Route path='/' element={<Waiting />} /> */}
         <Route path='/pricing' element={<Pricing />} />
         <Route path='/blog' element={<Blog />} />

@@ -9,6 +9,7 @@ import toast from "react-hot-toast";
 import axios from "axios";
 
 export const ContactSection = () => {
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -25,7 +26,17 @@ export const ContactSection = () => {
     });
   };
 
+  const validateForm = () => {
+    const { firstName, lastName, email, message } = formData;
+    return firstName && lastName && email && message;
+  };
+
   const handleSubmit = async () => {
+    if (!validateForm()) {
+      toast.error("Please fill in all required fields.");
+      return;
+    }
+    setLoading(true);
     try {
       const response = await axios.post(
         "https://formspree.io/f/meojkpjb",
@@ -43,9 +54,10 @@ export const ContactSection = () => {
         phoneNumber: "",
         message: "",
       });
+      setLoading(false);
       toast.success("Form submitted successfully!");
     } catch (error) {
-      setStatus("Failed to submit the form.");
+      toast.error('Please fill in the neceesarry field')
     }
   };
 
@@ -153,7 +165,7 @@ export const ContactSection = () => {
                 handleSubmit();
               }}
             >
-              Send your message
+              {loading ? 'Submitting...' : 'Send your message'}
             </button>
           </div>
           <Extras>
@@ -165,7 +177,7 @@ export const ContactSection = () => {
                 <h2>Prefer email?</h2>
                 <div className="info">
                   <p>You can also reach us at</p>
-                  <p className="link">contact@ezscheduler.xyz</p>
+                  <a href="mailto:contact@ezscheduler.xyz" className='link'>contact@ezscheduler.xyz</a>
                 </div>
               </div>
             </div>
@@ -380,6 +392,7 @@ const FormView = styled.div`
         align-items: center;
         justify-content: center;
         border: none;
+        cursor: pointer;
         padding: 1.2rem 5rem;
         border-radius: 6px;
         font-size: 1rem;

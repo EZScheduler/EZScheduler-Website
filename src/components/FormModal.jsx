@@ -13,6 +13,7 @@ import { CongratsModal } from './CongratsModal';
 // import { useEffect, useState } from 'react';
 
 export const FormModal = ({ showModal, setShowModal}) => {
+  const [loading, setLoading] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -34,7 +35,7 @@ export const FormModal = ({ showModal, setShowModal}) => {
     { value: 'College & University', label: 'College & University' },
     { value: 'Hospital', label: 'Hospital' },
     { value: 'Restaurant', label: 'Restaurant' },
-    { value: 'Small Businesses', label: 'Small Businesses' },
+    { value: 'Small Businesses', label: 'Small Business' },
     { value: 'Medium-Sized Enterprise', label: 'Medium-Sized Enterprise' },
     { value: 'Large Corporation', label: 'Large Corporation' },
     { value: 'Government Agency', label: 'Government Agency' },    
@@ -47,7 +48,17 @@ export const FormModal = ({ showModal, setShowModal}) => {
     toast.success(`Welcome to the EZ Side! Your number is${randomNum}.`)
   }
 
+  const validateForm = () => {
+    const { name, email, telephone, industry, country } = formData;
+    return name && email && telephone && industry && country;
+  };
+
   const handleSubmit = async () => {
+    if (!validateForm()) {
+      toast.error("Please fill in all required fields.");
+      return;
+    }
+    setLoading(true);
     try {
       const response = await axios.post('https://formspree.io/f/xldrddaj', formData, {
         headers: {
@@ -61,8 +72,10 @@ export const FormModal = ({ showModal, setShowModal}) => {
         industry: '',
         country: ''
       });
+      setLoading(false);
       setShowModal(!showModal);
-      generateRandomNumber();
+      setShowSuccessModal(true);
+      // generateRandomNumber();
     } catch (error) {
       toast.error('Please fill in the neceesarry field')
     }
@@ -219,12 +232,11 @@ export const FormModal = ({ showModal, setShowModal}) => {
                       <button 
                         // type="submit"
                         className="approve" 
-                        onClick={() => {  
-                          // setShowModal(!showModal)
+                        onClick={() => {
                           handleSubmit()
                         }}
                       >
-                        Join the EZ Side?
+                        {loading ? 'Submitting...' : 'Join the EZ Side'}
                       </button>
                     </div>
                   {/* </form> */}
@@ -431,9 +443,9 @@ const InputView = styled.div`
     border-radius: 5px;
     border: none;
     outline: none;
-    -webkit-appearance: none;
+    /* -webkit-appearance: none;
     -moz-appearance: none;
-    appearance: none;
+    appearance: none; */
     padding: 0 20px;
     font-size: 1rem;
     font-weight: 400;
@@ -606,6 +618,7 @@ const Content = styled.div`
       align-items: center;
       justify-content: center;
       border: none;
+      cursor: pointer;
       padding: 1.2rem 2rem;
       border-radius: 6px;
       font-size: 1rem;

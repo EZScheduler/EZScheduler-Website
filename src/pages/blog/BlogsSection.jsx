@@ -603,20 +603,23 @@ const BlogsVideoView = styled.div`
       line-height: 30px;
       color: ${({ theme }) => theme.colors.blue.blue_30};
     }
+
     .button-more {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    button {
-      font-size: 14px;
-      font-weight: 700;
-      color: #7B68EE;
-      background: white;
-      border: 1px solid #7B68EE;
-      border-radius: 6px;
-      padding: 1rem 2rem;
-      cursor: pointer;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      button {
+        font-size: 14px;
+        font-weight: 700;
+        color: #7B68EE;
+        background: white;
+        border: 1px solid #7B68EE;
+        border-radius: 6px;
+        padding: 1rem 2rem;
+        cursor: pointer;
+      }
     }
   }
 `;

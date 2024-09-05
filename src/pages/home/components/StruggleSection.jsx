@@ -14,14 +14,18 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import fileDownload from "js-file-download";
 import { PDFViewer } from "./PDFViewer";
+import { useNavigate } from "react-router-dom";
 
 export const StruggleSection = () => {
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const [showPreviewModal, setShowPreviewModal] = useState(false);
 
   const pdfFileUrl =
     "https://res.cloudinary.com/doi40g1ct/image/upload/v1723815396/EZ-Scheduler/EZ_Story_compressed_blk2yg.pdf";
 
   const handleFileDownload = (url, filename) => {
+    setLoading(true);
     const parts = filename.split("/");
     const newFileName = parts[parts.length - 1];
     axios
@@ -29,12 +33,14 @@ export const StruggleSection = () => {
         responseType: "blob",
       })
       .then((res) => {
-        console.log("File downloaded successfully.");
         fileDownload(res.data, newFileName);
         toast.success("Pdf downloaded successfully.");
       })
       .catch((error) => {
         console.error("Error downloading file:", error);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
@@ -97,7 +103,9 @@ export const StruggleSection = () => {
             <div className="actions">
               <button
                 className="filled"
-                onClick={() => setShowPreviewModal(true)}
+                onClick={() => {
+                  navigate('/our-story')
+                }}
               >
                 Read our story
               </button>
@@ -108,7 +116,7 @@ export const StruggleSection = () => {
                 <span>
                   <ReactSVG src={Icons.pdf} />
                 </span>
-                <span>Read our story</span>
+                <span>{loading ? 'Downloading PDF...' : 'Read our story'}</span>
               </button>
             </div>
           </div>
