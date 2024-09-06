@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { format } from "date-fns";
 import { AllArticlesData } from "./data/AllArticles";
 import { Layout } from "../../components/Layout";
@@ -11,13 +11,16 @@ import XIcon from "../../assets/icons/twitter.icon.svg";
 import LnIcon from "../../assets/icons/linkedin.icon.svg";
 import CopyIcon from "../../assets/icons/copy.icon.svg";
 import client from "../../contentfulClient";
+import { LoaderIcon } from "react-hot-toast";
 
 const Insight = () => {
   const { title } = useParams();
   const [article, setArticle] = useState(null);
   const [includes, setIncludes] = useState(null);
+  const [recommendedArticles, setRecommendedArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     client
@@ -32,10 +35,12 @@ const Insight = () => {
           const articleImage = response.includes.Asset.find(
             (asset) => asset.sys.id === foundArticle.fields.articleImage.sys.id
           );
+
           const formattedDate = format(
             new Date(foundArticle.fields.articleDate),
             "dd MMM, yyyy"
           );
+
           setArticle({
             ...foundArticle,
             fields: {
@@ -44,6 +49,14 @@ const Insight = () => {
               articleDate: formattedDate,
             },
           });
+
+          const filteredArticles = response.items.filter(
+            (item) => item.fields.articleTitle !== decodeURIComponent(title)
+          );
+
+          const randomArticles = filteredArticles.slice(0, 3);
+
+          setRecommendedArticles(randomArticles);
         } else {
           setError("Article not found");
         }
@@ -57,10 +70,19 @@ const Insight = () => {
       });
   }, [title]);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading)
+    return (
+      <LoadingView>
+        <LoaderIcon className="loading" />
+      </LoadingView>
+    );
   if (error) return <div>{error}</div>;
 
   if (!article) return null;
+
+  const handleNavigation = (title) => {
+    navigate(`/blog/${encodeURIComponent(title)}`);
+  };
 
   return (
     <Layout>
@@ -145,24 +167,36 @@ const Insight = () => {
           <div className="extras-main">
             <div className="label">You may also like</div>
             <div className="recommended">
-              <div className="cell-container">
-                <img src={article.articleImg} />
-                <p className="tags-date">{article.articleDate}</p>
-                <h2 className="tags-title">{article.articleTitle}</h2>
-                <p className="tags-desc">{article.articleDesc}</p>
-              </div>
-              <div className="cell-container">
-                <img src={article.articleImg} />
-                <p className="tags-date">{article.articleDate}</p>
-                <h2 className="tags-title">{article.articleTitle}</h2>
-                <p className="tags-desc">{article.articleDesc}</p>
-              </div>
-              <div className="cell-container">
-                <img src={article.articleImg} />
-                <p className="tags-date">{article.articleDate}</p>
-                <h2 className="tags-title">{article.articleTitle}</h2>
-                <p className="tags-desc">{article.articleDesc}</p>
-              </div>
+              {recommendedArticles.map((recommendedArticle) => {
+                const recommendedImage = includes.Asset.find(
+                  (asset) =>
+                    asset.sys.id ===
+                    recommendedArticle.fields.articleImage.sys.id
+                );
+                return (
+                  <div
+                    key={recommendedArticle.sys.id}
+                    className="cell-container"
+                    onClick={() =>
+                      handleNavigation(recommendedArticle.fields.articleTitle)
+                    }
+                  >
+                    <img src={`https:${recommendedImage.fields.file.url}`} />
+                    <p className="tags-date">
+                      {format(
+                        new Date(recommendedArticle.fields.articleDate),
+                        "dd MMM, yyyy"
+                      )}
+                    </p>
+                    <h2 className="tags-title">
+                      {recommendedArticle.fields.articleTitle}
+                    </h2>
+                    <p className="tags-desc">
+                      {recommendedArticle.fields.articleDescription}
+                    </p>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -173,9 +207,19 @@ const Insight = () => {
 
 export default Insight;
 
+const LoadingView = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  .loading {
+    width: 40px;
+    height: 40px;
+  }
+`;
 const BlogsHeroView = styled.div`
   border-radius: 40px;
-  padding-bottom: 10rem;
   background-image: url("/images/pricing-bg.webp");
   background-size: cover;
   background-repeat: no-repeat;
@@ -226,11 +270,12 @@ const BlogsHeroView = styled.div`
       }
 
       img {
-        width: 90%;
+        width: 900px;
+        max-width: 100%;
         border-radius: 60px;
         margin: 4rem 0;
       }
-      
+
       p {
         width: 50%;
         font-size: 18px;
@@ -269,7 +314,7 @@ const ShareView = styled.div`
   flex-direction: column;
   gap: 20px;
   align-items: flex-start;
-    
+
   @media ${device.mobile} {
     width: 80%;
   }
@@ -314,17 +359,17 @@ const ShareView = styled.div`
     gap: 10px;
 
     .link {
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     width: 30%;
-     background: #E5E1FC66;
-     border-radius: 30px;
-     cursor: pointer;
-     color: #101323;
-     font-size: 14px;
-     font-weight: 400;
-     padding: .5rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 30%;
+      background: #e5e1fc66;
+      border-radius: 30px;
+      cursor: pointer;
+      color: #101323;
+      font-size: 14px;
+      font-weight: 400;
+      padding: 0.5rem 4rem;
     }
 
     .link-container {
@@ -443,9 +488,12 @@ const ExtraView = styled.div`
           flex-direction: column;
           gap: 14px;
           align-items: flex-start;
+          padding: 4rem 0;
+          cursor: pointer;
 
           img {
             width: 100%;
+            height: 260px;
             border-radius: 40px;
           }
           .tags-date {

@@ -278,7 +278,6 @@ const StruggleView = styled.div`
   }
 
   .bottom-container {
-    border: 1px solid red;
     display: flex;
     gap: 40px;
     

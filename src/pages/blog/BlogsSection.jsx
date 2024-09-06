@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import client from "../../contentfulClient";
 import styled from "styled-components";
-import { pricingData } from "../../constants/data";
-import { ReactSVG } from "react-svg";
-import { Icons } from "../../assets/icons/icons";
 import BlogImg1 from "../../assets/images/blog-img.jpeg";
 import { device } from "../../constants/breakpoints";
 import { NavBar2 } from "../../components/NavBar2";
@@ -49,32 +46,7 @@ export const BlogsSection = () => {
   const handleNavigation = (title) => {
     navigate(`/blog/${encodeURIComponent(title)}`);
   };
-  const FeaturedOtherData = [
-    {
-      id: 1,
-      articleImg: BlogImg1,
-      articleDate: "02 May, 2024",
-      articleTitle: "Tres vubösm trens. Pode kanade för plaskap.",
-    },
-    {
-      id: 2,
-      articleImg: BlogImg1,
-      articleDate: "02 May, 2024",
-      articleTitle: "Tres vubösm trens. Pode kanade för plaskap.",
-    },
-    {
-      id: 3,
-      articleImg: BlogImg1,
-      articleDate: "02 May, 2024",
-      articleTitle: "Tres vubösm trens. Pode kanade för plaskap.",
-    },
-    {
-      id: 4,
-      articleImg: BlogImg1,
-      articleDate: "02 May, 2024",
-      articleTitle: "Tres vubösm trens. Pode kanade för plaskap.",
-    },
-  ];
+
 
   return (
     <>
@@ -473,7 +445,7 @@ const BlogsAllView = styled.div`
     width: 100%;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 40px;

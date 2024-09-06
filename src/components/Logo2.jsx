@@ -11,6 +11,7 @@ export const Logo2 = () => {
 }
 
 const LogoView = styled.div`
+  width: 100%;
   height: 25px;
 
   @media ${device.mobile} {
@@ -18,12 +19,12 @@ const LogoView = styled.div`
   }
 
   img {
-    width: 100%;
+    max-width: 100%;
     height: 100%;
 
-    /* @media ${device.mobile} {
-      width: 100%;
-      height: 100%;
-    } */
+    // @media ${device.mobile} {
+    //   width: 100%;
+    //   height: 100%;
+    // } 
   }
 `;

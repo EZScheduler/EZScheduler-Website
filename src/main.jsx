@@ -8,6 +8,7 @@ import { ThemeProvider } from "styled-components";
 import { theme } from "./constants/theme.js";
 import { GlobalStyle } from "./assets/styles/globalStyles.js";
 import { Toaster } from "react-hot-toast";
+import ScrollToTop from "./components/ScrollToTop.js";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -55,6 +56,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <BrowserRouter>
+        <ScrollToTop/>
         <App />
         <Analytics />
       </BrowserRouter>
