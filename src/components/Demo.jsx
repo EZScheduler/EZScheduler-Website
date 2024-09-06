@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { device } from '../constants/breakpoints';
+import { device } from "../constants/breakpoints";
 import { ReactSVG } from "react-svg";
 import { Icons } from "../assets/icons/icons";
 
@@ -32,18 +32,17 @@ export const Demo = () => {
           <div
             key={index}
             className={`accordion-item ${openIndex === index ? "open" : ""}`}
+            onClick={
+              openIndex === index
+                ? () => setOpenIndex(null)
+                : () => setOpenIndex(index)
+            }
           >
             <div className="accordion-header">
               <p>{item.title}</p>
-              {openIndex === index ? (
-                <button onClick={() => setOpenIndex(null)}>
-                  <ReactSVG src={Icons.arrowUpIcon} />
-                </button>
-              ) : (
-                <button onClick={() => setOpenIndex(index)}>
-                  <ReactSVG src={Icons.arrowDownIcon} />
-                </button>
-              )}
+              <button>
+                <ReactSVG src={Icons.arrowUpIcon} />
+              </button>
             </div>
             {openIndex === index && (
               <div className="accordion-content">
@@ -63,6 +62,7 @@ const DemoView = styled.div`
     padding: 0rem 0;
     padding-bottom: 1.5rem;
     border-bottom: 1px solid ${({ theme }) => theme.colors.grey.grey_40};
+    cursor: pointer;
 
     .accordion-body {
       padding: 0 1rem;
