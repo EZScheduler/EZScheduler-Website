@@ -93,12 +93,15 @@ const Insight = () => {
             <p>{article.fields.articleDate}</p>
             <h2 className="title">{article.fields.articleTitle}</h2>
             <p>{article.fields.articleDescription}</p>
-            <img
-              src={`${article.fields.articleImage}`}
-              alt={article.fields.articleTitle}
-            />
           </div>
         </div>
+        <div style={{
+          backgroundImage : `url(${`${article.fields.articleImage}`})`,
+          backgroundSize : 'cover',
+          backgroundPosition : 'center center'
+          
+        }} className="hero-img"></div>
+
       </BlogsHeroView>
 
       <ArticleDetailsView>
@@ -219,19 +222,41 @@ const LoadingView = styled.div`
   }
 `;
 const BlogsHeroView = styled.div`
-  border-radius: 40px;
-  background-image: url("/images/pricing-bg.webp");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  width: 100%;
+  margin-top: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 4rem;
+
+  .blog-img {
+    width: 900px;
+    max-width: 100%;
+    border-radius: 60px;
+    margin: 4rem 0;
+  }
 
   @media ${device.mobile} {
     border-radius: 20px;
   }
 
+  .hero-img {
+    width: 1000px;
+    height: 500px;
+    max-width: 100%;
+    border-radius: 60px;
+    margin: 4rem 0;
+    
+  }
   .hero-text {
     padding: 0.2rem 2rem 0rem 2rem;
+    background-image: url("/images/pricing-bg.png");
+    border-radius: 40px;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
     width: 100%;
 
     @media ${device.mobile} {
@@ -240,10 +265,10 @@ const BlogsHeroView = styled.div`
 
     .info {
       display: flex;
-      padding: 4rem 0;
       text-align: center;
       align-items: center;
       justify-content: center;
+      padding-top: 2rem;
       flex-direction: column;
       width: 100%;
       color: ${({ theme }) => theme.colors.blue.blue_10};
