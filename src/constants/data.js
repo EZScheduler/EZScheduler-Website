@@ -160,7 +160,7 @@ export const cookiePolicy = [
 export const pricingData = [
   {
     type: 'EZ-Starter',
-    name: 'All features in Ez-Starter',
+    name: 'Shift Management',
     description: 'For small to medium-sized teams needing essential scheduling, task, and productivity management tools.',
     users: '0 - 10 Users',
     price: [
@@ -179,7 +179,7 @@ export const pricingData = [
         name: 'Create up to 3 different schedules',
       },
       {
-        name: 'Employee available selection',
+        name: 'Employee availability selection',
       },
       {
         name: 'In-app communication',
@@ -200,9 +200,9 @@ export const pricingData = [
   },
   {
     type: 'EZ-Manager',
-    name: 'All features in Ez-Manager',
+    name: 'All features in EZ-Manager',
     description: 'For medium-sized and larger teams needing advanced scheduling and next level productivity, with flexibility to grow.',
-    users: '10 - 500 Users',
+    users: '11 - 500 Users',
     price: [
       {
         perUser: '$4 per user',
@@ -237,7 +237,7 @@ export const pricingData = [
   },
   {
     type: 'EZ-Enterprise',
-    name: 'All features in Ez-Enterprise',
+    name: 'All features in EZ-Enterprise',
     description: 'For larger teams requiring comprehensive solutions.',
     users: '500+ Users',
     price: [
