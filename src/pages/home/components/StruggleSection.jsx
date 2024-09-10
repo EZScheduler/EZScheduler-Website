@@ -1,48 +1,15 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Light from "../../../assets/images/light.webp";
-import Light2 from "../../../assets/images/mobile-ellipse.webp";
-// import Card1 from "../../../assets/images/card1.webp";
 import Card1 from "../../../assets/images/clock.webp";
 import Card2 from "../../../assets/images/card2.webp";
-import Laptop from "../../../assets/images/laptop.webp";
-import Laptop2 from "../../../assets/images/laptop2.webp";
-import { ReactSVG } from "react-svg";
-import { Icons } from "../../../assets/icons/icons";
 import { device } from "../../../constants/breakpoints";
-import axios from "axios";
-import toast from "react-hot-toast";
-import fileDownload from "js-file-download";
 import { PDFViewer } from "./PDFViewer";
-import { useNavigate } from "react-router-dom";
+import CarouselSlider from "./Carousel";
 
 export const StruggleSection = () => {
-  const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
+
   const [showPreviewModal, setShowPreviewModal] = useState(false);
 
-  const pdfFileUrl =
-    "https://res.cloudinary.com/doi40g1ct/image/upload/v1723815396/EZ-Scheduler/EZ_Story_compressed_blk2yg.pdf";
-
-  const handleFileDownload = (url, filename) => {
-    setLoading(true);
-    const parts = filename.split("/");
-    const newFileName = parts[parts.length - 1];
-    axios
-      .get(url, {
-        responseType: "blob",
-      })
-      .then((res) => {
-        fileDownload(res.data, newFileName);
-        toast.success("Pdf downloaded successfully.");
-      })
-      .catch((error) => {
-        console.error("Error downloading file:", error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  };
 
   return (
     <StruggleView>
@@ -78,54 +45,7 @@ export const StruggleSection = () => {
         </div>
       </div>
 
-      <div className="bottom-container">
-        <div className="bottom">
-          <div className="read-post">
-            <div className="post-title">
-              <h2>Welcome to the</h2>
-              <ReactSVG src={Icons.ezSide} />
-              <span>side</span>
-            </div>
-            <div className="post-title-2">
-              <h2>Welcome to the</h2>
-              <div className="icon">
-                <ReactSVG src={Icons.ezSide} />
-                <span>side</span>
-              </div>
-            </div>
-
-            <p className="description">
-              EZ Scheduler is built to make scheduling easy for managers across
-              all industries, whether you're in colleges, hospitals,
-              restaurants, small businesses, or large corporations.
-            </p>
-
-            <div className="actions">
-              <button
-                className="filled"
-                onClick={() => {
-                  navigate('/our-story')
-                }}
-              >
-                Read our story
-              </button>
-              <button
-                className="outlined"
-                onClick={() => handleFileDownload(pdfFileUrl, "EZ-Story.pdf")}
-              >
-                <span>
-                  <ReactSVG src={Icons.pdf} />
-                </span>
-                <span>{loading ? 'Downloading PDF...' : 'Read our story'}</span>
-              </button>
-            </div>
-          </div>
-
-          <img src={Light} alt="" className="light" />
-          <img src={Light2} alt="" className="light2" />
-          <img src={Laptop2} alt="" className="laptop-img" />
-        </div>
-      </div>
+      <CarouselSlider />
 
       <PDFViewer
         showModal={showPreviewModal}
@@ -143,6 +63,7 @@ const StruggleView = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
+
     margin: 0 auto;
 
     @media ${device.mobile} {
@@ -277,205 +198,7 @@ const StruggleView = styled.div`
     }
   }
 
-  .bottom-container {
-    display: flex;
-    gap: 40px;
+
     
-  }
-
-  .bottom {
-    padding: 5rem;
-    border-radius: 40px;
-    position: relative;
-    color: ${({ theme }) => theme.colors.white};
-    background-color: ${({ theme }) => theme.colors.blue.blue_50};
-
-    @media ${device.mobile} {
-      padding: 2rem;
-      border-radius: 20px;
-    }
-
-    .read-post {
-      z-index: 10;
-      align-items: center;
-      margin-bottom: 25rem;
-      position: relative;
-
-      @media ${device.mobile} {
-        width: 100%;
-        margin-bottom: 15rem;
-      }
-
-      .post-title {
-        display: flex;
-        align-items: center;
-        gap: 0.6rem;
-
-        @media ${device.mobile} {
-          display: none;
-        }
-
-        h2 {
-          z-index: 10;
-          font-size: 75px;
-          font-weight: 700;
-          line-height: 84px;
-          color: ${({ theme }) => theme.colors.white};
-
-          @media ${device.mobile} {
-            width: 100%;
-            font-size: 35px;
-            line-height: 39px;
-          }
-        }
-
-        svg {
-          width: 50px;
-          margin-bottom: -1rem;
-
-          @media ${device.mobile} {
-            font-size: 20px;
-            /* line-height: 39px; */
-          }
-        }
-
-        span {
-          z-index: 10;
-          font-size: 75px;
-          font-weight: 700;
-          line-height: 84px;
-          color: ${({ theme }) => theme.colors.white};
-
-          @media ${device.mobile} {
-            font-size: 35px;
-            line-height: 39px;
-          }
-        }
-      }
-
-      .post-title-2 {
-        display: none;
-        align-items: center;
-        gap: 0.6rem;
-
-        .icon {
-          gap: 0.6rem;
-          display: flex;
-          align-items: center;
-
-          @media ${device.mobile} {
-            gap: 0.5rem;
-          }
-        }
-
-        @media ${device.mobile} {
-          display: flex;
-          flex-direction: column;
-
-          h2 {
-            width: 100%;
-            font-size: 35px;
-            line-height: 39px;
-            text-align: center;
-          }
-
-          span {
-            font-size: 35px;
-            font-weight: 700;
-            line-height: 39px;
-          }
-        }
-      }
-
-      .description {
-        z-index: 10;
-        width: 87%;
-        margin: 2rem 0;
-        font-size: 18px;
-        font-weight: 400;
-        line-height: 32px;
-
-        @media ${device.mobile} {
-          width: 100%;
-          font-size: 16px;
-          line-height: 24px;
-          text-align: center;
-        }
-      }
-
-      .actions {
-        display: flex;
-        gap: 2rem;
-
-        @media ${device.mobile} {
-          flex-direction: column;
-        }
-
-        .filled {
-          border: none;
-          cursor: pointer;
-          font-size: 14px;
-          font-weight: 600;
-          line-height: 14px;
-          border-radius: 5px;
-          padding: 1.2rem 4rem;
-          color: ${({ theme }) => theme.colors.white};
-          background-color: ${({ theme }) => theme.colors.purple.purple_10};
-        }
-
-        .outlined {
-          gap: 1rem;
-          border: none;
-          display: flex;
-          cursor: pointer;
-          font-size: 14px;
-          font-weight: 600;
-          line-height: 14px;
-          border-radius: 5px;
-          align-items: center;
-          padding: 1.2rem 3.5rem;
-          justify-content: center;
-          background-color: transparent;
-          color: ${({ theme }) => theme.colors.white};
-          border: 1px solid ${({ theme }) => theme.colors.purple.purple_10};
-        }
-      }
-    }
-
-    .light {
-      width: 100%;
-      position: absolute;
-      top: 0;
-      right: 0;
-
-      @media ${device.mobile} {
-        display: none;
-      }
-      /* z-index: -1; */
-    }
-
-    .light2 {
-      display: none;
-
-      @media ${device.mobile} {
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        width: 100%;
-      }
-    }
-
-    .laptop-img {
-      width: 790px;
-      position: absolute;
-      bottom: 0;
-      right: 0;
-
-      @media ${device.mobile} {
-        width: 330px;
-      }
-    }
   }
 `;

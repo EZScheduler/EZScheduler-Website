@@ -506,7 +506,7 @@ const BlogsVideoView = styled.div`
     flex-direction: column;
     gap: 64px;
     align-items: flex-start;
-    padding: 12rem 0;
+    padding: 7rem 0;
     @media ${device.mobile} {
       padding: 4rem 0;
     }
@@ -520,6 +520,7 @@ const BlogsVideoView = styled.div`
       .label {
         text-transform: uppercase;
         font-size: 14px;
+        font-weight: 800;
       }
       .videos-items {
         display: flex;

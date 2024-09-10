@@ -54,9 +54,7 @@ export const Footer = () => {
                 </button>
               ))}
             </div>
-            <div className="tab-content">
-              {renderTabs()}
-            </div>
+            <div className="tab-content">{renderTabs()}</div>
           </div>
         </div>
 
@@ -98,22 +96,19 @@ export const Footer = () => {
           <div className="info">
             {/* <p>What are you waiting for?</p> */}
 
-            <h2>Your key to a happier, more productive workforce</h2>
+            <h2>Your key to a happier, more productive workforce.</h2>
 
-            <button 
-              className="btn"
-              onClick={() => setShowFormModal(true)}
-            >
-              Join the Ez side
+            <button className="btn" onClick={() => setShowFormModal(true)}>
+              Join the EZ side
             </button>
           </div>
 
           <div className="footer-sublinks">
             <p>&copy; EZ Scheduler 2024</p>
 
-            <ul>
+            <ul className="order">
               <li>
-                <Link to="/#">Insights</Link>
+                <Link to="/blog">Insights</Link>
               </li>
               <li>
                 <Link to="/pricing">Pricing</Link>
@@ -128,9 +123,9 @@ export const Footer = () => {
                 <Link to="/privacy-policy">Privacy Policy</Link>
               </li>
               <li>
-                <Link to="/#">Terms of service</Link>
+                <Link to="/cookie-policy">Cookie Policy</Link>
               </li>
-            </ul>
+            </ul> 
           </div>
         </div>
         {/* <div className="radius" /> */}
@@ -149,10 +144,11 @@ const FooterView = styled.div`
   position: relative;
   margin-bottom: 20px;
   border-radius: 40px;
-  background-image: url("/images/footer-bg-2.webp");
+  background-image: url("/images/footer-bg-2.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  
 
   @media ${device.mobile} {
     /* width: 100%; */
@@ -169,6 +165,7 @@ const FooterView = styled.div`
     position: absolute;
     border-radius: 0 0 40px 40px;
     left: 0;
+    z-index: 0;
     bottom: 0;
 
     @media ${device.mobile} {
@@ -178,11 +175,11 @@ const FooterView = styled.div`
   }
 
   .footer-img2 {
-    width: 700px;
+    width: 800px;
     min-height: 20%;
     position: absolute;
-    left: 0;
-    bottom: 0;
+    left: -2rem;
+    bottom: -8rem;
     border-radius: 0 0;
 
     @media ${device.mobile} {
@@ -277,7 +274,7 @@ const FooterView = styled.div`
           }
         }
 
-        .active  {
+        .active {
           color: ${({ theme }) => theme.colors.white};
           border-bottom: 2px solid ${({ theme }) => theme.colors.white};
         }
@@ -286,6 +283,8 @@ const FooterView = styled.div`
   }
 
   .socials {
+    position: relative;
+    z-index: 20;
     display: flex;
     padding: 3rem 0;
     align-items: center;
@@ -354,6 +353,7 @@ const FooterView = styled.div`
   .extras {
     position: relative;
     z-index: 100;
+    width: 100%;
 
     .info {
       display: flex;
@@ -361,6 +361,7 @@ const FooterView = styled.div`
       text-align: center;
       align-items: center;
       justify-content: center;
+      width: 100%;
       flex-direction: column;
       color: ${({ theme }) => theme.colors.white};
 
@@ -397,6 +398,7 @@ const FooterView = styled.div`
 
     .footer-sublinks {
       display: flex;
+      width: 100%;
       justify-content: space-between;
       align-items: center;
       padding: 0;
@@ -412,11 +414,15 @@ const FooterView = styled.div`
         font-weight: 300;
         line-height: 20px;
         color: ${({ theme }) => theme.colors.white};
+        width: 20%;
       }
 
-      ul {
+      .order {
         display: flex;
         gap: 2rem;
+        justify-content: space-between;
+        width: 20%;
+
 
         li {
           font-weight: 300;
@@ -433,6 +439,7 @@ const FooterView = styled.div`
       .order-1 {
         display: flex;
         gap: 2rem;
+        width: 20%;
 
         li {
           font-weight: 300;
