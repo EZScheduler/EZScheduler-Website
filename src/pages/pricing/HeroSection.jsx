@@ -18,10 +18,7 @@ export const HeroSection = () => {
           <div className="info">
             <h2 className="title">Find Your Perfect Fit</h2>
 
-            <p>
-              Choose your plan and start streamlining today! Sign up for our
-              affordable solutions for a more productive workforce.
-            </p>
+            <p>Sign up for our affordable solutions for a more productive workforce.</p>
           </div>
         </div>
       </PricingView>
@@ -93,7 +90,7 @@ export const HeroSection = () => {
             <h3>Customer Support & Sales Inquiries:</h3>
             <p>
               For any questions or assistance, please contact our support team
-              at support@ezscheduler.xyz or call us at +1 (845) 214-2717.
+              at <a href="mailto:support@ezscheduler.xyz">support@ezscheduler.xyz</a> or call us at +1 (845) 214-2717.
             </p>
           </div>
         </div>
@@ -349,6 +346,11 @@ const ExtraView = styled.div`
         font-weight: 300;
         line-height: 20px;
         color: ${({ theme }) => theme.colors.purple.purple_40};
+
+        a {
+          color: ${({ theme }) => theme.colors.purple.purple_10};
+          text-decoration: none;
+        }
       }
 
       @media ${device.mobile} {

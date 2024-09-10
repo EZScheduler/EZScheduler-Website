@@ -70,10 +70,7 @@ export const ContactSection = () => {
             <div className="text">
               <h2>Get in touch with us!</h2>
               <p className="ask">
-                {/* Got any question? Please fill out the form, and we’ll get back to you within 24 hours. */}
-                Got any question? Please fillout the form, and we'll get back to
-                you ASAP or you can reach us through our social media platforms
-                or email us.
+                Got any question? Please fill out the form, and we’ll get back to you within 24 hours.
               </p>
               <div className="info">
                 <p className="details">
@@ -167,7 +164,12 @@ export const ContactSection = () => {
             >
               {loading ? 'Submitting...' : 'Send your message'}
             </button>
+
+            <div className='line-icon'>
+              <ReactSVG src={Icons.line} />
+            </div>
           </div>
+
           <Extras>
             <div className="email">
               <div className="icon">
@@ -242,7 +244,7 @@ const ContactView = styled.div`
     padding: 0 2rem;
     display: flex;
     border-radius: 40px;
-    align-items: center;
+    /* align-items: center; */
     justify-content: center;
     flex-direction: column;
     background: linear-gradient(
@@ -259,8 +261,8 @@ const ContactView = styled.div`
 
     .contact {
       display: flex;
-      padding: 3rem 0 5rem 0;
-      margin-left: -2rem;
+      padding: 3rem 0 5rem 3rem;
+      /* margin-left: -2rem; */
 
       @media ${device.mobile} {
         align-items: center;
@@ -280,7 +282,7 @@ const ContactView = styled.div`
         }
 
         h2 {
-          width: 80%;
+          width: 73%;
           font-size: 74px;
           font-weight: 600;
           line-height: 84px;
@@ -295,7 +297,7 @@ const ContactView = styled.div`
         }
 
         .ask {
-          width: 90%;
+          width: 85%;
           font-size: 18px;
           font-weight: 300;
           line-height: 32px;
@@ -354,6 +356,7 @@ const FormView = styled.div`
   @media ${device.mobile} {
     width: 100%;
     border-radius: 20px 20px 0 0;
+    padding: 2rem 0 5rem 0;
   }
 
   .form {
@@ -366,6 +369,7 @@ const FormView = styled.div`
       font-size: 75px;
       font-weight: 700;
       line-height: 84px;
+      text-align: center;
       color: ${({ theme }) => theme.colors.blue.blue_30};
 
       @media ${device.mobile} {
@@ -380,6 +384,7 @@ const FormView = styled.div`
       margin-top: 30px;
       margin-bottom: 6rem;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
 
@@ -402,6 +407,21 @@ const FormView = styled.div`
 
         @media ${device.mobile} {
           width: 100%;
+        }
+      }
+
+      .line-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 7rem;
+
+        @media ${device.mobile} {
+          margin-top: 3rem;
+
+         svg {
+            width: 100%;
+         }
         }
       }
     }

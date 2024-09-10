@@ -21,6 +21,7 @@ import FacebookPurple from './facebook.icon.svg';
 import TwitterPurple from './twitter.icon.svg';
 import InstagramPurple from './instagram.icon.svg';
 import LinkedInPurple from './linkedin.icon.svg';
+import Line from './line.icon.svg';
 
 export const Icons = {
   arrowUpIcon: 'https://res.cloudinary.com/doi40g1ct/image/upload/v1722454833/EZ-Scheduler/arrow-up.icon_qfumf0.svg',
@@ -48,4 +49,5 @@ export const Icons = {
   linkedInPurple: LinkedInPurple,
   twitterPurple: TwitterPurple,
   instagramPurple: InstagramPurple,
+  line: Line,
 }
