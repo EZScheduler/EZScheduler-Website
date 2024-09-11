@@ -7,9 +7,7 @@ import { PDFViewer } from "./PDFViewer";
 import CarouselSlider from "./Carousel";
 
 export const StruggleSection = () => {
-
   const [showPreviewModal, setShowPreviewModal] = useState(false);
-
 
   return (
     <StruggleView>
@@ -19,25 +17,23 @@ export const StruggleSection = () => {
         <div className="cards">
           <div className="card1">
             <p>
-              As managers, we understand the frustration of spending countless
-              hours trying to figure out the best schedule for the period, week,
-              month, or semester. We've experienced the pain of juggling
-              multiple applications, spreadsheets, texts and project management
-              software. That's why we created EZ Scheduler - the ultimate
-              solution to streamline all your scheduling and productivity needs
-              in one place.
+              As managers, we know the frustration of spending hours trying to
+              find the best schedule for the week, month, or semester. We've
+              dealt with juggling multiple apps, emails/texts, spreadsheets, and
+              project management tools. That's why we created EZ Scheduler—to
+              bring all your scheduling and productivity needs into a single
+              dashboard.
             </p>
 
             <img src={Card1} alt="" className="img1" />
           </div>
           <div className="card2">
             <p>
-              With EZ Scheduler, you can manage your team, schedules, and shifts
-              effortlessly from a single dashboard. Create schedules in minutes,
-              assign tasks, ensure compliance with labor laws and track
-              productivity. Communicate directly with your team, and generate
-              instant reports. Our intuitive app is designed to help you become
-              more efficient, save time, and do more.
+              EZ Scheduler lets you streamline scheduling, prevent overstaffing,
+              and track overtime with ease. Empower your team with shift
+              flexibility, assign sub-managers, track and measure productivity,
+              and communicate directly with your team. Gain actionable insights
+              to optimize your team's performance or celebrate successes.
             </p>
 
             <img src={Card2} alt="" className="img2" />

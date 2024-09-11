@@ -125,7 +125,7 @@ export const Footer = () => {
               <li>
                 <Link to="/cookie-policy">Cookie Policy</Link>
               </li>
-            </ul> 
+            </ul>
           </div>
         </div>
         {/* <div className="radius" /> */}
@@ -148,7 +148,6 @@ const FooterView = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  
 
   @media ${device.mobile} {
     /* width: 100%; */
@@ -199,6 +198,8 @@ const FooterView = styled.div`
   }
 
   .faq {
+    position: relative;
+    z-index: 5;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -415,6 +416,9 @@ const FooterView = styled.div`
         line-height: 20px;
         color: ${({ theme }) => theme.colors.white};
         width: 20%;
+        @media ${device.mobile} {
+          width: unset;
+        }
       }
 
       .order {
@@ -422,7 +426,9 @@ const FooterView = styled.div`
         gap: 2rem;
         justify-content: space-between;
         width: 20%;
-
+        @media ${device.mobile} {
+          width: unset;
+        }
 
         li {
           font-weight: 300;
@@ -440,6 +446,9 @@ const FooterView = styled.div`
         display: flex;
         gap: 2rem;
         width: 20%;
+        @media ${device.mobile} {
+          width: unset;
+        }
 
         li {
           font-weight: 300;
