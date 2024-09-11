@@ -466,14 +466,14 @@ const Slide = styled.div`
   font-size: 2rem;
   color: white;
 
-  .bottom{
+  .bottom {
     display: flex;
     align-items: flex-start;
     justify-content: center;
     position: relative;
     width: 100%;
     height: 750px;
-    border-radius: 40px;   
+    border-radius: 40px;
     color: ${({ theme }) => theme.colors.white};
     background-color: ${({ theme }) => theme.colors.blue.blue_50};
 
@@ -513,10 +513,10 @@ const Slide = styled.div`
       }
     }
   }
+
   .bottom-container {
     padding: 5rem;
     width: 100%;
-    
 
     @media ${device.mobile} {
       padding: 2rem;
@@ -533,61 +533,58 @@ const Slide = styled.div`
       position: relative;
       width: 100%;
 
-      
       @media ${device.mobile} {
-        width: 100%; 
+        width: 100%;
       }
-    
+
       .details {
         width: 100%;
-        display: flex;    
+        display: flex;
         align-items: flex-start;
         justify-content: space-between;
-          @media ${device.mobile} {
-            flex-direction: column;
-            align-items: center;
-            gap: 5rem;
+        @media ${device.mobile} {
+          flex-direction: column;
+          align-items: center;
+          gap: 5rem;
         }
         .details-text {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2rem;
-            width: 40%;
-            text-align: center;
-            @media ${device.mobile} {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 2rem;
+          width: 40%;
+          text-align: center;
+          @media ${device.mobile} {
+            width: 100%;
+            img {
               width: 100%;
-              img {
-                width: 100%;
-              }
             }
-            h3 {
-                font-size: 30px;
-                font-weight: 700;
-            }
+          }
+          h3 {
+            font-size: 30px;
+            font-weight: 700;
+          }
 
-            p {
-                font-size: 18px;
-                font-weight: 300;
-                width: 80%;
-            }
+          p {
+            font-size: 18px;
+            font-weight: 300;
+            width: 80%;
+          }
         }
         .details-image {
-            width: 50%;
-            @media ${device.mobile} {
-              width: 100%;
-            }
-            img {   
-              max-width: 100%;
-            }
-
+          width: 50%;
+          @media ${device.mobile} {
+            width: 100%;
+          }
+          img {
+            max-width: 100%;
+          }
         }
       }
 
-        .post-title {
+      .post-title {
         display: flex;
         align-items: center;
-        
 
         @media ${device.mobile} {
           display: none;
@@ -610,7 +607,6 @@ const Slide = styled.div`
         svg {
           width: 80px;
           margin-bottom: -1rem;
-
 
           @media ${device.mobile} {
             font-size: 20px;
@@ -641,46 +637,45 @@ const Slide = styled.div`
       gap: 2rem;
       position: relative;
       width: 100%;
-      
 
       @media ${device.mobile} {
-        width: 100%; 
+        width: 100%;
         align-items: center;
         text-align: center;
       }
-    
+
       .details {
         width: 100%;
-        display flex; 
+        display: flex;
         align-items: center;
         .details-text {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2rem;
-            width: 40%;
-            text-align: center;
-            h3 {
-                font-size: 30px;
-                font-weight: 700;
-            }
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 2rem;
+          width: 40%;
+          text-align: center;
+          h3 {
+            font-size: 30px;
+            font-weight: 700;
+          }
 
-            p {
-                font-size: 18px;
-                font-weight: 300;
-                width: 80%;
-            }
+          p {
+            font-size: 18px;
+            font-weight: 300;
+            width: 80%;
+          }
         }
       }
       .post-title {
         display: flex;
         align-items: center;
         span {
-            z-index: 10;
-            font-size: 75px;
-            font-weight: 700;
-            line-height: 84px;
-            color: rgb(255, 255, 255);
+          z-index: 10;
+          font-size: 75px;
+          font-weight: 700;
+          line-height: 84px;
+          color: rgb(255, 255, 255);
         }
 
         @media ${device.mobile} {
@@ -705,7 +700,6 @@ const Slide = styled.div`
           width: 80px;
           margin-bottom: -1rem;
 
-
           @media ${device.mobile} {
             font-size: 20px;
             /* line-height: 39px; */
@@ -716,13 +710,11 @@ const Slide = styled.div`
       .post-title-2 {
         display: none;
         align-items: center;
-        
 
         .icon {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
         }
         @media ${device.mobile} {
           display: flex;
@@ -737,17 +729,16 @@ const Slide = styled.div`
           color: ${({ theme }) => theme.colors.white};
 
           @media ${device.mobile} {
-                width: 100%;
-                font-size: 35px;
-                line-height: 39px;
-                text-align: center;
+            width: 100%;
+            font-size: 35px;
+            line-height: 39px;
+            text-align: center;
           }
         }
 
         svg {
           width: 80px;
           margin-bottom: -1rem;
-
 
           @media ${device.mobile} {
             font-size: 20px;
@@ -756,72 +747,70 @@ const Slide = styled.div`
         }
       }
 
+      @media ${device.mobile} {
+        display: flex;
+        flex-direction: column;
 
-        @media ${device.mobile} {
-          display: flex;
-          flex-direction: column;
-
-          h2 {
-            width: 100%;
-            font-size: 35px;
-            line-height: 39px;
-            text-align: center;
-          }
-        }
-      }
-
-      .description {
-        z-index: 10;
-        width: 87%;
-        margin: 2rem 0;
-        font-size: 18px;
-        font-weight: 400;
-        line-height: 32px;
-
-        @media ${device.mobile} {
+        h2 {
           width: 100%;
-          font-size: 16px;
-          line-height: 24px;
+          font-size: 35px;
+          line-height: 39px;
           text-align: center;
         }
       }
+    }
 
-      .actions {
+    .description {
+      z-index: 10;
+      width: 87%;
+      margin: 2rem 0;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 32px;
+
+      @media ${device.mobile} {
+        width: 100%;
+        font-size: 16px;
+        line-height: 24px;
+        text-align: center;
+      }
+    }
+
+    .actions {
+      display: flex;
+      gap: 2rem;
+
+      @media ${device.mobile} {
+        flex-direction: column;
+      }
+
+      .filled {
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 14px;
+        border-radius: 5px;
+        padding: 1.2rem 4rem;
+        color: ${({ theme }) => theme.colors.white};
+        background-color: ${({ theme }) => theme.colors.purple.purple_10};
+      }
+
+      .outlined {
+        gap: 1rem;
+        border: none;
         display: flex;
-        gap: 2rem;
-
-        @media ${device.mobile} {
-          flex-direction: column;
-        }
-
-        .filled {
-          border: none;
-          cursor: pointer;
-          font-size: 14px;
-          font-weight: 600;
-          line-height: 14px;
-          border-radius: 5px;
-          padding: 1.2rem 4rem;
-          color: ${({ theme }) => theme.colors.white};
-          background-color: ${({ theme }) => theme.colors.purple.purple_10};
-        }
-
-        .outlined {
-          gap: 1rem;
-          border: none;
-          display: flex;
-          cursor: pointer;
-          font-size: 14px;
-          font-weight: 600;
-          line-height: 14px;
-          border-radius: 5px;
-          align-items: center;
-          padding: 1.2rem 3.5rem;
-          justify-content: center;
-          background-color: transparent;
-          color: ${({ theme }) => theme.colors.white};
-          border: 1px solid ${({ theme }) => theme.colors.purple.purple_10};
-        }
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 14px;
+        border-radius: 5px;
+        align-items: center;
+        padding: 1.2rem 3.5rem;
+        justify-content: center;
+        background-color: transparent;
+        color: ${({ theme }) => theme.colors.white};
+        border: 1px solid ${({ theme }) => theme.colors.purple.purple_10};
       }
     }
   }
