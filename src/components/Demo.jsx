@@ -11,7 +11,7 @@ export const Demo = () => {
     {
       title: "How much does it cost?",
       content:
-        "We designed EZ Scheduler with a solution and intention to make it affordable. With plans starting as low as $39 per month, you can join the EZ Side and begin to do more. See our pricing page for more information.",
+        "We created EZ Scheduler with an intention to make it affordable. With plans starting as low as $39.99 per month, you can join the EZ Side and begin to do more. See our pricing page for more information.",
     },
     {
       title: "Can I see a demo?",

@@ -28,6 +28,7 @@ import fileDownload from "js-file-download";
 // import { PDFViewer } from "./PDFViewer";
 import { useNavigate } from "react-router-dom";
 import Laptop2 from "../../../assets/images/laptop2.webp";
+import { useSwipeable } from "react-swipeable";
 
 const Carousel = () => {
   const navigate = useNavigate();
@@ -58,6 +59,14 @@ const Carousel = () => {
   };
 
   useEffect(() => {
+    const interval = setInterval(() => {
+      handleNext();
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [currentSlide]);
+
+  useEffect(() => {
     const handleResize = () => {
       setSlideWidth(window.innerWidth);
     };
@@ -78,11 +87,17 @@ const Carousel = () => {
   const handleDotClick = (index) => {
     setCurrentSlide(index);
   };
+  const handlers = useSwipeable({
+    onSwipedLeft: () => handleNext(),
+    onSwipedRight: () => handlePrev(),
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true,
+  });
 
   return (
     <CarouselContainer>
-      <CarouselWrapper translate={-currentSlide * slideWidth}>
-        <Slide slideWidth={slideWidth}>
+      <CarouselWrapper {...handlers} translate={-currentSlide * slideWidth}>
+        <Slide>
           <div className="bottom">
             <div className="bottom-container">
               <div className="read-post">
@@ -100,9 +115,10 @@ const Carousel = () => {
                 </div>
 
                 <p className="description">
-                  EZ Scheduler is built to make scheduling easy for managers
-                  across all industries, whether you're in colleges, hospitals,
-                  restaurants, small businesses, or large corporations.
+                  EZ Scheduler is built by experienced managers to make
+                  scheduling and productivity tracking easy for managers across
+                  all industries, whether you manage a team in a college,
+                  hospital, restaurant, small business, or large corporation.
                 </p>
 
                 <div className="actions">
@@ -131,12 +147,17 @@ const Carousel = () => {
               </div>
             </div>
 
-            <img src={Light} alt="" className="light" />
-            <img src={Light2} alt="" className="light2" />
-            <img src={Laptop2} alt="" className="laptop-img" />
+            <img src={Light} alt="" className="light" draggable="false" />
+            <img src={Light2} alt="" className="light2" draggable="false" />
+            <img
+              src={Laptop2}
+              alt=""
+              className="laptop-img"
+              draggable="false"
+            />
           </div>
         </Slide>
-        <Slide slideWidth={slideWidth}>
+        <Slide>
           <div className="bottom">
             <div className="bottom-container">
               <div className="read-post2">
@@ -153,10 +174,10 @@ const Carousel = () => {
                       give employees flexibility to Select Shifts Based On Your
                       Parameters
                     </p> */}
-                    <img src={slide1} alt="slide1" />
+                    <img src={slide1} alt="slide1" draggable="false" />
                   </div>
                   <div className="details-image">
-                    <img src={slidescreen1} alt="slide1" />
+                    <img src={slidescreen1} alt="slide1" draggable="false" />
                   </div>
                 </div>
               </div>
@@ -167,7 +188,7 @@ const Carousel = () => {
           </div>
         </Slide>
 
-        <Slide slideWidth={slideWidth}>
+        <Slide>
           <div className="bottom">
             <div className="bottom-container">
               <div className="read-post2">
@@ -184,10 +205,10 @@ const Carousel = () => {
                       give employees flexibility to Select Shifts Based On Your
                       Parameters
                     </p> */}
-                    <img src={slide2} alt="slide1" />
+                    <img src={slide2} alt="slide1" draggable="false" />
                   </div>
                   <div className="details-image">
-                    <img src={slidescreen2} alt="slide1" />
+                    <img src={slidescreen2} alt="slide1" draggable="false" />
                   </div>
                 </div>
               </div>
@@ -198,7 +219,7 @@ const Carousel = () => {
           </div>
         </Slide>
 
-        <Slide slideWidth={slideWidth}>
+        <Slide>
           <div className="bottom">
             <div className="bottom-container">
               <div className="read-post2">
@@ -215,10 +236,10 @@ const Carousel = () => {
                       give employees flexibility to Select Shifts Based On Your
                       Parameters
                     </p> */}
-                    <img src={slide3} alt="slide1" />
+                    <img src={slide3} alt="slide1" draggable="false" />
                   </div>
                   <div className="details-image">
-                    <img src={slidescreen3} alt="slide1" />
+                    <img src={slidescreen3} alt="slide1" draggable="false" />
                   </div>
                 </div>
               </div>
@@ -229,7 +250,7 @@ const Carousel = () => {
           </div>
         </Slide>
 
-        <Slide slideWidth={slideWidth}>
+        <Slide>
           <div className="bottom">
             <div className="bottom-container">
               <div className="read-post2">
@@ -246,10 +267,10 @@ const Carousel = () => {
                       give employees flexibility to Select Shifts Based On Your
                       Parameters
                     </p> */}
-                    <img src={slide4} alt="slide1" />
+                    <img src={slide4} alt="slide1" draggable="false" />
                   </div>
                   <div className="details-image">
-                    <img src={slidescreen4} alt="slide1" />
+                    <img src={slidescreen4} alt="slide1" draggable="false" />
                   </div>
                 </div>
               </div>
@@ -260,7 +281,7 @@ const Carousel = () => {
           </div>
         </Slide>
 
-        <Slide slideWidth={slideWidth}>
+        <Slide>
           <div className="bottom">
             <div className="bottom-container">
               <div className="read-post2">
@@ -277,10 +298,10 @@ const Carousel = () => {
                       give employees flexibility to Select Shifts Based On Your
                       Parameters
                     </p> */}
-                    <img src={slide5} alt="slide1" />
+                    <img src={slide5} alt="slide1" draggable="false" />
                   </div>
                   <div className="details-image">
-                    <img src={slidescreen5} alt="slide1" />
+                    <img src={slidescreen5} alt="slide1" draggable="false" />
                   </div>
                 </div>
               </div>
@@ -291,8 +312,7 @@ const Carousel = () => {
           </div>
         </Slide>
 
-        
-        <Slide slideWidth={slideWidth}>
+        <Slide>
           <div className="bottom">
             <div className="bottom-container">
               <div className="read-post2">
@@ -309,10 +329,10 @@ const Carousel = () => {
                       give employees flexibility to Select Shifts Based On Your
                       Parameters
                     </p> */}
-                    <img src={slide6} alt="slide1" />
+                    <img src={slide6} alt="slide1" draggable="false" />
                   </div>
                   <div className="details-image">
-                    <img src={slidescreen6} alt="slide1" />
+                    <img src={slidescreen6} alt="slide1" draggable="false" />
                   </div>
                 </div>
               </div>
@@ -323,7 +343,7 @@ const Carousel = () => {
           </div>
         </Slide>
 
-        <Slide slideWidth={slideWidth}>
+        <Slide>
           <div className="bottom">
             <div className="bottom-container">
               <div className="read-post2">
@@ -340,10 +360,10 @@ const Carousel = () => {
                       give employees flexibility to Select Shifts Based On Your
                       Parameters
                     </p> */}
-                    <img src={slide7} alt="slide1" />
+                    <img src={slide7} alt="slide1" draggable="false" />
                   </div>
                   <div className="details-image">
-                    <img src={slidescreen7} alt="slide1" />
+                    <img src={slidescreen7} alt="slide1" draggable="false" />
                   </div>
                 </div>
               </div>
@@ -354,7 +374,7 @@ const Carousel = () => {
           </div>
         </Slide>
 
-        <Slide slideWidth={slideWidth}>
+        <Slide>
           <div className="bottom">
             <div className="bottom-container">
               <div className="read-post2">
@@ -371,10 +391,10 @@ const Carousel = () => {
                       give employees flexibility to Select Shifts Based On Your
                       Parameters
                     </p> */}
-                    <img src={slide8} alt="slide1" />
+                    <img src={slide8} alt="slide1" draggable="false" />
                   </div>
                   <div className="details-image">
-                    <img src={slidescreen8} alt="slide1" />
+                    <img src={slidescreen8} alt="slide1" draggable="false" />
                   </div>
                 </div>
               </div>
@@ -384,7 +404,6 @@ const Carousel = () => {
             <img src={Light2} alt="" className="light2" />
           </div>
         </Slide>
-
       </CarouselWrapper>
       {/* <PrevButton onClick={handlePrev}>‹</PrevButton>
       <NextButton onClick={handleNext}>›</NextButton> */}
@@ -423,6 +442,8 @@ const CarouselContainer = styled.div`
   margin: 0 auto;
   overflow: hidden;
   border-radius: 40px;
+  user-select: none;
+  cursor: grab;
 `;
 
 const CarouselWrapper = styled.div`
@@ -432,6 +453,9 @@ const CarouselWrapper = styled.div`
   transition: transform 0.5s ease-in-out;
   transform: translateX(${(props) => props.translate}px);
   position: relative;
+  @media ${device.mobile} {
+    gap: 20px;
+  }
 `;
 
 const Slide = styled.div`
@@ -854,12 +878,13 @@ const DotsContainer = styled.div`
 
   .next-slide {
     cursor: pointer;
+    width: 24px;
   }
 `;
 
 const Dot = styled.div`
-  width: 16px;
-  height: 16px;
+  width: 8px;
+  height: 8px;
   margin: 0 5px;
   border-radius: 50%;
   background-color: ${(props) => (props.active ? "#7B68EE" : "#ffffff8e")};
