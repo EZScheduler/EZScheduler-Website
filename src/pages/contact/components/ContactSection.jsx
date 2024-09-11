@@ -639,7 +639,7 @@ const InputView = styled.div`
 
   .error-label {
     font-size: 0.8rem;
-    color: ${({ theme }) => theme.colors.error_200};
+    color: red;
     margin-top: 5px;
   }
 `;

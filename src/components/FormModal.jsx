@@ -1,83 +1,69 @@
-import { useForm } from '@formspree/react';
-import { motion, AnimatePresence } from 'framer-motion';
-import styled from 'styled-components';
-// import { Input } from './Input';
-import { useState } from 'react';
-import axios from 'axios';
-import toast from 'react-hot-toast';
-import { device } from '../constants/breakpoints';
-import { ReactSVG } from 'react-svg';
-import { Icons } from '../assets/icons/icons';
-import { CongratsModal } from './CongratsModal';
-// import { Oval } from 'react-loader-spinner';
-// import { useEffect, useState } from 'react';
+import { useForm } from "react-hook-form";
+import { motion, AnimatePresence } from "framer-motion";
+import styled from "styled-components";
+import { useState } from "react";
+import axios from "axios";
+import toast from "react-hot-toast";
+import { device } from "../constants/breakpoints";
+import { ReactSVG } from "react-svg";
+import { Icons } from "../assets/icons/icons";
+import { CongratsModal } from "./CongratsModal";
+import * as yup from "yup";
+import { Oval } from "react-loader-spinner";
+import { yupResolver } from "@hookform/resolvers/yup";
 
-export const FormModal = ({ showModal, setShowModal}) => {
+const schema = yup.object().shape({
+  name: yup.string().required("Full Name is required"),
+  email: yup
+    .string()
+    .email("Invalid email format")
+    .required("Work Email is required"),
+  industry: yup.string().required("Industry is required"),
+  country: yup.string().required("Country is required"),
+});
+
+export const FormModal = ({ showModal, setShowModal }) => {
   const [loading, setLoading] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    telephone: '',
-    industry: '',
-    country: ''
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
   const options = [
-    { value: 'College & University', label: 'College & University' },
-    { value: 'Hospital', label: 'Hospital' },
-    { value: 'Restaurant', label: 'Restaurant' },
-    { value: 'Small Businesses', label: 'Small Business' },
-    { value: 'Medium-Sized Enterprise', label: 'Medium-Sized Enterprise' },
-    { value: 'Large Corporation', label: 'Large Corporation' },
-    { value: 'Government Agency', label: 'Government Agency' },    
+    { value: "College & University", label: "College & University" },
+    { value: "Hospital", label: "Hospital" },
+    { value: "Restaurant", label: "Restaurant" },
+    { value: "Small Businesses", label: "Small Business" },
+    { value: "Medium-Sized Enterprise", label: "Medium-Sized Enterprise" },
+    { value: "Large Corporation", label: "Large Corporation" },
+    { value: "Government Agency", label: "Government Agency" },
   ];
 
-  const generateRandomNumber = () => {
-    const min = 2000;
-    const max = 5000;
-    const randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
-    toast.success(`Welcome to the EZ Side! Your number is${randomNum}.`)
-  }
-
-  const validateForm = () => {
-    const { name, email, telephone, industry, country } = formData;
-    return name && email && telephone && industry && country;
-  };
-
-  const handleSubmit = async () => {
-    if (!validateForm()) {
-      toast.error("Please fill in all required fields.");
-      return;
-    }
+  const onSubmit = async (data) => {
     setLoading(true);
     try {
-      const response = await axios.post('https://formspree.io/f/xldrddaj', formData, {
-        headers: {
-          'Accept': 'application/json',
-        },
-      });
-      setFormData({
-        name: '',
-        email: '',
-        telephone: '',
-        industry: '',
-        country: ''
-      });
+      const response = await axios.post(
+        "https://formspree.io/f/xldrddaj",
+        data,
+        {
+          headers: {
+            Accept: "application/json",
+          },
+        }
+      );
+      reset();
       setLoading(false);
       setShowModal(!showModal);
       setShowSuccessModal(true);
-      // generateRandomNumber();
     } catch (error) {
-      toast.error('Please fill in the neceesarry field')
+      toast.error("There was an error submitting the form");
+      setLoading(false);
     }
   };
 
@@ -89,34 +75,30 @@ export const FormModal = ({ showModal, setShowModal}) => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="modal-overlay">
+          className="modal-overlay"
+        >
           <motion.div
             initial={{ y: 1000 }}
             animate={{ y: 0 }}
             exit={{ y: 100 }}
             transition={{ duration: 0.3 }}
             className="modal"
-            onClick={(e) => e.stopPropagation()}>
+            onClick={(e) => e.stopPropagation()}
+          >
             {/* ======== Content ======== */}
             <ModalContent>
-              <div 
+              <div
                 className="header"
                 onClick={() => {
-                  setShowModal(!showModal)
-                  setFormData({
-                    name: '',
-                    email: '',
-                    telephone: '',
-                    industry: '',
-                    country: ''
-                  });
+                  setShowModal(!showModal);
+                  reset();
                 }}
               >
                 <ReactSVG src={Icons.cancel} />
               </div>
               <ContentView>
                 <HeaderView>
-                  <div className='text'>
+                  <div className="text">
                     <h3>Stay in the loop</h3>
                     <p>Be first in line for special offers & updates</p>
                   </div>
@@ -125,88 +107,91 @@ export const FormModal = ({ showModal, setShowModal}) => {
                   </div> */}
                 </HeaderView>
                 <Content>
-                  {/* <form onSubmit={handleSubmit}> */}
+                  <form onSubmit={handleSubmit(onSubmit)}>
                     <DataView>
                       <InputView>
                         <LabelView>
-                          <label htmlFor='name'>Full Name</label>
+                          <label htmlFor="name">Full Name</label>
                         </LabelView>
                         <Input
-                          id="name" 
+                          id="name"
                           type="text"
-                          name='name'
-                          value={formData.name}
-                          onChange={handleChange}
-                          placeholder='Enter your full name'
-                          required
+                          {...register("name")}
+                          placeholder="Enter your full name"
                         />
+                        {errors.name && <span className="error-label">{errors.name.message}</span>}
                       </InputView>
 
                       <InputView>
                         <LabelView>
-                          <label htmlFor='email'> Work Email</label>
+                          <label htmlFor="email"> Work Email</label>
                         </LabelView>
-                        <Input 
+                        <Input
                           id="email"
-                          type="email" 
-                          name="email"
-                          value={formData.email}
-                          onChange={handleChange}
-                          placeholder='Enter your work email'
-                          required
+                          type="email"
+                          {...register("email")}
+                          placeholder="Enter your work email"
                         />
+                        {errors.email && <span className="error-label">{errors.email.message}</span>}
                       </InputView>
                     </DataView>
 
                     <DataView>
                       <InputView>
                         <LabelView>
-                          <label htmlFor='telephone'>Phone number (Optional)</label>
+                          <label htmlFor="telephone">
+                            Phone number (Optional)
+                          </label>
                         </LabelView>
-                        <Input 
-                          id='telephone'
+                        <Input
+                          id="telephone"
                           type="telephone"
-                          name='telephone'
-                          value={formData.telephone}
-                          onChange={handleChange}
-                          placeholder='(555) 555-5555'
-                          required
+                          {...register("telephone")}
+                          placeholder="(555) 555-5555"
                         />
+                        {errors.telephone && (
+                          <span className="error-label">
+                            {errors.telephone.message}
+                          </span>
+                        )}
                       </InputView>
 
                       <InputView>
                         <LabelView>
-                          <label htmlFor='industry'>Industry</label>
+                          <label htmlFor="industry">Industry</label>
                         </LabelView>
-                        <select 
-                          id="industry" 
-                          name="industry" 
-                          value={formData.industry}
-                          onChange={handleChange}
-                          required
+                        <select
+                          id="industry"
+                          name="industry"
+                          {...register("industry")}
                         >
-                            <option value="" selected="" disabled="">Select an industry</option>
-                            {options.map((option) => (
-                              <option value={option.value}>{option.label}</option>
-                            ))}
+                          <option value="" selected="" disabled="">
+                            Select an industry
+                          </option>
+                          {options.map((option) => (
+                            <option value={option.value}>{option.label}</option>
+                          ))}
                         </select>
+                        {errors.industry && (
+                          <span className="error-label">{errors.industry.message}</span>
+                        )}
                       </InputView>
                     </DataView>
 
                     <DataView>
                       <InputView>
                         <LabelView>
-                          <label htmlFor='country'>Country or Location</label>
+                          <label htmlFor="country">Country or Location</label>
                         </LabelView>
-                        <Input 
-                          id='country'
+                        <Input
+                          id="country"
                           type="text"
-                          name='country'
-                          value={formData.country}
-                          onChange={handleChange}
-                          placeholder='e.g USA, Canada...'
-                          required
+                          {...register("country")}
+                          placeholder="e.g USA, Canada..."
                         />
+                        {errors.country && (
+                          <span className="error-label">{errors.country.message}</span>
+                        )}
                       </InputView>
 
                       {/* <InputView>
@@ -229,17 +214,23 @@ export const FormModal = ({ showModal, setShowModal}) => {
                     </DataView>
 
                     <div className="cta">
-                      <button 
-                        // type="submit"
-                        className="approve" 
-                        onClick={() => {
-                          handleSubmit()
-                        }}
+                      <button
+                        type="submit"
+                        className="approve"
                       >
-                        {loading ? 'Submitting...' : 'Join the EZ Side'}
+                        {loading ? (
+                          <Oval
+                            height={20}
+                            width={20}
+                            color="#c2bdbd"
+                            secondaryColor="#ddd"
+                          />
+                        ) : (
+                          "Join the EZ Side"
+                        )}
                       </button>
                     </div>
-                  {/* </form> */}
+                  </form>
                 </Content>
               </ContentView>
             </ModalContent>
@@ -247,10 +238,13 @@ export const FormModal = ({ showModal, setShowModal}) => {
         </ModalView>
       )}
 
-      <CongratsModal showModal={showSuccessModal} setShowModal={setShowSuccessModal} />
+      <CongratsModal
+        showModal={showSuccessModal}
+        setShowModal={setShowSuccessModal}
+      />
     </AnimatePresence>
   );
-}
+};
 
 const ModalView = styled(motion.div)`
   position: fixed;
@@ -274,7 +268,7 @@ const ModalView = styled(motion.div)`
     border-radius: 15px;
     max-height: 90%;
     overflow-y: scroll;
-    background: linear-gradient(to right, #33214A 0%, #2A464D 100%);
+    background: linear-gradient(to right, #33214a 0%, #2a464d 100%);
 
     @media ${device.mobile} {
       width: 95vw;
@@ -325,8 +319,6 @@ const HeaderView = styled.div`
   align-items: center;
   justify-content: start;
 
-
-
   @media ${device.mobile} {
     /* display: block; */
   }
@@ -336,25 +328,23 @@ const HeaderView = styled.div`
       font-size: 3rem;
       font-weight: 600;
       color: ${({ theme }) => theme.colors?.white};
-  
+
       @media ${device.mobile} {
         font-size: 2rem;
-  
       }
     }
-  
+
     p {
       font-size: 1rem;
       font-weight: 300;
       color: ${({ theme }) => theme.colors?.white};
       margin-top: 10px;
-  
+
       @media ${device.mobile} {
         font-size: 0.9rem;
       }
     }
   }
-
 
   .close {
     width: 30px;
@@ -466,12 +456,12 @@ const InputView = styled.div`
 
     svg {
       transition: all 0.3s ease-in-out;
-      transform: ${({ open }) => (open ? 'rotate(180deg)' : 'none')};
+      transform: ${({ open }) => (open ? "rotate(180deg)" : "none")};
       transform-origin: 50% 50%;
       width: 20px;
       height: 15px;
     }
-  } 
+  }
 
   .input {
     position: relative;
@@ -492,7 +482,7 @@ const InputView = styled.div`
 
   .error-label {
     font-size: 0.8rem;
-    color: ${({ theme }) => theme.colors.error_200};
+    color: red;
     margin-top: 5px;
   }
 `;
@@ -517,7 +507,7 @@ const ButtonView = styled.div`
 
   .btn-disabled {
     cursor: not-allowed;
-    color: #F2F2F2;
+    color: #f2f2f2;
     background-color: ${({ theme }) => theme.colors?.info};
   }
 `;
@@ -556,12 +546,6 @@ const Content = styled.div`
 
     label {
       font-size: 0.875rem;
-    }
-
-    .error-label {
-      font-size: 0.8rem;
-      color: ${({ theme }) => theme.colors.error_200};
-      margin-top: 5px;
     }
 
     .select-view {
@@ -630,9 +614,9 @@ const Content = styled.div`
 `;
 
 const Input = styled.input`
-  width: ${({ width }) => width || '100%'};
-  height: ${({ height }) => height || '54px'};
-  padding: ${({ icon }) => (icon ? '0 16px 0 48px' : '0 16px')};
+  width: ${({ width }) => width || "100%"};
+  height: ${({ height }) => height || "54px"};
+  padding: ${({ icon }) => (icon ? "0 16px 0 48px" : "0 16px")};
   background-color: ${({ theme, error }) =>
     error ? theme.colors?.errorBackground : theme.colors?.white};
   border: 1px solid
