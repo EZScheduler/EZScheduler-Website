@@ -12,7 +12,7 @@ export const StruggleSection = () => {
   return (
     <StruggleView>
       <div className="top">
-        <h2>The Struggles of Traditional Scheduling</h2>
+        <h2>The Struggles of Traditional Workforce Management</h2>
 
         <div className="cards">
           <div className="card1">
