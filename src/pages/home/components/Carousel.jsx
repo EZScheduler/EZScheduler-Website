@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import carets from "../../../assets/icons/carets.svg";
 import { ReactSVG } from "react-svg";
@@ -35,6 +35,9 @@ const Carousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [loading, setLoading] = useState(false);
   const [slideWidth, setSlideWidth] = useState(window.innerWidth);
+  const [holding, setHolding] = useState(false);
+  const autoSlideInterval = useRef(null);
+
   const pdfFileUrl =
     "https://res.cloudinary.com/doi40g1ct/image/upload/v1723815396/EZ-Scheduler/EZ_Story_compressed_blk2yg.pdf";
 
@@ -59,12 +62,29 @@ const Carousel = () => {
   };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      handleNext();
-    }, 4000);
+    if (!holding) {
+      startAutoSlide();
+    }
 
-    return () => clearInterval(interval);
-  }, [currentSlide]);
+    return () => clearInterval(autoSlideInterval.current);
+  }, [currentSlide, holding]);
+
+  const startAutoSlide = () => {
+    clearInterval(autoSlideInterval.current); // Clear any previous interval
+    autoSlideInterval.current = setInterval(() => {
+      handleNext();
+    }, 4000); // Change slide every 4 seconds
+  };
+
+  const handleMouseDown = () => {
+    setHolding(true);
+    clearInterval(autoSlideInterval.current);
+  };
+
+  const handleMouseUp = () => {
+    setHolding(false);
+    startAutoSlide();
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -95,7 +115,7 @@ const Carousel = () => {
   });
 
   return (
-    <CarouselContainer>
+    <CarouselContainer onMouseDown={handleMouseDown} onMouseUp={handleMouseUp}>
       <CarouselWrapper {...handlers} translate={-currentSlide * slideWidth}>
         <Slide>
           <div className="bottom">
@@ -472,7 +492,7 @@ const Slide = styled.div`
     justify-content: center;
     position: relative;
     width: 100%;
-    height: 750px;
+    height: 600px;
     border-radius: 40px;
     color: ${({ theme }) => theme.colors.white};
     background-color: ${({ theme }) => theme.colors.blue.blue_50};
@@ -762,7 +782,7 @@ const Slide = styled.div`
 
     .description {
       z-index: 10;
-      width: 87%;
+      width: 60%;
       margin: 2rem 0;
       font-size: 18px;
       font-weight: 400;

@@ -6,7 +6,7 @@ import { NavBar } from "@/components/NavBar";
 import { ReactSVG } from "react-svg";
 import { Icons } from "@/assets/icons/icons";
 import { device } from "@/constants/breakpoints";
-import teaser from '@/assets/lottie/teaser-video.mp4';
+import teaser from '@/assets/lottie/FInal11.mp4';
 import ReactPlayer from "react-player";
 
 export const HeroSection = () => {
@@ -41,6 +41,7 @@ export const HeroSection = () => {
             url={teaser} 
             playing={true} 
             loop={true} 
+            controls
             muted={true}
             wrapper={"div"}
             width='100%'
