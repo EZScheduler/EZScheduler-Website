@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import { NavBar } from "@/components/NavBar";
 // import Background from "@/assets/images/home-bg.webp";
@@ -6,50 +6,53 @@ import { NavBar } from "@/components/NavBar";
 import { ReactSVG } from "react-svg";
 import { Icons } from "@/assets/icons/icons";
 import { device } from "@/constants/breakpoints";
-import teaser from '@/assets/lottie/FInal11.mp4';
-import ReactPlayer from "react-player";
+import teaser from "@/assets/lottie/FInal11.mp4";
+import ReactPlayer from "react-player/lazy";
+import { FormModal } from "../../../components/FormModal";
 
 export const HeroSection = () => {
-
+  const [showFormModal, setShowFormModal] = useState(false);
   return (
-    <HeroView>
-      <div className="hero-text">
-        <NavBar />
-        <div className="info">
-          <h2 className="title">
-            Take Back Control of Your Workforce Management with EZ Scheduler{" "}
-            <span>
-              <ReactSVG src={Icons.calenderCheckIcon} />
-            </span>
-          </h2>
+    <>
+      <HeroView>
+        <div className="hero-text">
+          <NavBar />
+          <div className="info">
+            <h2 className="title">
+              Take Back Control of Your Workforce Management with EZ Scheduler{" "}
+              <span>
+                <ReactSVG src={Icons.calenderCheckIcon} />
+              </span>
+            </h2>
 
-          <p>
-            The All-in-One Solution for Effortless Shift Management and
-            Productivity Tracking
-          </p>
+            <p>
+              The All-in-One Solution for Effortless Shift Management and
+              Productivity Tracking
+            </p>
 
-          <button className="btn">
-            <span>Get started</span>
-          </button>
+            <button onClick={() => setShowFormModal(true)} className="btn">
+              <span>Get started</span>
+            </button>
+          </div>
         </div>
-      </div>
-      <div className="position-view">
-        <div className="image">
-          {/* <img src={HeroBg} alt="Hero-img" className="img" /> */}
-          <ReactPlayer
-            className='react-player'
-            url={teaser} 
-            playing={true} 
-            loop={true} 
-            controls
-            muted={true}
-            wrapper={"div"}
-            width='100%'
-            height='100%'
-          />
+        <div className="position-view">
+          <div className="image">
+            {/* <img src={HeroBg} alt="Hero-img" className="img" /> */}
+            <ReactPlayer
+              className="react-player"
+              url={teaser}
+              loop={true}
+              controls
+              muted={true}
+              wrapper={"div"}
+              width="100%"
+              height="100%"
+            />
+          </div>
         </div>
-      </div>
-    </HeroView>
+      </HeroView>
+      <FormModal showModal={showFormModal} setShowModal={setShowFormModal} />
+    </>
   );
 };
 

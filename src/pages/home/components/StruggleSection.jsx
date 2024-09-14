@@ -12,7 +12,10 @@ export const StruggleSection = () => {
   return (
     <StruggleView>
       <div className="top">
-        <h2>The Struggles of Traditional Workforce Management</h2>
+        <h2>
+          The Struggles of Traditional{" "}
+          <span className="gradient-text">Workforce Management</span>
+        </h2>
 
         <div className="cards">
           <div className="card1">
@@ -66,12 +69,18 @@ const StruggleView = styled.div`
       width: 100%;
       margin: 0;
     }
-
+    .gradient-text {
+      background: linear-gradient(137.48deg, #8930FD 12.39%, #49CCF9 92.5%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
     h2 {
-      font-size: 40px;
+      font-size: 75px;
       font-weight: 700;
       line-height: 84px;
       text-align: center;
+      padding: 4rem 0;
       color: ${({ theme }) => theme.colors.blue.blue_30};
 
       @media ${device.mobile} {
