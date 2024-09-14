@@ -12,12 +12,14 @@ import LnIcon from "../../assets/icons/linkedin.icon.svg";
 import CopyIcon from "../../assets/icons/copy.icon.svg";
 import client from "../../contentfulClient";
 import { LoaderIcon } from "react-hot-toast";
+import { FormModal } from "../../components/FormModal";
 
 const Insight = () => {
   const { title } = useParams();
   const [article, setArticle] = useState(null);
   const [includes, setIncludes] = useState(null);
   const [recommendedArticles, setRecommendedArticles] = useState([]);
+  const [showFormModal, setShowFormModal] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
@@ -113,7 +115,7 @@ const Insight = () => {
               alt="EZ scheduler screenshot"
             />
             <h3>Get started now. Join our waitlist</h3>
-            <button className="btn">
+            <button onClick={() => setShowFormModal(true)} className="btn">
               <span>Get started</span>
             </button>
           </div>
@@ -204,6 +206,7 @@ const Insight = () => {
           </div>
         </div>
       </ExtraView>
+      <FormModal showModal={showFormModal} setShowModal={setShowFormModal} />
     </Layout>
   );
 };

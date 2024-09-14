@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import Hand from "../../../assets/images/hand.webp";
 import Purple from "../../../assets/images/ez-purple.webp";
@@ -8,61 +8,66 @@ import Sub from "@/assets/images/sub-footer.webp";
 import Phonebook from "@/assets/images/phonebook-blur.webp";
 import Schedule from "@/assets/images/schedule-blur.webp";
 import FeaturesTab from "./FeaturesTab";
+import { FormModal } from "../../../components/FormModal";
 
 export const FeaturesSection = () => {
+  const [showFormModal, setShowFormModal] = useState(false);
   return (
-    <FeaturesView>
-      <div className="top-info">
-        <div className="text">
-          <h2>Spend less time scheduling and more time leading</h2>
-          <p>
-            Making workforce management EZ for managers so they can do more.
-          </p>
-
-          <button>Get started</button>
-        </div>
-
-        <div className="image-holder">
-          <img src={Hand} alt="" className="hand" />
-          <img src={Purple} alt="" className="ez-purple" />
-        </div>
-      </div>
-      <div className="middle-info">
-        <div className="middle-container">
-          <h2>
-            Features Designed to Make Workforce Management{" "}
-            <span style={{ color: "#8930FD" }}>EZ</span>-ier
-          </h2>
-        </div>
-
-        <FeaturesTab />
-      </div>
-      <div className="bottom-info">
-        <div className="rectangle">
-          <div className="center">
-            <p className="desktop-copy">
-              EZ Scheduler is designed for managers who juggle multiple
-              responsibilities and need a reliable tool to manage their
-              workforce efficiently. Whether you're overseeing a small team or a
-              large department, our software adapts to your needs, helping you
-              save time and boost productivity.
+    <>
+      <FeaturesView>
+        <div className="top-info">
+          <div className="text">
+            <h2>Spend less time scheduling and more time leading</h2>
+            <p>
+              Making workforce management EZ for managers so they can do more.
             </p>
-            <p className="mobile-copy">
-              Whether you're overseeing a small team or a large department, our
-              software adapts to your needs, helping you save time and boost
-              productivity.
-            </p>
-          </div>
-          <div className="image-blur">
-            <img src={Sub} alt="" className="sub-footer-img" />
-            <img src={Phonebook} alt="" className="phonebook" />
-            <img src={Schedule} alt="" className="schedule" />
+
+            <button onClick={() => setShowFormModal(true)}>Get started</button>
           </div>
 
-          <img src={Blur} alt="" className="blur" />
+          <div className="image-holder">
+            <img src={Hand} alt="" className="hand" />
+            <img src={Purple} alt="" className="ez-purple" />
+          </div>
         </div>
-      </div>
-    </FeaturesView>
+        <div className="middle-info">
+          <div className="middle-container">
+            <h2>
+              Features Designed to Make Workforce Management{" "}
+              <span style={{ color: "#8930FD" }}>EZ</span>-ier
+            </h2>
+          </div>
+
+          <FeaturesTab />
+        </div>
+        <div className="bottom-info">
+          <div className="rectangle">
+            <div className="center">
+              <p className="desktop-copy">
+                EZ Scheduler is designed for managers who juggle multiple
+                responsibilities and need a reliable tool to manage their
+                workforce efficiently. Whether you're overseeing a small team or
+                a large department, our software adapts to your needs, helping
+                you save time and boost productivity.
+              </p>
+              <p className="mobile-copy">
+                Whether you're overseeing a small team or a large department,
+                our software adapts to your needs, helping you save time and
+                boost productivity.
+              </p>
+            </div>
+            <div className="image-blur">
+              <img src={Sub} alt="" className="sub-footer-img" />
+              <img src={Phonebook} alt="" className="phonebook" />
+              <img src={Schedule} alt="" className="schedule" />
+            </div>
+
+            <img src={Blur} alt="" className="blur" />
+          </div>
+        </div>
+      </FeaturesView>
+      <FormModal showModal={showFormModal} setShowModal={setShowFormModal} />
+    </>
   );
 };
 
