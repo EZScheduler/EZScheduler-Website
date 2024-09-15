@@ -115,23 +115,28 @@ const Carousel = () => {
   });
 
   return (
-    <CarouselContainer onMouseDown={handleMouseDown} onMouseUp={handleMouseUp}>
+    <CarouselContainer
+      onTouchStart={handleMouseDown}
+      onTouchEnd={handleMouseUp}
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
+    >
       <CarouselWrapper {...handlers} translate={-currentSlide * slideWidth}>
         <Slide>
           <div className="bottom">
             <div className="bottom-container">
               <div className="read-post">
                 <div className="post-title">
-                  <h2>Welcome to the</h2>
-                  <ReactSVG src={Icons.ezSide} />
-                  <span>side</span>
+                  <h2>
+                    Welcome to the{" "}
+                    <ReactSVG className="ez-icon" src={Icons.ezSide} /> side
+                  </h2>
                 </div>
                 <div className="post-title-2">
-                  <h2>Welcome to the</h2>
-                  <div className="icon">
-                    <ReactSVG src={Icons.ezSide} />
-                    <span>side</span>
-                  </div>
+                  <h2>
+                    Welcome to the{" "}
+                    <ReactSVG className="ez-icon" src={Icons.ezSide} /> side
+                  </h2>
                 </div>
 
                 <p className="description">
@@ -182,9 +187,10 @@ const Carousel = () => {
             <div className="bottom-container">
               <div className="read-post2">
                 <div className="post-title">
-                  <h2>Welcome to the</h2>
-                  <ReactSVG src={Icons.ezSide} />
-                  <span>side</span>
+                  <h2>
+                    Welcome to the{" "}
+                    <ReactSVG className="ez-icon" src={Icons.ezSide} /> side
+                  </h2>
                 </div>
 
                 <div className="details">
@@ -213,9 +219,10 @@ const Carousel = () => {
             <div className="bottom-container">
               <div className="read-post2">
                 <div className="post-title">
-                  <h2>Welcome to the</h2>
-                  <ReactSVG src={Icons.ezSide} />
-                  <span>side</span>
+                  <h2>
+                    Welcome to the{" "}
+                    <ReactSVG className="ez-icon" src={Icons.ezSide} /> side
+                  </h2>
                 </div>
 
                 <div className="details">
@@ -244,9 +251,10 @@ const Carousel = () => {
             <div className="bottom-container">
               <div className="read-post2">
                 <div className="post-title">
-                  <h2>Welcome to the</h2>
-                  <ReactSVG src={Icons.ezSide} />
-                  <span>side</span>
+                  <h2>
+                    Welcome to the{" "}
+                    <ReactSVG className="ez-icon" src={Icons.ezSide} /> side
+                  </h2>
                 </div>
 
                 <div className="details">
@@ -275,9 +283,10 @@ const Carousel = () => {
             <div className="bottom-container">
               <div className="read-post2">
                 <div className="post-title">
-                  <h2>Welcome to the</h2>
-                  <ReactSVG src={Icons.ezSide} />
-                  <span>side</span>
+                  <h2>
+                    Welcome to the{" "}
+                    <ReactSVG className="ez-icon" src={Icons.ezSide} /> side
+                  </h2>
                 </div>
 
                 <div className="details">
@@ -306,9 +315,10 @@ const Carousel = () => {
             <div className="bottom-container">
               <div className="read-post2">
                 <div className="post-title">
-                  <h2>Welcome to the</h2>
-                  <ReactSVG src={Icons.ezSide} />
-                  <span>side</span>
+                  <h2>
+                    Welcome to the{" "}
+                    <ReactSVG className="ez-icon" src={Icons.ezSide} /> side
+                  </h2>
                 </div>
 
                 <div className="details">
@@ -337,9 +347,10 @@ const Carousel = () => {
             <div className="bottom-container">
               <div className="read-post2">
                 <div className="post-title">
-                  <h2>Welcome to the</h2>
-                  <ReactSVG src={Icons.ezSide} />
-                  <span>side</span>
+                  <h2>
+                    Welcome to the{" "}
+                    <ReactSVG className="ez-icon" src={Icons.ezSide} /> side
+                  </h2>
                 </div>
 
                 <div className="details">
@@ -368,9 +379,10 @@ const Carousel = () => {
             <div className="bottom-container">
               <div className="read-post2">
                 <div className="post-title">
-                  <h2>Welcome to the</h2>
-                  <ReactSVG src={Icons.ezSide} />
-                  <span>side</span>
+                  <h2>
+                    Welcome to the{" "}
+                    <ReactSVG className="ez-icon" src={Icons.ezSide} /> side
+                  </h2>
                 </div>
 
                 <div className="details">
@@ -399,9 +411,10 @@ const Carousel = () => {
             <div className="bottom-container">
               <div className="read-post2">
                 <div className="post-title">
-                  <h2>Welcome to the</h2>
-                  <ReactSVG src={Icons.ezSide} />
-                  <span>side</span>
+                  <h2>
+                    Welcome to the{" "}
+                    <ReactSVG className="ez-icon" src={Icons.ezSide} /> side
+                  </h2>
                 </div>
 
                 <div className="details">
@@ -492,7 +505,7 @@ const Slide = styled.div`
     justify-content: center;
     position: relative;
     width: 100%;
-    height: 600px;
+    height: 90vh;
     border-radius: 40px;
     color: ${({ theme }) => theme.colors.white};
     background-color: ${({ theme }) => theme.colors.blue.blue_50};
@@ -562,7 +575,7 @@ const Slide = styled.div`
         display: flex;
         align-items: flex-start;
         justify-content: space-between;
-        @media ${device.mobile} {
+        @media ${device.largeTablet} {
           flex-direction: column;
           align-items: center;
           gap: 5rem;
@@ -574,7 +587,7 @@ const Slide = styled.div`
           gap: 2rem;
           width: 40%;
           text-align: center;
-          @media ${device.mobile} {
+          @media ${device.largeTablet} {
             width: 100%;
             img {
               width: 100%;
@@ -593,7 +606,7 @@ const Slide = styled.div`
         }
         .details-image {
           width: 50%;
-          @media ${device.mobile} {
+          @media ${device.largeTablet} {
             width: 100%;
           }
           img {
@@ -606,7 +619,7 @@ const Slide = styled.div`
         display: flex;
         align-items: center;
 
-        @media ${device.mobile} {
+        @media ${device.largeTablet} {
           display: none;
         }
 
@@ -617,10 +630,14 @@ const Slide = styled.div`
           line-height: 84px;
           color: ${({ theme }) => theme.colors.white};
 
-          @media ${device.mobile} {
+          @media ${device.largeTablet} {
             width: 100%;
             font-size: 35px;
             line-height: 39px;
+          }
+
+          .ez-icon {
+            display: inline-flex;
           }
         }
 
@@ -658,7 +675,7 @@ const Slide = styled.div`
       position: relative;
       width: 100%;
 
-      @media ${device.mobile} {
+      @media ${device.largeTablet} {
         width: 100%;
         align-items: center;
         text-align: center;
@@ -698,7 +715,7 @@ const Slide = styled.div`
           color: rgb(255, 255, 255);
         }
 
-        @media ${device.mobile} {
+        @media ${device.largeTablet} {
           display: none;
         }
 
@@ -709,10 +726,14 @@ const Slide = styled.div`
           line-height: 84px;
           color: ${({ theme }) => theme.colors.white};
 
-          @media ${device.mobile} {
+          @media ${device.largeTablet} {
             width: 100%;
             font-size: 35px;
             line-height: 39px;
+          }
+
+          .ez-icon {
+            display: inline-flex;
           }
         }
 
@@ -736,7 +757,7 @@ const Slide = styled.div`
           align-items: center;
           gap: 0.5rem;
         }
-        @media ${device.mobile} {
+        @media ${device.largeTablet} {
           display: flex;
           flex-direction: column;
         }
@@ -753,6 +774,17 @@ const Slide = styled.div`
             font-size: 35px;
             line-height: 39px;
             text-align: center;
+          }
+
+          .ez-icon {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            div {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
           }
         }
 
@@ -872,8 +904,9 @@ const DotsContainer = styled.div`
   padding: 2rem;
   z-index: 15;
 
-  @media ${device.mobile} {
-    display: none;
+  @media ${device.largeTablet} {
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .indicator {

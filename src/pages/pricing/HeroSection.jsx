@@ -184,7 +184,7 @@ const PlansView = styled.div`
     display: flex;
     gap: 4rem;
 
-    @media ${device.mobile} {
+    @media ${device.largeTablet} {
       flex-direction: column;
       gap: 1.5rem;
     }
@@ -209,7 +209,7 @@ const Card = styled.div`
   background-color: ${({ theme, isThird }) =>
     isThird ? theme.colors.blue.blue_60 : theme.colors.white};
 
-  @media ${device.mobile} {
+  @media ${device.largeTablet} {
     width: 100%;
   }
 

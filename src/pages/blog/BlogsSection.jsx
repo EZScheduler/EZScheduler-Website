@@ -7,6 +7,8 @@ import { NavBar2 } from "../../components/NavBar2";
 import { useNavigate } from "react-router-dom";
 import { AllArticlesData } from "./data/AllArticles";
 import { format } from "date-fns";
+import teaser from "@/assets/lottie/FInal11.mp4";
+import ReactPlayer from "react-player/lazy";
 
 export const BlogsSection = () => {
   const navigate = useNavigate();
@@ -46,7 +48,6 @@ export const BlogsSection = () => {
   const handleNavigation = (title) => {
     navigate(`/blog/${encodeURIComponent(title)}`);
   };
-
 
   return (
     <>
@@ -130,7 +131,7 @@ export const BlogsSection = () => {
               </div>
             ))}
           </div>
-          {AllArticlesData.length > 6 && (
+          {articles.length > 6 && (
             <div className="button-more">
               <button>Load more</button>
             </div>
@@ -143,7 +144,16 @@ export const BlogsSection = () => {
             <div className="label">featured videos</div>
             <div className="videos-items">
               <div className="videos-item">
-                <img src={BlogImg1} />
+                <ReactPlayer
+                  className="react-player"
+                  url={teaser}
+                  loop={true}
+                  controls
+                  muted={true}
+                  wrapper={"div"}
+                  width="100%"
+                  height="100%"
+                />
                 <div className="video-tags">
                   <div className="tags-label">1 min</div>
                   <div className="tags-date">May 02, 2024</div>
@@ -151,7 +161,16 @@ export const BlogsSection = () => {
                 <h2>Tres vubösm trens. Pode kanade för plaskap. </h2>
               </div>
               <div className="videos-item">
-                <img src={BlogImg1} />
+                <ReactPlayer
+                  className="react-player"
+                  url={teaser}
+                  loop={true}
+                  controls
+                  muted={true}
+                  wrapper={"div"}
+                  width="100%"
+                  height="100%"
+                />
                 <div className="video-tags">
                   <div className="tags-label">1 min</div>
                   <div className="tags-date">May 02, 2024</div>
@@ -181,6 +200,7 @@ const BlogsHeroView = styled.div`
 
   @media ${device.mobile} {
     border-radius: 20px;
+    padding-bottom: 4rem;
   }
 
   .hero-text {
@@ -298,7 +318,7 @@ const BlogsFeaturedView = styled.div`
   justify-content: space-between;
   width: 100%;
 
-  @media ${device.mobile} {
+  @media ${device.largeTablet} {
     margin: 0 1rem;
     margin-bottom: 3rem;
     flex-direction: column;
@@ -314,7 +334,7 @@ const BlogsFeaturedView = styled.div`
     width: 48%;
     color: #29234f;
     cursor: pointer;
-    @media ${device.mobile} {
+    @media ${device.largeTablet} {
       width: 100%;
     }
 
@@ -359,7 +379,7 @@ const BlogsFeaturedView = styled.div`
     align-items: center;
     gap: 16px;
     width: 48%;
-    @media ${device.mobile} {
+    @media ${device.largeTablet} {
       width: 100%;
     }
 
@@ -455,6 +475,10 @@ const BlogsAllView = styled.div`
       align-items: center;
     }
 
+    @media ${device.largeTablet} {
+      gap: 20px;
+    }
+
     .cell-container {
       width: 30%;
       display: flex;
@@ -462,6 +486,9 @@ const BlogsAllView = styled.div`
       gap: 14px;
       align-items: flex-start;
       cursor: pointer;
+      @media ${device.largeTablet} {
+        width: 45%;
+      }
       @media ${device.mobile} {
         width: 100%;
       }
@@ -530,7 +557,7 @@ const BlogsVideoView = styled.div`
           flex-direction: column;
           align-items: center;
           gap: 40px;
-        }        
+        }
 
         .videos-item {
           width: 47%;
@@ -542,9 +569,9 @@ const BlogsVideoView = styled.div`
           text-align: center;
           @media ${device.mobile} {
             width: 100%;
-          }         
+          }
 
-          img {
+          react-player {
             width: 100%;
             border-radius: 40px;
           }
@@ -586,9 +613,9 @@ const BlogsVideoView = styled.div`
       button {
         font-size: 14px;
         font-weight: 700;
-        color: #7B68EE;
+        color: #7b68ee;
         background: white;
-        border: 1px solid #7B68EE;
+        border: 1px solid #7b68ee;
         border-radius: 6px;
         padding: 1rem 2rem;
         cursor: pointer;

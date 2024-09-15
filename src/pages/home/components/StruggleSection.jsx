@@ -95,7 +95,7 @@ const StruggleView = styled.div`
       gap: 2rem;
       margin-bottom: 3rem;
 
-      @media ${device.mobile} {
+      @media ${device.largeTablet} {
         width: 100%;
         margin-top: 1rem;
         flex-direction: column;
@@ -112,7 +112,7 @@ const StruggleView = styled.div`
         color: ${({ theme }) => theme.colors.white};
         background-color: ${({ theme }) => theme.colors.blue.blue_40};
 
-        @media ${device.mobile} {
+        @media ${device.largeTablet} {
           width: 100%;
           /* padding: 2rem 1rem; */
           /* gap: 9rem; */
@@ -125,7 +125,7 @@ const StruggleView = styled.div`
           line-height: 28px;
           padding: 0 2rem;
 
-          @media ${device.mobile} {
+          @media ${device.largeTablet} {
             width: 100%;
             font-size: 14px;
             line-height: 22px;
@@ -158,7 +158,7 @@ const StruggleView = styled.div`
         color: ${({ theme }) => theme.colors.blue.blue_40};
         background: linear-gradient(to right, #aec6f3, #bcd0f5);
 
-        @media ${device.mobile} {
+        @media ${device.largeTablet} {
           /* gap: 9rem; */
           width: 100%;
           /* padding: 2rem 1rem; */

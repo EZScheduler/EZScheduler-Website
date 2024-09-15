@@ -167,7 +167,7 @@ const TabView = styled.div`
   align-items: center;
   gap: 1rem;
 
-  @media ${device.tablet} {
+  @media ${device.largeTablet} {
     width: 100%;
     flex-direction: column;
     gap: 0.1rem;
@@ -176,7 +176,7 @@ const TabView = styled.div`
   .list-mobile {
     display: none;
 
-    @media ${device.tablet} {
+    @media ${device.largeTablet} {
       display: flex;
       width: 100%;
       height: 70px;
@@ -213,7 +213,7 @@ const TabView = styled.div`
     flex-direction: column;
     gap: 0;
     width: 35%;
-    @media ${device.tablet} {
+    @media ${device.largeTablet} {
       display: none;
     }
     .list-item {
@@ -232,7 +232,7 @@ const TabView = styled.div`
         font-size: 30px;
       }
 
-      @media ${device.tablet} {
+      @media ${device.largeTablet} {
         display: none;
       }
     }
@@ -255,7 +255,7 @@ const TabView = styled.div`
     justify-content: center;
     align-items: center;
     background: #d9d9d9;
-    @media ${device.tablet} {
+    @media ${device.largeTablet} {
       width: 100%;
     }
   }
@@ -265,7 +265,7 @@ const TabView = styled.div`
     align-items: center;
     justify-content: center;
     width: 40%;
-    @media ${device.tablet} {
+    @media ${device.largeTablet} {
       width: 100%;
       justify-content: flex-start;
     }
@@ -275,7 +275,7 @@ const TabView = styled.div`
       align-items: flex-start;
       gap: 30px;
       padding-left: 30px;
-      @media ${device.tablet} {
+      @media ${device.largeTablet} {
         padding-left: 0px;
         padding: 4rem 0;
       }
@@ -288,7 +288,7 @@ const TabView = styled.div`
         h3 {
           font-size: 22px;
           font-weight: 400;
-          @media ${device.tablet} {
+          @media ${device.largeTablet} {
             font-size: 20px;
           }
         }

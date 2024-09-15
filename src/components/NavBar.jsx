@@ -84,7 +84,7 @@ const NavBarView = styled.div`
   .routes {
     /* width: 65%; */
 
-    @media ${device.mobile} {
+    @media ${device.largeTablet} {
       display: none;
     }
 
@@ -140,7 +140,7 @@ const NavBarView = styled.div`
       } */
     }
 
-    @media ${device.mobile} {
+    @media ${device.largeTablet} {
       display: none;
     }
   }
@@ -148,7 +148,7 @@ const NavBarView = styled.div`
   .menu {
     display: none;
 
-    @media ${device.mobile} {
+    @media ${device.largeTablet} {
       display: block;
     }
 
