@@ -16,7 +16,7 @@ export const NavBar2 = () => {
     <>
       <NavBarView>
         <MobileNavbar openNav={openNav} setOpenNav={setOpenNav} />
-        <Link to="/">
+        <Link className="logo-link" to="/">
           <Logo2 />
         </Link>
         <div className="routes">
@@ -75,10 +75,15 @@ const NavBarView = styled.div`
     padding: 0.5rem 0;
   }
 
+  .logo-link {
+    @media ${device.mobile} {
+      width: 40%;
+    }
+  }
   .routes {
     /* width: 65%; */
 
-    @media ${device.mobile} {
+    @media ${device.largeTablet} {
       display: none;
     }
 
@@ -134,7 +139,7 @@ const NavBarView = styled.div`
       } */
     }
 
-    @media ${device.mobile} {
+    @media ${device.largeTablet} {
       display: none;
     }
   }
@@ -142,7 +147,7 @@ const NavBarView = styled.div`
   .menu {
     display: none;
 
-    @media ${device.mobile} {
+    @media ${device.largeTablet} {
       display: block;
     }
 

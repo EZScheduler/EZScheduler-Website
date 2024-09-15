@@ -24,6 +24,7 @@ const HomeView = styled.div`
   margin-left: 20px;
   margin-right: 20px;
 
+
   @media ${device.mobile} {
     margin-left: 10px;
     margin-right: 10px;

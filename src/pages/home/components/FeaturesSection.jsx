@@ -105,7 +105,7 @@ const FeaturesView = styled.div`
         line-height: 84px;
         color: ${({ theme }) => theme.colors.blue.blue_30};
 
-        @media ${device.mobile} {
+        @media ${device.largeTablet} {
           width: 100%;
           font-size: 35px;
           line-height: 39px;
@@ -151,7 +151,7 @@ const FeaturesView = styled.div`
         width: 841px;
         height: 518px;
 
-        @media ${device.mobile} {
+        @media ${device.largeTablet} {
           width: 270px;
           height: 166px;
         }
@@ -163,7 +163,7 @@ const FeaturesView = styled.div`
         height: 701px;
         position: relative;
 
-        @media ${device.mobile} {
+        @media ${device.largeTablet} {
           width: 100%;
           height: 209px;
         }
@@ -176,10 +176,13 @@ const FeaturesView = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    @media ${device.largeTablet} {
+      align-items: flex-start;
+    }
     .middle-container {
       width: 80%;
       padding: 6rem 0;
-      @media ${device.tablet} {
+      @media ${device.largeTablet} {
         width: 100%;
       }
 
@@ -190,7 +193,7 @@ const FeaturesView = styled.div`
         line-height: 84px;
         color: ${({ theme }) => theme.colors.blue.blue_30};
 
-        @media ${device.mobile} {
+        @media ${device.largeTablet} {
           width: 100%;
           font-size: 35px;
           line-height: 39px;

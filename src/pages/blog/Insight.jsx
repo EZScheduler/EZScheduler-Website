@@ -97,13 +97,14 @@ const Insight = () => {
             <p>{article.fields.articleDescription}</p>
           </div>
         </div>
-        <div style={{
-          backgroundImage : `url(${`${article.fields.articleImage}`})`,
-          backgroundSize : 'cover',
-          backgroundPosition : 'center center'
-          
-        }} className="hero-img"></div>
-
+        <div
+          style={{
+            backgroundImage: `url(${`${article.fields.articleImage}`})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center center",
+          }}
+          className="hero-img"
+        ></div>
       </BlogsHeroView>
 
       <ArticleDetailsView>
@@ -250,7 +251,6 @@ const BlogsHeroView = styled.div`
     max-width: 100%;
     border-radius: 60px;
     margin: 4rem 0;
-    
   }
   .hero-text {
     padding: 0.2rem 2rem 0rem 2rem;
@@ -330,7 +330,7 @@ const ArticleDetailsView = styled.div`
   justify-content: center;
   gap: 80px;
 
-  @media ${device.mobile} {
+  @media ${device.largeTablet} {
     flex-direction: column;
     align-items: center;
   }
@@ -343,7 +343,7 @@ const ShareView = styled.div`
   gap: 20px;
   align-items: flex-start;
 
-  @media ${device.mobile} {
+  @media ${device.largeTablet} {
     width: 80%;
   }
   .share-container {
@@ -431,7 +431,7 @@ const ArticleView = styled.div`
   align-items: flex-start;
   padding: 4rem 0;
   padding-top: 0rem;
-  @media ${device.mobile} {
+  @media ${device.largeTablet} {
     width: 80%;
   }
 
@@ -509,6 +509,11 @@ const ExtraView = styled.div`
         display: flex;
         width: 100%;
         justify-content: space-between;
+        @media ${device.tablet} {
+          flex-direction: column;
+          justify-content: unset;
+          gap: 20px;
+        }
 
         .cell-container {
           width: 30%;
@@ -518,6 +523,9 @@ const ExtraView = styled.div`
           align-items: flex-start;
           padding: 4rem 0;
           cursor: pointer;
+          @media ${device.tablet} {
+            width: 100%;
+          }
 
           img {
             width: 100%;

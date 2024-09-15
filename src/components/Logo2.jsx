@@ -15,6 +15,7 @@ const LogoView = styled.div`
   height: 25px;
 
   @media ${device.mobile} {
+    width: 100%;
     height: 19px;
   }
 

@@ -360,7 +360,7 @@ const FormView = styled.div`
   }
 
   .form {
-    @media ${device.mobile} {
+    @media ${device.largeTablet} {
       width: 100%;
       padding: 0 1rem;
     }
@@ -661,7 +661,7 @@ const Extras = styled.div`
   gap: 2rem;
   margin: 0 -9rem;
 
-  @media ${device.mobile} {
+  @media ${device.largeTablet} {
     margin: 0;
     width: 100%;
     flex-direction: column;
@@ -678,7 +678,7 @@ const Extras = styled.div`
     background-color: ${({ theme }) => theme.colors?.white};
     border: 1px solid ${({ theme }) => theme.colors?.grey.grey_20};
 
-    @media ${device.mobile} {
+    @media ${device.largeTablet} {
       width: 100%;
       align-items: center;
     }
@@ -742,7 +742,7 @@ const Extras = styled.div`
     background-color: ${({ theme }) => theme.colors?.white};
     border: 1px solid ${({ theme }) => theme.colors?.grey.grey_20};
 
-    @media ${device.mobile} {
+    @media ${device.largeTablet} {
       width: 100%;
       align-items: center;
     }

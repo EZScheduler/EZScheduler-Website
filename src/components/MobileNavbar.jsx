@@ -68,7 +68,7 @@ const MobileNav = styled(motion.div)`
   width: 100vw;
   height: 100vh;
   flex-direction: column;
-  z-index: 20;
+  z-index: 2000;
   position: fixed;
   top: 0px;
   left: 0;
@@ -78,7 +78,7 @@ const MobileNav = styled(motion.div)`
   padding-bottom: 50px;
   background-color: ${({ theme }) => theme.colors.white};
 
-  @media ${device.mobile} {
+  @media ${device.largeTablet} {
     display: block;
   }
 `;
