@@ -28,7 +28,7 @@ export const StruggleSection = () => {
               dashboard.
             </p>
 
-            <img src={Card1} alt="" className="img1" />
+            <img src={Card1} alt="background image" className="img1" />
           </div>
           <div className="card2">
             <p>
@@ -39,7 +39,7 @@ export const StruggleSection = () => {
               to optimize your team's performance or celebrate successes.
             </p>
 
-            <img src={Card2} alt="" className="img2" />
+            <img src={Card2} alt="background image" className="img2" />
           </div>
         </div>
       </div>

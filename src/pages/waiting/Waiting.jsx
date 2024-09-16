@@ -55,9 +55,9 @@ export const Waiting = () => {
         
 
         {/* <div className='background'>
-          <img src="https://res.cloudinary.com/doi40g1ct/image/upload/v1720727384/EZ-Scheduler/EZwebGIF-_u408or.gif" alt="" />
-          <img src="https://res.cloudinary.com/doi40g1ct/image/upload/v1720727384/EZ-Scheduler/EZwebGIF-_u408or.gif" alt="" />
-          <img src="https://res.cloudinary.com/doi40g1ct/image/upload/v1720727384/EZ-Scheduler/EZwebGIF-_u408or.gif" alt="" />
+          <img src="https://res.cloudinary.com/doi40g1ct/image/upload/v1720727384/EZ-Scheduler/EZwebGIF-_u408or.gif" alt="background image" />
+          <img src="https://res.cloudinary.com/doi40g1ct/image/upload/v1720727384/EZ-Scheduler/EZwebGIF-_u408or.gif" alt="background image" />
+          <img src="https://res.cloudinary.com/doi40g1ct/image/upload/v1720727384/EZ-Scheduler/EZwebGIF-_u408or.gif" alt="background image" />
         </div> */}
 
         <div className='socials'>

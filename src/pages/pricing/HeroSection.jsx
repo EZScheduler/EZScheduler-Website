@@ -61,7 +61,7 @@ export const HeroSection = () => {
                       return (
                         <div key={index} className="feature">
                           <ReactSVG src={Icons.check} />
-                          {/* <img src={Icons.check} alt="" /> */}
+                          {/* <img src={Icons.check} alt="background image" /> */}
                           <p className="feature-text">{feature.name}</p>
                         </div>
                       );

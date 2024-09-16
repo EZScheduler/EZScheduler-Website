@@ -3,8 +3,8 @@ import styled from "styled-components";
 import carets from "../../../assets/icons/carets.svg";
 import { ReactSVG } from "react-svg";
 import { Icons } from "../../../assets/icons/icons";
-import Light from "../../../assets/images/light.webp";
-import Light2 from "../../../assets/images/mobile-ellipse.webp";
+import light from "../../../assets/images/light.webp";
+import light2 from "../../../assets/images/mobile-ellipse.webp";
 import { device } from "../../../constants/breakpoints";
 import slide1 from "../../../assets/images/slide1.png";
 import slidescreen1 from "../../../assets/images/slidescreen1.png";
@@ -172,11 +172,22 @@ const Carousel = () => {
               </div>
             </div>
 
-            <img src={Light} alt="" className="light" draggable="false" />
-            <img src={Light2} alt="" className="light2" draggable="false" />
+            <img
+              src={light}
+              width={"100%"}
+              className="light"
+              draggable="false"
+            />
+            <img
+              src={light2}
+              width={"100%"}
+              className="light2"
+              draggable="false"
+            />
             <img
               src={Laptop2}
-              alt=""
+              width={"60%"}
+              alt="laptop image"
               className="laptop-img"
               draggable="false"
             />
@@ -209,8 +220,8 @@ const Carousel = () => {
               </div>
             </div>
 
-            <img src={Light} alt="" className="light" />
-            <img src={Light2} alt="" className="light2" />
+            <img src={light} width={"100%"} alt="background image" className="light" />
+            <img src={light2} width={"100%"} alt="background image" className="light2" />
           </div>
         </Slide>
 
@@ -241,8 +252,8 @@ const Carousel = () => {
               </div>
             </div>
 
-            <img src={Light} alt="" className="light" />
-            <img src={Light2} alt="" className="light2" />
+            <img src={light} width={"100%"} alt="background image" className="light" />
+            <img src={light2} width={"100%"} alt="background image" className="light2" />
           </div>
         </Slide>
 
@@ -273,8 +284,8 @@ const Carousel = () => {
               </div>
             </div>
 
-            <img src={Light} alt="" className="light" />
-            <img src={Light2} alt="" className="light2" />
+            <img src={light} width={"100%"} alt="background image" className="light" />
+            <img src={light2} width={"100%"} alt="background image" className="light2" />
           </div>
         </Slide>
 
@@ -305,8 +316,8 @@ const Carousel = () => {
               </div>
             </div>
 
-            <img src={Light} alt="" className="light" />
-            <img src={Light2} alt="" className="light2" />
+            <img src={light} width={"100%"} alt="background image" className="light" />
+            <img src={light2} width={"100%"} alt="background image" className="light2" />
           </div>
         </Slide>
 
@@ -337,8 +348,8 @@ const Carousel = () => {
               </div>
             </div>
 
-            <img src={Light} alt="" className="light" />
-            <img src={Light2} alt="" className="light2" />
+            <img src={light} width={"100%"} alt="background image" className="light" />
+            <img src={light2} width={"100%"} alt="background image" className="light2" />
           </div>
         </Slide>
 
@@ -369,8 +380,8 @@ const Carousel = () => {
               </div>
             </div>
 
-            <img src={Light} alt="" className="light" />
-            <img src={Light2} alt="" className="light2" />
+            <img src={light} width={"100%"} alt="background image" className="light" />
+            <img src={light2} width={"100%"} alt="background image" className="light2" />
           </div>
         </Slide>
 
@@ -401,8 +412,8 @@ const Carousel = () => {
               </div>
             </div>
 
-            <img src={Light} alt="" className="light" />
-            <img src={Light2} alt="" className="light2" />
+            <img src={light} width={"100%"} alt="background image" className="light" />
+            <img src={light2} width={"100%"} alt="background image" className="light2" />
           </div>
         </Slide>
 
@@ -433,8 +444,8 @@ const Carousel = () => {
               </div>
             </div>
 
-            <img src={Light} alt="" className="light" />
-            <img src={Light2} alt="" className="light2" />
+            <img src={light} width={"100%"} alt="background image" className="light" />
+            <img src={light2} width={"100%"} alt="background image" className="light2" />
           </div>
         </Slide>
       </CarouselWrapper>
@@ -536,13 +547,13 @@ const Slide = styled.div`
     }
 
     .laptop-img {
-      width: 790px;
       position: absolute;
       bottom: 0;
       right: 0;
-
       @media ${device.mobile} {
-        width: 330px;
+        left: 50%;
+        transform: translateX(-50%);
+        right: unset;
       }
     }
   }

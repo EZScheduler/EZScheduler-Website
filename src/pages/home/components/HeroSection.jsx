@@ -1,8 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { NavBar } from "@/components/NavBar";
-// import Background from "@/assets/images/home-bg.webp";
-// import HeroBg from "@/assets/images/hero-bg.webp";
+import Background from "@/assets/images/home-bg.webp";
+import HeroBg from "@/assets/images/hero-bg.webp";
 import { ReactSVG } from "react-svg";
 import { Icons } from "@/assets/icons/icons";
 import { device } from "@/constants/breakpoints";
@@ -15,6 +15,7 @@ export const HeroSection = () => {
   return (
     <>
       <HeroView>
+        <img src={Background} className="hero-img" width={'100%'} height={'100%'} />
         <div className="hero-text">
           <NavBar />
           <div className="info">
@@ -59,10 +60,14 @@ export const HeroSection = () => {
 const HeroView = styled.div`
   margin-bottom: 19rem;
   border-radius: 40px;
-  background-image: url("/images/home-bg.webp");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+  position: relative;
+
+  .hero-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
 
   @media ${device.mobile} {
     width: 100%;
@@ -77,6 +82,7 @@ const HeroView = styled.div`
     justify-content: center;
     flex-direction: column;
     position: relative;
+    z-index: 5;
 
     @media ${device.mobile} {
       width: 100%;

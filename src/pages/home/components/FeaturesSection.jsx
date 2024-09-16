@@ -26,8 +26,8 @@ export const FeaturesSection = () => {
           </div>
 
           <div className="image-holder">
-            <img src={Hand} alt="" className="hand" />
-            <img src={Purple} alt="" className="ez-purple" />
+            <img src={Hand} width={"100%"} alt="background image" className="hand" />
+            <img src={Purple} width={"80%"} alt="background image" className="ez-purple" />
           </div>
         </div>
         <div className="middle-info">
@@ -57,12 +57,12 @@ export const FeaturesSection = () => {
               </p>
             </div>
             <div className="image-blur">
-              <img src={Sub} alt="" className="sub-footer-img" />
-              <img src={Phonebook} alt="" className="phonebook" />
-              <img src={Schedule} alt="" className="schedule" />
+              <img src={Sub} width={"100%"} className="sub-footer-img" />
+              <img src={Phonebook} width={250} alt="background image" className="phonebook" />
+              <img src={Schedule} width={210} alt="background image" className="schedule" />
             </div>
 
-            <img src={Blur} alt="" className="blur" />
+            <img src={Blur} width={'100%'} alt="background image" className="blur" />
           </div>
         </div>
       </FeaturesView>
@@ -75,8 +75,11 @@ const FeaturesView = styled.div`
   padding: 5rem 0;
   margin-top: 2rem;
   border-radius: 40px 40px 0 0;
-  background-image: url("/images/feature-bg.webp");
-  background-size: cover;
+  background: linear-gradient(
+    180deg,
+    rgba(137, 48, 253, 0.12) 0%,
+    rgba(71, 205, 208, 0) 52.39%
+  );
 
   @media ${device.mobile} {
     padding: 2rem;
@@ -148,25 +151,11 @@ const FeaturesView = styled.div`
         left: 0;
         right: 0;
         bottom: 0;
-        width: 841px;
-        height: 518px;
-
-        @media ${device.largeTablet} {
-          width: 270px;
-          height: 166px;
-        }
       }
 
       .hand {
-        width: 1102px;
         z-index: 100;
-        height: 701px;
         position: relative;
-
-        @media ${device.largeTablet} {
-          width: 100%;
-          height: 209px;
-        }
       }
     }
   }
@@ -216,8 +205,13 @@ const FeaturesView = styled.div`
     .rectangle {
       border-radius: 40px 40px 0 0;
       padding: 5rem 0;
-      background-image: url("/images/bg-blur.webp");
-      background-size: cover;
+      background: linear-gradient(
+        158.35deg,
+        rgba(137, 48, 253, 0.12) 15.49%,
+        rgba(82, 29, 151, 0.12) 65.38%
+      );
+      border: 1px solid #7b68ee;
+      border-bottom: 0;
       position: relative;
 
       @media ${device.mobile} {
@@ -269,39 +263,24 @@ const FeaturesView = styled.div`
         }
 
         .sub-footer-img {
-          /* margin: 0 3rem; */
-          width: 100%;
-          /* width: 1175.43px; */
           z-index: 10;
           position: relative;
-
-          @media ${device.mobile} {
-            width: 300px;
-          }
         }
 
         .phonebook {
-          width: 250px;
           position: absolute;
           top: 2%;
           left: 0%;
-
           @media ${device.mobile} {
-            width: 300px;
             display: none;
           }
         }
 
         .schedule {
-          width: 210px;
           position: absolute;
           top: 0%;
           right: 0%;
-          /* bottom: 0; */
-
           @media ${device.mobile} {
-            width: 106.91px;
-            bottom: 50%;
             display: none;
           }
         }
@@ -309,7 +288,6 @@ const FeaturesView = styled.div`
 
       .blur {
         z-index: 10;
-        width: 100%;
         height: 250px;
         position: absolute;
         bottom: 0;
