@@ -102,9 +102,6 @@ export const FormModal = ({ showModal, setShowModal }) => {
                     <h3>Stay in the loop</h3>
                     <p>Be first in line for special offers & updates</p>
                   </div>
-                  {/* <div className="close" onClick={() => setShowModal(!showModal)}>
-                    X
-                  </div> */}
                 </HeaderView>
                 <Content>
                   <form onSubmit={handleSubmit(onSubmit)}>
@@ -433,9 +430,6 @@ const InputView = styled.div`
     border-radius: 5px;
     border: none;
     outline: none;
-    /* -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none; */
     padding: 0 20px;
     font-size: 1rem;
     font-weight: 400;
