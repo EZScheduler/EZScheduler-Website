@@ -7,6 +7,7 @@ import { Icons } from "../../../assets/icons/icons";
 import { device } from "../../../constants/breakpoints";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { Oval } from "react-loader-spinner";
 
 export const ContactSection = () => {
   const [loading, setLoading] = useState(false);
@@ -57,7 +58,7 @@ export const ContactSection = () => {
       setLoading(false);
       toast.success("Form submitted successfully!");
     } catch (error) {
-      toast.error('Please fill in the neceesarry field')
+      toast.error("Please fill in the neceesarry field");
     }
   };
 
@@ -70,7 +71,8 @@ export const ContactSection = () => {
             <div className="text">
               <h2>Get in touch with us!</h2>
               <p className="ask">
-                Got any question? Please fill out the form, and we’ll get back to you within 24 hours.
+                Got any question? Please fill out the form, and we’ll get back
+                to you within 24 hours.
               </p>
               <div className="info">
                 <p className="details">
@@ -156,16 +158,24 @@ export const ContactSection = () => {
 
           <div className="cta">
             <button
-              // type="submit"
               className="approve"
               onClick={() => {
                 handleSubmit();
               }}
             >
-              {loading ? 'Submitting...' : 'Send your message'}
+              {loading ? (
+                <Oval
+                  height={20}
+                  width={20}
+                  color="#c2bdbd"
+                  secondaryColor="#ddd"
+                />
+              ) : (
+                "Send your message"
+              )}
             </button>
 
-            <div className='line-icon'>
+            <div className="line-icon">
               <ReactSVG src={Icons.line} />
             </div>
           </div>
@@ -179,7 +189,9 @@ export const ContactSection = () => {
                 <h2>Prefer email?</h2>
                 <div className="info">
                   <p>You can also reach us at</p>
-                  <a href="mailto:contact@ezscheduler.xyz" className='link'>contact@ezscheduler.xyz</a>
+                  <a href="mailto:contact@ezscheduler.xyz" className="link">
+                    contact@ezscheduler.xyz
+                  </a>
                 </div>
               </div>
             </div>
@@ -199,22 +211,22 @@ export const ContactSection = () => {
                       <ReactSVG src={Icons.linkedInPurple} />
                     </a>
                     <a href="https://x.com/ezschedulerxyz" target="_blank">
-                      <ReactSVG  src={Icons.twitterPurple} />
+                      <ReactSVG src={Icons.twitterPurple} />
                     </a>
                     <a href="#">
-                      <ReactSVG  src={Icons.facebookPurple} />
+                      <ReactSVG src={Icons.facebookPurple} />
                     </a>
                     <a
                       href="https://www.instagram.com/ezschedulerxyz/"
                       target="_blank"
                     >
-                      <ReactSVG  src={Icons.instagramPurple} />
+                      <ReactSVG src={Icons.instagramPurple} />
                     </a>
                     <a
                       href="https://www.youtube.com/@EZScheduler"
                       target="_blank"
                     >
-                      <ReactSVG  src={Icons.youtubePurple} />
+                      <ReactSVG src={Icons.youtubePurple} />
                     </a>
                   </div>
                 </div>
@@ -419,9 +431,9 @@ const FormView = styled.div`
         @media ${device.mobile} {
           margin-top: 3rem;
 
-         svg {
+          svg {
             width: 100%;
-         }
+          }
         }
       }
     }
