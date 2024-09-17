@@ -191,13 +191,6 @@ const StruggleView = styled.div`
             /* position: static; */
             /* margin-bottom: -1.5rem; */
           }
-
-          /* @media ${device.mobile} {
-            width: 100%;
-            font-size: 14px;
-            line-height: 22px;
-            margin-top: 4rem;
-          } */
         }
       }
     }
