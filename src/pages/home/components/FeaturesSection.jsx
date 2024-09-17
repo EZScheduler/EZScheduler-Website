@@ -288,7 +288,7 @@ const FeaturesView = styled.div`
 
       .blur {
         z-index: 10;
-        height: 250px;
+        height: 250px; 
         position: absolute;
         bottom: 0;
         right: 0;
