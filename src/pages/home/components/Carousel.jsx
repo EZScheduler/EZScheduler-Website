@@ -25,7 +25,6 @@ import slidescreen8 from "../../../assets/images/slidescreen8.png";
 import axios from "axios";
 import toast from "react-hot-toast";
 import fileDownload from "js-file-download";
-// import { PDFViewer } from "./PDFViewer";
 import { useNavigate } from "react-router-dom";
 import Laptop2 from "../../../assets/images/laptop2.webp";
 import { useSwipeable } from "react-swipeable";
