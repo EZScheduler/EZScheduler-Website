@@ -10,6 +10,7 @@ import { Functionality } from "./Functionality";
 import { Demo } from "./Demo";
 import { tabs, socials } from "../constants/data";
 import { FormModal } from "./FormModal";
+import Footerbg from "../assets/images/footer-bg-2.png";
 
 export const Footer = () => {
   const [activeTab, setActiveTab] = useState(1);
@@ -34,6 +35,7 @@ export const Footer = () => {
   return (
     <>
       <FooterView>
+        <img src={Footerbg} width={'100%'} height={'100%'} className='footer-bg' alt="background image" />
         <div className="faq">
           <div className="left">
             <p className="bold">Some of the things you may want to know</p>
@@ -91,13 +93,8 @@ export const Footer = () => {
         </div>
 
         <div className="extras">
-          {/* <img src={Ellipse} alt='' className='footer-img' /> */}
-          {/* <div className="radius"></div> */}
           <div className="info">
-            {/* <p>What are you waiting for?</p> */}
-
             <h2>Your key to a happier, more productive workforce.</h2>
-
             <button className="btn" onClick={() => setShowFormModal(true)}>
               Join the EZ side
             </button>
@@ -128,9 +125,8 @@ export const Footer = () => {
             </ul>
           </div>
         </div>
-        {/* <div className="radius" /> */}
-        <img src={Ellipse} alt="" className="footer-img" />
-        <img src={Footer2} alt="" className="footer-img2" />
+        <img src={Ellipse} alt="background image" width={"100%"} className="footer-img" />
+        <img src={Footer2} alt="background image" width={"70%"} className="footer-img2" />
       </FooterView>
       <FormModal showModal={showFormModal} setShowModal={setShowFormModal} />
     </>
@@ -144,10 +140,14 @@ const FooterView = styled.div`
   position: relative;
   margin-bottom: 20px;
   border-radius: 40px;
-  background-image: url("/images/footer-bg-2.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+  position: relative;
+
+  .footer-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+  }
 
   @media ${device.mobile} {
     /* width: 100%; */
@@ -158,24 +158,20 @@ const FooterView = styled.div`
   }
 
   .footer-img {
-    width: 100%;
     height: 45%;
     margin: rem 0;
     position: absolute;
     border-radius: 0 0 40px 40px;
     left: 0;
-    z-index: 0;
+    z-index: 1;
     bottom: 0;
 
     @media ${device.mobile} {
-      width: 370px;
       height: 70%;
     }
   }
 
   .footer-img2 {
-    width: 800px;
-    min-height: 20%;
     position: absolute;
     left: -2rem;
     bottom: -8rem;
