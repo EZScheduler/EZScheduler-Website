@@ -72,7 +72,7 @@ const Carousel = () => {
     clearInterval(autoSlideInterval.current); // Clear any previous interval
     autoSlideInterval.current = setInterval(() => {
       handleNext();
-    }, 4000); // Change slide every 4 seconds
+    }, 400000); // Change slide every 4 seconds
   };
 
   const handleMouseDown = () => {
@@ -128,13 +128,13 @@ const Carousel = () => {
                 <div className="post-title">
                   <h2>
                     Welcome to the{" "}
-                    <ReactSVG className="ez-icon" src={Icons.ezSide} /> side
+                    <img src={Icons.ezSide} width={60} className="logo" /> side
                   </h2>
                 </div>
                 <div className="post-title-2">
                   <h2>
                     Welcome to the{" "}
-                    <ReactSVG className="ez-icon" src={Icons.ezSide} /> side
+                    <img src={Icons.ezSide} width={60} className="logo" /> side
                   </h2>
                 </div>
 
@@ -199,7 +199,7 @@ const Carousel = () => {
                 <div className="post-title">
                   <h2>
                     Welcome to the{" "}
-                    <ReactSVG className="ez-icon" src={Icons.ezSide} /> side
+                    <img src={Icons.ezSide} width={60} className="logo" /> side
                   </h2>
                 </div>
 
@@ -219,8 +219,18 @@ const Carousel = () => {
               </div>
             </div>
 
-            <img src={light} width={"100%"} alt="background image" className="light" />
-            <img src={light2} width={"100%"} alt="background image" className="light2" />
+            <img
+              src={light}
+              width={"100%"}
+              alt="background image"
+              className="light"
+            />
+            <img
+              src={light2}
+              width={"100%"}
+              alt="background image"
+              className="light2"
+            />
           </div>
         </Slide>
 
@@ -231,7 +241,7 @@ const Carousel = () => {
                 <div className="post-title">
                   <h2>
                     Welcome to the{" "}
-                    <ReactSVG className="ez-icon" src={Icons.ezSide} /> side
+                    <img src={Icons.ezSide} width={60} className="logo" /> side
                   </h2>
                 </div>
 
@@ -251,8 +261,18 @@ const Carousel = () => {
               </div>
             </div>
 
-            <img src={light} width={"100%"} alt="background image" className="light" />
-            <img src={light2} width={"100%"} alt="background image" className="light2" />
+            <img
+              src={light}
+              width={"100%"}
+              alt="background image"
+              className="light"
+            />
+            <img
+              src={light2}
+              width={"100%"}
+              alt="background image"
+              className="light2"
+            />
           </div>
         </Slide>
 
@@ -263,7 +283,7 @@ const Carousel = () => {
                 <div className="post-title">
                   <h2>
                     Welcome to the{" "}
-                    <ReactSVG className="ez-icon" src={Icons.ezSide} /> side
+                    <img src={Icons.ezSide} width={60} className="logo" /> side
                   </h2>
                 </div>
 
@@ -283,8 +303,18 @@ const Carousel = () => {
               </div>
             </div>
 
-            <img src={light} width={"100%"} alt="background image" className="light" />
-            <img src={light2} width={"100%"} alt="background image" className="light2" />
+            <img
+              src={light}
+              width={"100%"}
+              alt="background image"
+              className="light"
+            />
+            <img
+              src={light2}
+              width={"100%"}
+              alt="background image"
+              className="light2"
+            />
           </div>
         </Slide>
 
@@ -295,7 +325,7 @@ const Carousel = () => {
                 <div className="post-title">
                   <h2>
                     Welcome to the{" "}
-                    <ReactSVG className="ez-icon" src={Icons.ezSide} /> side
+                    <img src={Icons.ezSide} width={60} className="logo" /> side
                   </h2>
                 </div>
 
@@ -315,8 +345,18 @@ const Carousel = () => {
               </div>
             </div>
 
-            <img src={light} width={"100%"} alt="background image" className="light" />
-            <img src={light2} width={"100%"} alt="background image" className="light2" />
+            <img
+              src={light}
+              width={"100%"}
+              alt="background image"
+              className="light"
+            />
+            <img
+              src={light2}
+              width={"100%"}
+              alt="background image"
+              className="light2"
+            />
           </div>
         </Slide>
 
@@ -327,7 +367,7 @@ const Carousel = () => {
                 <div className="post-title">
                   <h2>
                     Welcome to the{" "}
-                    <ReactSVG className="ez-icon" src={Icons.ezSide} /> side
+                    <img src={Icons.ezSide} width={60} className="logo" /> side
                   </h2>
                 </div>
 
@@ -347,8 +387,18 @@ const Carousel = () => {
               </div>
             </div>
 
-            <img src={light} width={"100%"} alt="background image" className="light" />
-            <img src={light2} width={"100%"} alt="background image" className="light2" />
+            <img
+              src={light}
+              width={"100%"}
+              alt="background image"
+              className="light"
+            />
+            <img
+              src={light2}
+              width={"100%"}
+              alt="background image"
+              className="light2"
+            />
           </div>
         </Slide>
 
@@ -359,7 +409,7 @@ const Carousel = () => {
                 <div className="post-title">
                   <h2>
                     Welcome to the{" "}
-                    <ReactSVG className="ez-icon" src={Icons.ezSide} /> side
+                    <img src={Icons.ezSide} width={60} className="logo" /> side
                   </h2>
                 </div>
 
@@ -379,8 +429,18 @@ const Carousel = () => {
               </div>
             </div>
 
-            <img src={light} width={"100%"} alt="background image" className="light" />
-            <img src={light2} width={"100%"} alt="background image" className="light2" />
+            <img
+              src={light}
+              width={"100%"}
+              alt="background image"
+              className="light"
+            />
+            <img
+              src={light2}
+              width={"100%"}
+              alt="background image"
+              className="light2"
+            />
           </div>
         </Slide>
 
@@ -391,7 +451,7 @@ const Carousel = () => {
                 <div className="post-title">
                   <h2>
                     Welcome to the{" "}
-                    <ReactSVG className="ez-icon" src={Icons.ezSide} /> side
+                    <img src={Icons.ezSide} width={60} className="logo" /> side
                   </h2>
                 </div>
 
@@ -411,8 +471,18 @@ const Carousel = () => {
               </div>
             </div>
 
-            <img src={light} width={"100%"} alt="background image" className="light" />
-            <img src={light2} width={"100%"} alt="background image" className="light2" />
+            <img
+              src={light}
+              width={"100%"}
+              alt="background image"
+              className="light"
+            />
+            <img
+              src={light2}
+              width={"100%"}
+              alt="background image"
+              className="light2"
+            />
           </div>
         </Slide>
 
@@ -423,7 +493,7 @@ const Carousel = () => {
                 <div className="post-title">
                   <h2>
                     Welcome to the{" "}
-                    <ReactSVG className="ez-icon" src={Icons.ezSide} /> side
+                    <img src={Icons.ezSide} width={60} className="logo" /> side
                   </h2>
                 </div>
 
@@ -443,8 +513,18 @@ const Carousel = () => {
               </div>
             </div>
 
-            <img src={light} width={"100%"} alt="background image" className="light" />
-            <img src={light2} width={"100%"} alt="background image" className="light2" />
+            <img
+              src={light}
+              width={"100%"}
+              alt="background image"
+              className="light"
+            />
+            <img
+              src={light2}
+              width={"100%"}
+              alt="background image"
+              className="light2"
+            />
           </div>
         </Slide>
       </CarouselWrapper>
@@ -649,6 +729,11 @@ const Slide = styled.div`
           .ez-icon {
             display: inline-flex;
           }
+
+          .logo {
+            position: relative;
+            top: 15px;
+          }
         }
 
         svg {
@@ -742,8 +827,9 @@ const Slide = styled.div`
             line-height: 39px;
           }
 
-          .ez-icon {
-            display: inline-flex;
+          .logo {
+            position: relative;
+            top: 15px;
           }
         }
 
@@ -786,14 +872,11 @@ const Slide = styled.div`
             text-align: center;
           }
 
-          .ez-icon {
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            div {
-              display: flex;
-              justify-content: center;
-              align-items: center;
+          .logo {
+            position: relative;
+            top: 15px;
+            @media ${device.largeTablet} {
+              max-width: 40px;
             }
           }
         }
