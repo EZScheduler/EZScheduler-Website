@@ -102,7 +102,7 @@ export const Cookie = () => {
                 may also set or amend your web browser controls to accept or
                 refuse cookies.
               </p>
-              <p style={{fontWeight: 600}}>
+              <p style={{ fontWeight: 600 }}>
                 The specific types of first- and third-party cookies served
                 through our Website and the purposes they perform are described
                 in the table below (please note that the specific cookies served
@@ -230,13 +230,16 @@ export const Cookie = () => {
             <h3>WHERE CAN I GET FURTHER INFORMATION?</h3>
             <div className="text">
               <p>
-                If you have any questions about our use of cookies or other technologies, please contact us at:
+                If you have any questions about our use of cookies or other
+                technologies, please contact us at:
                 <ul>
-                  <li className='remove'>EZ Scheduler (Reserve Corporation HQ)</li>
-                  <li className='remove'>55 South Clover Street</li>
-                  <li className='remove'>Poughkeepsie, NY 12601</li>
-                  <li className='remove'>United States</li>
-                  <li className='remove'>Phone: (845) 214-2717</li>
+                  <li className="remove">
+                    EZ Scheduler (Reserve Corporation HQ)
+                  </li>
+                  <li className="remove">55 South Clover Street</li>
+                  <li className="remove">Poughkeepsie, NY 12601</li>
+                  <li className="remove">United States</li>
+                  <li className="remove">Phone: (845) 214-2717</li>
                 </ul>
               </p>
             </div>
@@ -263,6 +266,7 @@ const PolicyView = styled.div`
     display: flex;
     margin-top: 4rem;
     padding: 0 1rem;
+    position: relative;
 
     @media ${device.mobile} {
       margin-top: 1rem;
@@ -278,6 +282,10 @@ const PolicyView = styled.div`
 
       .preview {
         margin: 0.5rem 0;
+        overflow-y: scroll;
+        height: 100vh;
+        position: sticky;
+        top: 0;
 
         .links {
           margin: 1rem 0;

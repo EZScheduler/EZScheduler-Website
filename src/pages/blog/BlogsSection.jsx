@@ -4,7 +4,7 @@ import styled from "styled-components";
 import BlogImg1 from "../../assets/images/blog-img.jpeg";
 import { device } from "../../constants/breakpoints";
 import { NavBar2 } from "../../components/NavBar2";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AllArticlesData } from "./data/AllArticles";
 import { format } from "date-fns";
 import teaser from "@/assets/lottie/FInal11.mp4";
@@ -155,10 +155,10 @@ export const BlogsSection = () => {
                   height="100%"
                 />
                 <div className="video-tags">
-                  <div className="tags-label">1 min</div>
+                  <div className="tags-label">2 min</div>
                   <div className="tags-date">May 02, 2024</div>
                 </div>
-                <h2>Tres vubösm trens. Pode kanade för plaskap. </h2>
+                <h2>Ez scheduler demo</h2>
               </div>
               <div className="videos-item">
                 <ReactPlayer
@@ -172,15 +172,17 @@ export const BlogsSection = () => {
                   height="100%"
                 />
                 <div className="video-tags">
-                  <div className="tags-label">1 min</div>
-                  <div className="tags-date">May 02, 2024</div>
+                  <div className="tags-label">2 min</div>
+                  <div className="tags-date">May 09, 2024</div>
                 </div>
-                <h2>Tres vubösm trens. Pode kanade för plaskap. </h2>
+                <h2>Ez Scheduler Demo</h2>
               </div>
             </div>
           </div>
           <div className="button-more">
-            <button>Watch more on Youtube</button>
+            <Link to={"https://youtube.com/@ezscheduler"} target="_blank">
+              <button>Watch more on Youtube</button>
+            </Link>
           </div>
         </div>
       </BlogsVideoView>
