@@ -181,10 +181,9 @@ const HeroView = styled.div`
     display: flex;
     justify-content: center;
     position: relative;
+    z-index: 5;
 
     .image {
-      position: relative;
-      z-index: 10;
       width: 1300px;
       margin-top: 2rem;
       margin-bottom: -16rem;
@@ -193,6 +192,8 @@ const HeroView = styled.div`
         width: 100%;
         height: 60%;
         border-radius: 40px;
+        z-index: 0;
+        position: relative;
       }
 
       @media ${device.mobile} {

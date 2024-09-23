@@ -68,7 +68,7 @@ const MobileNav = styled(motion.div)`
   width: 100vw;
   height: 100vh;
   flex-direction: column;
-  z-index: 2000;
+  z-index: 9999;
   position: fixed;
   top: 0px;
   left: 0;

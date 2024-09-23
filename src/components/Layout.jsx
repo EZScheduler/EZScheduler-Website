@@ -14,4 +14,5 @@ export const Layout = ({ children }) => {
 const View = styled.div`
   width: 100vw;
   height: 100vh;
+  position: relative;
 `;
