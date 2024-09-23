@@ -96,6 +96,7 @@ const LoaderView = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #291250;
 
   .backdrop {
     position: absolute;
