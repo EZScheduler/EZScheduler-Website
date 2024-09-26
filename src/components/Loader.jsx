@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import LoadBg from "../assets/images/loader-backdrop.png";
 import { device } from "../constants/breakpoints";
-import EzLogo from "../assets/images/load-logo.svg";
+import EzLogo from "../assets/images/load-logo.png";
+import blurBg from "../assets/images/blurbg.png";
 import { circOut, easeOut, motion } from "framer-motion";
 
 const Loader = () => {
@@ -17,9 +18,9 @@ const Loader = () => {
         top: 0,
         zIndex: 9999,
       }}
-        initial={{ top: '0vh' }}
-        animate={{ top: '-100vh' }}
-        transition={{ duration: 0.7, delay: 5, ease: "easeIn"}}
+      initial={{ top: "0vh" }}
+      animate={{ top: "-100vh" }}
+      transition={{ duration: 0.7, delay: 5, ease: "easeIn" }}
     >
       <LoaderView>
         <img className="backdrop" src={LoadBg} width={"100%"} height={"100%"} />
@@ -53,33 +54,92 @@ const Loader = () => {
           </div>
 
           <div className="progress">
-            <img width={'40%'} src={EzLogo} />
+            <motion.img
+              initial={{ opacity: 0.1 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 3, delay: 1, ease: "linear" }}
+              width={"40%"}
+              src={EzLogo}
+            />
+            <motion.img
+              className="blur-backdrop"
+              initial={{ opacity: 0.1 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 3, delay: 1, ease: "linear" }}
+              width={"40%"}
+              src={blurBg}
+            />
             <svg
               className="progress-bar"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 100 100"
             >
+              <defs>
+                <linearGradient
+                  id="strokeGradient"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="100%"
+                >
+                  <stop
+                    offset="0%"
+                    style={{ stopColor: "white", stopOpacity: 1 }}
+                  />
+                  <stop
+                    offset="50%"
+                    style={{ stopColor: "white", stopOpacity: 0.2 }}
+                  />
+                  <stop
+                    offset="100%"
+                    style={{ stopColor: "white", stopOpacity: 1 }}
+                  />
+                </linearGradient>
+              </defs>
               <motion.circle
                 cx="50"
                 cy="50"
                 r="40"
+                fill="none"
                 initial={{
-                  fill: "none",
-                  stroke: "white",
+                  stroke: "url(#strokeGradient)",
                   strokeOpacity: "0.2",
                   strokeWidth: "8",
                   strokeDasharray: "0 251.3",
                 }}
                 animate={{
-                  strokeDasharray: "251.3 251.3",
+                  strokeDasharray: [
+                    "0 251.3",
+                    "62.825 251.3",
+                    "62.825 251.3",
+                    "125.65 251.3",
+                    "125.65 251.3",
+                    "188.475 251.3",
+                    "188.475 251.3",
+                    "251.3 251.3",
+                  ],
+                  strokeOpacity: 1,
                 }}
                 transition={{
                   duration: 3,
+                  times: [0, 0.17, 0.33, 0.5, 0.67, 0.83, 1],
                   delay: 1,
-                  type: "just",
                   ease: "linear",
                 }}
               />
+              <defs>
+                <linearGradient
+                  id="paint0_linear_7373_1755"
+                  x1="0"
+                  y1="0"
+                  x2="100"
+                  y2="100"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stop-color="white" />
+                  <stop offset="1" stop-color="white" stop-opacity="0" />
+                </linearGradient>
+              </defs>
             </svg>
           </div>
         </div>
@@ -113,6 +173,7 @@ const LoaderView = styled.div`
     gap: 14rem;
     position: relative;
     z-index: 10;
+
     @media ${device.largeTablet} {
       width: 100%;
       gap: 10rem;
@@ -151,6 +212,13 @@ const LoaderView = styled.div`
       align-items: center;
       position: relative;
 
+      .blur-backdrop {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+      }
       .progress-bar {
         position: absolute;
         width: 100%;
