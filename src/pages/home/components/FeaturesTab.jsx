@@ -2,9 +2,13 @@ import { useState } from "react";
 import styled from "styled-components";
 import { Icons } from "../../../assets/icons/icons";
 import ReactPlayer from "react-player";
-import feature1 from "@/assets/lottie/feature1.mp4";
-import feature2 from "@/assets/lottie/feature2.mp4";
-import feature3 from "@/assets/lottie/feature3.mp4";
+import feature1 from "@/assets/lottie/feature4.mp4";
+import feature2 from "@/assets/lottie/Empowered.mp4";
+import feature3 from "@/assets/lottie/Streamlined.mp4";
+import feature4 from "@/assets/lottie/Boosted.mp4";
+import feature5 from "@/assets/lottie/Compliance.mp4";
+import feature6 from "@/assets/lottie/Simplified.mp4";
+import feature7 from "@/assets/lottie/Multiindustry.mp4";
 import { device } from "../../../constants/breakpoints";
 import Next from "../../../assets/icons/mobile-next.svg";
 import Prev from "../../../assets/icons/mobile-prev.svg";
@@ -40,7 +44,7 @@ const featureData = [
       "Gain real-time insights into team performance from a single dashboard, identify areas for improvement, and celebrate successes.",
       "Adapts to your unique business needs, keeping operations smooth and productive. No matter your team size, you'll have the tools you need to stay organized and efficient.",
     ],
-    assetLink: feature3,
+    assetLink: feature4,
   },
   {
     featureName: "Compliance Confidence",
@@ -48,7 +52,7 @@ const featureData = [
       "Avoid overscheduling - define the number of hours an employee can work to ensure compliance and avoid burnout (Ideal for Colleges)",
       "Ensure adherence to labor laws and regulations.",
     ],
-    assetLink: feature2,
+    assetLink: feature5,
   },
   {
     featureName: "Simplified Management",
@@ -56,14 +60,14 @@ const featureData = [
       "Generate insightful reports in various formats. Track key metrics and make data-driven decisions.",
       "Delegate tasks to specific shifts and individuals and empower sub-manager  to oversee specific teams or projects.",
     ],
-    assetLink: feature1,
+    assetLink: feature6,
   },
   {
     featureName: "Multi-Industry Application",
     descs: [
       "Perfect for managers in colleges, hospitals, restaurants, small businesses, medium-sized enterprises, and large corporations.",
     ],
-    assetLink: feature3,
+    assetLink: feature7,
   },
 ];
 
