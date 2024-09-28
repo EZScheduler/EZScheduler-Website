@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Layout } from "../../components/Layout";
 import { HeroSection } from "./components/HeroSection";
 import styled from "styled-components";
@@ -8,6 +8,10 @@ import { device } from "../../constants/breakpoints";
 import Loader from "../../components/Loader";
 
 export const Home = () => {
+  const [showLoader, setShowLoader] = useState(() => {
+    return sessionStorage.getItem("showLoader") !== "false";
+  });
+
   useEffect(() => {
     const disableScroll = () => {
       document.body.style.overflow = "hidden";
@@ -16,14 +20,23 @@ export const Home = () => {
       document.body.style.overflow = "auto";
     };
 
-    disableScroll();
-    const timer = setTimeout(enableScroll, 5000);
-    return () => clearTimeout(timer);
-  }, []);
+    if (showLoader) {
+      disableScroll();
+      const timer = setTimeout(() => {
+        enableScroll();
+        sessionStorage.setItem("showLoader", "false");
+        setShowLoader(false);
+      }, 6000);
+
+      return () => clearTimeout(timer);
+    } else {
+      enableScroll();
+    }
+  }, [showLoader]);
 
   return (
     <Layout>
-      <Loader />
+      {showLoader && <Loader />}
       <HomeView>
         <HeroSection />
         <StruggleSection />
