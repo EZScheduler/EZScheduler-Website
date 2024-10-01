@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { format } from "date-fns";
-import { AllArticlesData } from "./data/AllArticles";
+import { easeIn, motion } from "framer-motion";
 import { Layout } from "../../components/Layout";
 import styled from "styled-components";
 import { device } from "../../constants/breakpoints";
@@ -86,6 +86,36 @@ const Insight = () => {
     navigate(`/blog/${encodeURIComponent(title)}`);
   };
 
+  const currentUrl = window.location.href;
+
+  // Function to share on Twitter
+  const shareOnTwitter = () => {
+    const twitterUrl = `https://x.com/intent/tweet?url=${encodeURIComponent(
+      currentUrl
+    )}`;
+    window.open(twitterUrl, "_blank");
+  };
+
+  // Function to share on LinkedIn
+  const shareOnLinkedIn = () => {
+    const linkedinUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(
+      currentUrl
+    )}`;
+    window.open(linkedinUrl, "_blank");
+  };
+
+  // Function to copy the link to clipboard
+  const copyLink = () => {
+    navigator.clipboard
+      .writeText(currentUrl)
+      .then(() => {
+        alert("Link copied to clipboard!");
+      })
+      .catch((err) => {
+        console.error("Failed to copy link: ", err);
+      });
+  };
+
   return (
     <Layout>
       <BlogsHeroView>
@@ -110,30 +140,48 @@ const Insight = () => {
       <ArticleDetailsView>
         <ShareView>
           <div className="share-container">
-            <img
+            <motion.img
               className="screenshot"
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              transition={{ duration: 0.5, ease: easeIn }}
+              viewport={{ once: true }}
               src={Screenshot}
               alt="EZ scheduler screenshot"
             />
-            <h3>Get started now. Join our waitlist</h3>
-            <button onClick={() => setShowFormModal(true)} className="btn">
+            <motion.h3
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.5, ease: easeIn }}
+              viewport={{ once: true }}
+            >
+              Get started now. Join our waitlist
+            </motion.h3>
+            <motion.button
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              transition={{ duration: 0.3, delay: 0.7, ease: easeIn }}
+              viewport={{ once: true }}
+              onClick={() => setShowFormModal(true)}
+              className="btn"
+            >
               <span>Get started</span>
-            </button>
+            </motion.button>
           </div>
           <div className="share-links">
-            <div className="link">
+            <div className="link" onClick={shareOnTwitter}>
               <div className="link-container">
                 <span>Share</span>
                 <img width={30} height={30} src={XIcon} alt="X icon" />
               </div>
             </div>
-            <div className="link">
+            <div className="link" onClick={shareOnLinkedIn}>
               <div className="link-container">
                 <span>Share</span>
                 <img width={30} height={30} src={LnIcon} alt="Linkedin icon" />
               </div>
             </div>
-            <div className="link">
+            <div className="link" onClick={copyLink}>
               <div className="link-container">
                 <span>Copy</span>
                 <img width={30} height={30} src={CopyIcon} alt="Copy icon" />
@@ -366,6 +414,7 @@ const ShareView = styled.div`
       line-height: 14px;
       padding: 1.2rem 3.5rem;
       border-radius: 5px;
+      transform-origin: left;
       background-color: ${({ theme }) => theme.colors.white};
 
       span {

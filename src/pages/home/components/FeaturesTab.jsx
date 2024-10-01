@@ -2,7 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { Icons } from "../../../assets/icons/icons";
 import ReactPlayer from "react-player";
-import feature1 from "@/assets/lottie/feature4.mp4";
+import feature1 from "@/assets/lottie/Schedule.mp4";
 import feature2 from "@/assets/lottie/Empowered.mp4";
 import feature3 from "@/assets/lottie/Streamlined.mp4";
 import feature4 from "@/assets/lottie/Boosted.mp4";

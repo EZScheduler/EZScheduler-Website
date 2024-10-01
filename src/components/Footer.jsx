@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { ReactSVG } from "react-svg";
 import styled from "styled-components";
 import Ellipse from "../assets/images/ellipse.webp";
-import Footer2 from "../assets/images/footer-img2.webp";
+import Footer2 from "../assets/images/footer-img2.png";
 import { device } from "../constants/breakpoints";
 import { General } from "./General";
 import { Functionality } from "./Functionality";
@@ -174,7 +174,7 @@ const FooterView = styled.div`
   .footer-img2 {
     position: absolute;
     left: -2rem;
-    bottom: -8rem;
+    bottom: 0rem;
     border-radius: 0 0;
 
     @media ${device.mobile} {
